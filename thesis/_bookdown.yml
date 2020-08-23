@@ -1,4 +1,3 @@
-output_dir: "docs"
 book_filename: "thesis"
 delete_merged_file: true
 language:
@@ -19,3 +18,4 @@ language:
     edit: Edit
     chapter_name: 'Capítulo '
     appendix_name: 'Apéndice '
+output_dir: "docs"
