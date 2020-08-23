@@ -1,0 +1,28 @@
+---
+title: "Procesamiento de datos - ejemplo"
+---
+
+# Descripción general
+
+Este código procesa los datos originales y genera un archivo con la información necesaria para realizar los análisis.
+
+# Librerías
+
+```{r}
+pacman::p_load(dplyr)
+```
+
+# Data
+
+
+
+# Información de la sesión
+
+```{r}
+print(paste("R", getRversion()))
+print("*** Versiones de librerías")
+for (package_name in sort(loadedNamespaces())) {
+    print(paste(package_name, packageVersion(package_name)))
+}
+
+```

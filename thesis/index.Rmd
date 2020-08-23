@@ -1,0 +1,22 @@
+--- 
+title: "La feminización del conflicto laboral"
+author: "Valentina Andrade"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+output:
+  html_document:
+    df_print: paged
+description: Tesis para optar al grado de Socióloga de la Universidad de Chile
+documentclass: book
+link-citations: yes
+bibliography:
+- book.bib
+- packages.bib
+site: bookdown::bookdown_site
+subtitle: Un análisis temporal y comparado de la densidad sindical mundial
+biblio-style: apalike
+---
+
+# Presentación {-}
+
+Presentación y agradecimientos 
+

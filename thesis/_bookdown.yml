@@ -1,0 +1,20 @@
+book_filename: "thesis"
+delete_merged_file: true
+language:
+  label:
+    fig: 'Figura '
+    tab: 'Table '
+    eq: 'Ecuación '
+    thm: 'Teorema '
+    lem: 'Lema '
+    cor: 'Corolario '
+    prp: 'Proposición '
+    cnj: 'Conjectura '
+    def: 'Definición '
+    exm: 'Ejemplo '
+    exr: 'Ejercicio '
+    solution: 'Solución. '
+  ui:
+    edit: Edit
+    chapter_name: 'Capítulo '
+    appendix_name: 'Apéndice '
