@@ -63,70 +63,10 @@
 <script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
 
 
-<style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -201,7 +141,475 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="data-y-variables" class="section level2">
 <h2><span class="header-section-number">3.1</span> Data y variables</h2>
 <p>Los datos usados en esta investigación provienen de la construcción de una base de datos longitudinal (FDL<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>) sobre relaciones laborales a partir de la unión de fuentes como ICTWSS, OCDE, ILO y Banco Mundial, que proveen información temporal a nivel de los países. A esto se agrega la estimación y validación de los dos indicadores principales para este estudio, que son la densidad sindical femenina y masculina, que fueron construidas a partir de encuestas de hogares, encuestas a fuerza de trabajo y/o datos administrativos para los países en estudio (ver Apéndice C). FDL es una base de datos longitudinal que contiene 3360 observaciones y 340 variables laborales, económicas e instituciones a partir de información desde 1960 a 2018 de 56 países del mundo. Como se puede evidenciar en la Tabla 3.1, gran parte de estos países corresponden a países OCDE, y aquellos que no son países OCDE pertenecen al G20.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co">#Tabla Tabla 3.1 LatinoaméricaArgentina, Brazil, Chile, Colombia, Costa Rica, Mexico, Uruguay; de Norte América, Estados Unidos y Canadá; de Europa, Austria, Belgium,Bulgaria,Croatia, Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany,  Greece,Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg,Malta, Netherlands, Norway, Poland,Portugal,Romania, Slovak Republic, Slovenia, Spain, Sweden, Switzerland, United Kingdom; de Oceanía, Australia, Iceland,New Zealand; de Asia, China, Hong Kong, China, India, Israel, Japan, República de Korea, Malaysia, Russian Federation,    Singapore, Taiwan, China,Turkey, Indonesia, Philippines; y de África, Sudáfrica. </span></a></code></pre></div>
+<table class="table table-striped table-hover table-condensed table-responsive" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+País
+</th>
+<th style="text-align:left;">
+Continente
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Argentina
+</td>
+<td style="text-align:left;">
+Latinoamérica
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Australia
+</td>
+<td style="text-align:left;">
+Oceanía
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Austria
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Belgium
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Bulgaria
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Brazil
+</td>
+<td style="text-align:left;">
+Latinoamérica
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Canada
+</td>
+<td style="text-align:left;">
+Norte América
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Switzerland
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Chile
+</td>
+<td style="text-align:left;">
+Latinoamérica
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+China
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Colombia
+</td>
+<td style="text-align:left;">
+Latinoamérica
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Costa Rica
+</td>
+<td style="text-align:left;">
+Latinoamérica
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Cyprus
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Czech Republic
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Germany
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Denmark
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Spain
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Estonia
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Finland
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+France
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+United Kingdom
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Greece
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Hong Kong, China
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Croatia
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Hungary
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Indonesia
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+India
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Ireland
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Iceland
+</td>
+<td style="text-align:left;">
+Oceanía
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Israel
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Italy
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Japan
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Korea, Republic of
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Lithuania
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Luxembourg
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Latvia
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Mexico
+</td>
+<td style="text-align:left;">
+Latinoamérica
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Malta
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Malaysia
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Netherlands
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Norway
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+New Zealand
+</td>
+<td style="text-align:left;">
+Oceanía
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Philippines
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Poland
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Portugal
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Romania
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Russian Federation
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Singapore
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Slovak Republic
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Slovenia
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Sweden
+</td>
+<td style="text-align:left;">
+Europa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Turkey
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Taiwan, China
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+United States
+</td>
+<td style="text-align:left;">
+Norte América
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+South Africa
+</td>
+<td style="text-align:left;">
+África
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 9cm; ">
+Uruguay
+</td>
+<td style="text-align:left;">
+Latinoamérica
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border: 0;" colspan="100%">
+<sup></sup> Fuente: Elaboración propia en base a ICTWSS (2019)
+</td>
+</tr>
+</tfoot>
+</table>
 <p>El periodo de análisis abarca entre los años 1980 y 2018, por las mismas razones teóricas y empíricas indicadas por Vachon et. al (2016). Primero, no existe disponibilidad de datos para todas las variables rezagadas antes de 1980 – solo 10 países tienen datos desde 1960. Segundo, desde 1980 se reconoce el inicio del periodo neoliberal del desarrollo capitalista (Baccaro &amp; Howell, 2011; Tomaskovic-Devey et al., 2015) lo que permite evidenciar los inicios del proceso de crecimiento del sector servicio, desregulación del mercado laboral y divergencia del papel del Estado en las relaciones laborales. Tercero, es importante notar que el intervalo de tiempo permite considerar el efecto de la crisis económica de 2008 en la densidad sindical.</p>
 <div id="variable-dependiente" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> Variable dependiente</h3>

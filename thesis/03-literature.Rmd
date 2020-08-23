@@ -161,8 +161,30 @@ $H_{2}$: Con el crecimiento de los sectores económicos feminizados, como el sec
 
 Si bien los últimos 20 años la densidad sindical ha disminuido en 38 de los 53 países a analizar (Tabla 2.1 ); en 12 naciones la sindicalización ha aumentado o se ha mantenido igual en los últimos años. De hecho, en tendencias a largo plazo solo 5 en cada 9 países han disminuido su densidad sindical (1960 a 2019). Con esto, la evidencia es clara en que desde los años 2000 existe una divergencia de trayectorias sindicales entre los países. Mientras en algunos países la densidad sindical mantiene su declive, en otros se estanca y, en otros, sorpresivamente aumenta (Figura \@ref(fig:fig2.2)). A su vez, no solo se han diferenciado diferencias temporales (Figura \@ref(fig:fig2.1)). Investigaciones recientes han constatado patrones diferenciados en la densidad sindical entre países anglosajones y del Europa Occidental (Schmitt and Mitukiewicz, 2012; Visser, 2006; Scruggs, 2002; Chechi y Lucifora, 2002): por un lado, podemos encontrar países con densidades sindicales bajo un 12% (Francia, Corea del Sur, Estados Unidos) mientras que encontramos países con afiliación sindical por sobre un 60% (Finlandia, Suecia, Dinamarca, etc)
 
-```{r tab2.1, results='asis', echo= F,  tab.cap="(ref:tab2.1)"}
-#Tabla
+```{r tab2.1, results='asis', echo= F,  tab.cap="(ref:tab2.1)", message= F, warning= F}
+table <- db %>% group_by(country, year) %>% 
+  do(add_row(., country = unique(.$country),
+             year = unique(.$year),
+             growth_ud = mean(.$growth_ud, na.rm = T))) %>%
+  mutate(growth = ifelse(growth_ud < 0, "Decenso","Aumento")) %>% dplyr::select(country, growth_ud, growth) %>% filter(!is.na(growth_ud), !is.na(growth)) %>%  unique()
+table1 <- table %>% 
+  mutate(periodo=case_when(year %in% c(1961:1979)~1,
+                           year %in% c(1980:1999)~2,
+                           year %in% c(2000:2020)~3)) %>% 
+  group_by(periodo,country) %>% summarise(growth_ud=mean(growth_ud,na.rm = TRUE)) %>% 
+  spread(periodo,growth_ud)
+## Ops
+options(kableExtra.html.bsTable = T)
+options(knitr.kable.NA = '')
+
+knitr::kable(table1, digits = 3,  booktabs = T,
+                      col.names = c("País", "60-70", "80-90", "2000-hoy")) %>%
+  add_header_above(c(" ", "Décadas" = 3)) %>% 
+  kableExtra::kable_styling(latex_options = "hold_position")%>%
+  kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = F)%>%
+  kableExtra::column_spec(1, width = "9cm") %>%
+  kableExtra::footnote(general = "Fuente: Elaboración propia en base a ICTWSS (2019)",general_title = "")
+
 ```
 (ref:tab2.1) Variación de la densidad sindical en países de estudio (1960 a 2018). Fuente: Elaboración propia en base a ICTWSS (2019)
 

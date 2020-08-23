@@ -112,7 +112,7 @@ leaflet(map) %>%
 
 ```
 
-(ref:map1) FUDi (Feminization Union Density Index) se calculó como la relación entre densidad sindical femenina y densidad sindical masculina por país, en el último año disponible. Los valores cercanos a 1 indican igualdad en la distribución sexual de la sindicalización, mientras que valores mayores indican feminización de la sindicalización
+(ref:map1) Mapa mundial con la feminización de la densidad sindical. $FUDi$ (Feminization Union Density Index) se calculó como la relación entre densidad sindical femenina y densidad sindical masculina por país, en el último año disponible. Los valores cercanos a 1 indican igualdad en la distribución sexual de la sindicalización, mientras que valores mayores indican feminización de la sindicalización
 
 En cierto modo, la tendencia de la feminización sindical es visible una vez que se pone en relación y perspectiva con la inserción de las mujeres en el mercado laboral. Este ajuste dista de ser antojadizo. Más bien, diversos estudios sobre la membresía sindical lo han puesto como un común denominador para discutir los determinantes de la sindicalización (Schnabel, 2002, 2013) La razón, es que cambios grandes en la densidad sindical generalmente indican un cambio en las relaciones laborales y una evolución radical de los mercados de trabajo (Bryson et al., 2011, p. 98).
 
