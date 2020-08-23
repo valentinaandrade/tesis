@@ -8,7 +8,7 @@ pacman::p_load(dplyr, ggplot2, ggsci, tidyr, readxl)
 #lead() next and lag() past; first() el primero
 
 #2. Cargar bases de datos
-load(file = "../data/database2.RData")
+load(file = "../input/data/database2.RData")
 
 # 3. Explorar base
 names(db)
@@ -86,5 +86,5 @@ db <- db %>% mutate(iso3c = if_else(is.na(iso3c)&country=="Uruguay", "URY",
                               if_else(is.na(iso3c)&country=="Slovak Republic", "SVK",
                                       if_else(is.na(iso3c)&country=="Czech Republic", "CZE",iso3c))))
 # 8. Guardar ---
-save(db, file ="../data/db-proc.RData")
+save(db, file ="..input/data/db-proc.RData")
 rm(list = ls())
