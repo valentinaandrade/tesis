@@ -163,11 +163,11 @@ ggsave(
   height = 20
 )
 
-figura1.1gif <- figura1.1 + gganimate::transition_reveal(year) + labs(title = "", caption = "source: Valentina Andrade's elaboration")
+figura1.1gif <- figura1.1 + gganimate::transition_reveal(year) 
 figura1.1gif
 
 #Guardar
-anim_save(plot = figura1.1gif, filename = "gif1.1.gif", animation = last_animation(), path = NULL, width = 5000, height = 1000)
+anim_save(plot = figura1.1gif, filename = "../output/graphs/gif1.1.gif", animation = last_animation(), path = NULL, width = 5000, height = 1000)
 
 
 # figura 1.2
@@ -184,7 +184,7 @@ figura1.2
 
 ggsave(
   plot = figura1.2,
-  filename = "figura1.2.png",
+  filename = "../output/graphs/figura1.2.png",
   device = "png",
   dpi = "retina",
   units = "cm",
@@ -192,8 +192,8 @@ ggsave(
   height = 20
 )
 
-gif1.2 <- figura1.2 + gganimate::transition_reveal(year) + labs(title = "", caption = "source: Valentina Andrade's elaboration")
+gif1.2 <- figura1.2 + gganimate::transition_reveal(year) 
 gif1.2
 
 #Guardar
-anim_save(plot = gif1.2, filename = "gif1.2.gif", animation = last_animation(), path = NULL, width = 5000, height = 1000)
+anim_save(plot = gif1.2, filename = "../output/graphs/gif1.2.gif", animation = last_animation(), path = NULL, width = 5000, height = 1000)

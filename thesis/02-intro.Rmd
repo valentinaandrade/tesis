@@ -35,17 +35,17 @@ Pero así como el fin de la clase trabajadora fue un precipitado augurio, el dec
 
 Pero así como el fin de la clase trabajadora fue un precipitado augurio, el declive del sindicalismo puede ser puesto en tela de juicio, pues a partir de los 2000s nuevas tendencias y oportunidades han comenzado a emerger (Artus & Pflüger, 2015): contrario a lo que se había señalado hasta ahora en la literatura tradicional sobre sindicalización , en diversos países no solo hay más mujeres en los sindicatos, sino que incluso se ha feminizado la densidad sindical. El siglo XXI se inaugura con un nuevo sindicalismo, el sindicalismo de mujeres.
 
-```{r feminizadas, echo=TRUE}
-
+```{r chunk-label, fig.show='animate', ffmpeg.format='gif', dev='jpeg'}
+for (i in 1:10) plot(runif(100), ylim = c(0, 1)) # for example
 ```
 
 
 Ciertamente en la mayoría de los países los hombres tienen en términos absolutos una participación mayor en las organizaciones de trabajadores  (Visser, 2015), en tanto su participación en el mercado de trabajo es mayor. Pero si ponemos a las mujeres sindicalizadas en proporción a cuántas de estas participan en el mercado laboral se puede notar con creces que a nivel mundial las mujeres progresivamente han aumentado su participación sindical (Hassel & Schroeder, 2019; Visser, 2019). En otras palabras, la densidad sindical de las mujeres ha aumentado (Figura 1.1). La feminización de la sindicalización, es decir, donde la proporción de sindicalización femenina ha superado a la masculina, se puede observar en países tan diversos como Inglaterra, Suecia, Noruega, Estonia, Finlandia, Canadá, Australia, Rusia (y los países excomunistas en general), Islandia, Nueva Zelanda, Dinamarca, México, Brasil y Chile, los cuáles se presentan a modo de ejemplos el Mapa 1. O incluso, en países como Estados Unidos la brecha de participación sindical por sexo ha disminuido año a año (Milkman, 2007). De hecho, resulta más sencillo y simple notar las excepciones de países donde la masculinización de la sindicalización sigue vigente: Francia, Alemania, Corea, Japón, Bélgica, Austria, Colombia y Argentina (Figura 1.2).
 
 
-```{r mapa, echo = T, include = FALSE}
+```{r mapa, echo = T, include = F, message=FALSE, warning=FALSE}
 # 4. Manipular base de datos
-db <- db %>% select(country, year,UD, ud_fem2, ud_male2)
+db <- db %>% dplyr::select(country, year,UD, ud_fem2, ud_male2)
 db1 <- db %>% fill(UD) %>% filter(!is.na(ud_fem2))%>% 
   group_by(country) %>%
   filter(year == max(year)) %>% mutate(fudi = ud_fem2 / ud_male2) %>% mutate_if(is.numeric, ~round(., 2))
@@ -79,7 +79,9 @@ mytext <- paste(
   "FUDi: ", round(map@data$fudi, 2), 
   sep="") %>%
   lapply(htmltools::HTML)
+```
 
+```{r map view, results='asis', echo= F}
 # Final Map
 leaflet(map) %>% 
   addTiles(providers$Stamen.TonerLite)  %>% 
@@ -96,10 +98,16 @@ leaflet(map) %>%
       textsize = "13px", 
       direction = "auto")) %>%
   addLegend( pal=mypalette, values=~fudi, opacity=0.9, title = "Feminization", position = "bottomleft" )
+
 ```
 
 **# FUDi (Feminization Union Density Index) se calculó como la relación entre densidad sindical femenina y densidad sindical masculina por país, en el último año disponible. Los valores cercanos a 1 indican igualdad en la distribución sexual de la sindicalización, mientras que valores mayores indican feminización de la sindicalización**
 
+(ref:1600s-otl-town-borders) Scroll down (or click the narrative and use keyboard down arrow) in this [full-size interactive map](https://ontheline.github.io/otl-town-borders/index-caption.html) of town borders in Hartford County, Connecticut. From the early 1600s to the late 1880s, local and state government divided the region into 29 separate towns as the European settler population grew. Boundaries shown here are not exact, but approximated from the best available digital sources: [UConn Libraries MAGIC historical maps](http://magic.lib.uconn.edu), [Atlas of Historical County Boundaries at Newberry Library](http://publications.newberry.org/ahcbp/pages/Connecticut.html), and the [Connecticut State Register and Manual](http://www.ct.gov/sots/cwp/view.asp?a=3188&q=392440). Map developed by Ilya Ilyankou and Jack Dougherty, with [historical sources, known issues, and code on GitHub](https://github.com/ontheline/otl-town-borders/).
+
+```{r 1600s-otl-town-borders, fig.cap="(ref:1600s-otl-town-borders)"}
+if(knitr::is_html_output()) knitr::include_url("https://ontheline.github.io/otl-town-borders/", height="600px") else knitr::include_graphics("images/1600s-otl-town-borders.jpg")
+```
 En cierto modo, la tendencia de la feminización sindical es visible una vez que se pone en relación y perspectiva con la inserción de las mujeres en el mercado laboral. Este ajuste dista de ser antojadizo. Más bien, diversos estudios sobre la membresía sindical lo han puesto como un común denominador para discutir los determinantes de la sindicalización (Schnabel, 2002, 2013) La razón, es que cambios grandes en la densidad sindical generalmente indican un cambio en las relaciones laborales y una evolución radical de los mercados de trabajo (Bryson et al., 2011, p. 98).
 
 Pero como se señaló, las investigaciones sobre la participación sindical femenina han puesto su foco más en la exclusión. Por un lado, las estructuralistas argumentan que el patriarcado es el aspecto que determina la subordinación de las mujeres dentro de las organizaciones de trabajadores (Hartmann, 1976). Por otro, las culturalistas  plantean que existe una “cultura masculina” en el sindicalismo lo que aleja a las mujeres de su participación (Kirton & Greene, 2005; Ledwith, 2012). Evidentemente estos enfoques hacen difícil explicar los cambios históricos en el movimiento de los trabajadores (Milkman, 1990), como la evidente feminización de la sindicalización registrada en los último años (Mapa 1). Estos enfoques presuponen que el interés de género de las trabajadoras tiene un mayor peso que el interés de la clase (Milkman, 1987) y reifican los roles de género, donde las mujeres aparecen solo orientadas a la familia y pasivas frente a posibles condiciones de deprivación económica. 
