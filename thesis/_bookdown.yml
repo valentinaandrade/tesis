@@ -18,4 +18,4 @@ language:
     edit: Edit
     chapter_name: 'Capítulo '
     appendix_name: 'Apéndice '
-output_dir: "docs"
+output_dir: "../docs"
