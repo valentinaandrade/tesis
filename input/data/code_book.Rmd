@@ -1,0 +1,320 @@
+---
+title: "Code Book"
+author: "Valentina Andrade"
+date: "`r format(Sys.time(), '%D %B, %Y')`"
+output: 
+  pdf_document:
+    toc: true
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+knit_by_pkgdown <- !is.null(knitr::opts_chunk$get("fig.retina"))
+knitr::opts_chunk$set(echo = F, warning =  F, message = F)
+#knitr::opts_knit$set(root.dir = "../../")
+knitr::opts_knit$set(root.dir = "../")
+Sys.setlocale("LC_ALL", "ES_ES.UTF-8")
+```
+
+
+```{r paquetes, include=F, message=FALSE}
+pacman::p_load("dplyr", "tidyverse", "data.table", "readxl","httr", "codebook", devtools, magrittr)
+#install_github("expersso/OECD")
+library(OECD)
+#install.packages("Rilostat")
+#install_github("ilostat/Rilostat")
+library(Rilostat)
+```
+
+# Wages
+
+## Real Minimum wage
+
+Real hourly and annual minimum wages are statutory minimum wages converted into a common hourly and annual pay period for the 28 OECD countries and 4 non-member countries for which they are available. The resulting estimates are deflated by national Consumer Price Indices (CPI). The data are then converted into a common currency unit using US$ Purchasing Power Parities (PPPs) for private consumption expenditures.
+
+Real hourly and annual minimum wages are calculated first by deflating the series using the consumer price index taking 2018 as the base year.  The series are then converted into a common currency unit (USD) using Purchasing Power Parities (PPPs) for private consumption expenditures in 2018.
+
+Unit: US$ PurchasingPower Parities (PPPs)
+
+```{r, include=FALSE}
+rmw <- OECD::get_dataset("RMW",
+                  filter = "AUS+BEL+CAN+CHL+CZE+EST+FRA+DEU+GRC+HUN+IRL+ISR+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+POL+PRT+SVK+SVN+ESP+TUR+GBR+USA+CRI+BRA+RUS+COL.PPP.A", 
+                  pre_formatted = TRUE)
+rmw1 <- rmw %>% select(COUNTRY, obsTime, obsValue) 
+
+rmw1<-setnames(rmw1, old = c("COUNTRY", "obsTime", "obsValue"),
+               new = c("iso3c", "year", "rmw"))
+
+```
+
+
+## Gender wage gap
+
+Definition: The gender wage gap is defined as the difference between median earnings of men and women relative to median earnings of men. Data refer to full-time employees on the one hand and to self-employed on the other.
+
+Source: [OCDE](https://data.oecd.org/earnwage/gender-wage-gap.html)
+
+Unit: Data are presented in percentage of total employees
+
+Coverage: 1970-2018
+
+```{r, include = FALSE}
+gwg <- OECD::get_dataset("GENDER_EMP",
+                  filter = "AUS+AUT+BEL+CAN+CHL+COL+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OAVG+NMEC+BRA+CHN+CRI+IND+IDN+RUS+ZAF.EMP9_5.ALL_PERSONS.TOTAL", 
+                  pre_formatted = TRUE)
+
+gwg1 <- gwg %>% select(COU, TIME, obsValue)
+gwg1<-setnames(gwg1, old = c("COU", "TIME", "obsValue"),
+               new = c("iso3c", "year", "gwg"))
+```
+
+# Labor Force Statistics
+
+## Labor Force participation, employment and unemployment
+
+Definition: 
+
+Source: This dataset contains data on labour force participation rates, employment/population ratios and unemployment rates for both the total labour force and civilian labour force by sex. [LFS Definitions](http://www.oecd.org/els/emp/LFS%20Definitions%20-%20Tables.pdf)
+
+Unit: Data are presented in percentage of total employees
+
+```{r, include = FALSE}
+lf <- OECD::get_dataset("LFS_SEXAGE_I_R",
+                  filter = "AUS+AUT+BEL+CAN+CHL+COL+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+CRI+BRA+BGR+CHN+HRV+CYP+IND+IDN+MLT+ROU+RUS+ZAF.MEN+WOMEN+MW.900000.EPR+LFPR+UR.A",  pre_formatted = TRUE)
+
+table(lf$SERIES)
+
+lf1 <- lf %>% select(COUNTRY, SEX, obsTime, SERIES, obsValue) %>% 
+  spread(SERIES, obsValue)
+
+lf1 <- pivot_wider(lf1,
+                   names_from = "SEX",
+                   values_from = EPR:UR) 
+lf1<-setnames(lf1, old = c("COUNTRY", "obsTime"),
+               new = c("iso3c", "year"))
+```
+
+## Employment by activities 
+
+Definition: **Economic activities** are defined according to the Major divisions of the International standard International Classification (ISIC). Data are presented according to the latest revisions of the ISIC: Revision 3 (1990) and Revision 4 with the exception of the United States for which data is only available in Revision 2 until 2002 only.
+
+In some cases, the data according to both revisions are updated while only the latest is revised in other cases. This explains why in some cases, the level of employment or the number of employees are different according to the two ISIC revisions. Unless otherwise specified in the country notes data are compiled from the Labour Force Surveys.
+
+Source: “Employment by activities and status (ALFS)” dataset is a subset of the Annual Labour Force Statistics (ALFS) database which contains annual labour force statistics for the 36 OECD member countries plus Colombia, Costa Rica, Brazil and Russian Federation.
+
+Unit: Data are presented in percentage of total employees
+
+```{r, include = FALSE}
+alfs <- OECD::get_dataset("ALFS_EMP",
+                  filter = "AUS+AUT+BEL+CAN+CHL+COL+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+BRA+CRI+RUS.YA994TL1_ST+YA994AL1_ST+YA994IL1_ST+YA994SL1_ST+YA99A4L1_ST+YA99B4L1_ST+YA99C4L1_ST+YA99D4L1_ST+YA99E4L1_ST+YA99F4L1_ST+YA99G4L1_ST+YA99H4L1_ST+YA99I4L1_ST+YA99J4L1_ST+YA99K4L1_ST+YA99L4L1_ST+YA99M4L1_ST+YA99N4L1_ST+YA99O4L1_ST+YA99P4L1_ST+YA99Q4L1_ST+YA99X4L1_ST+YA99S4L1_ST+YA99T4L1_ST+YA99U4L1_ST.MA+FE+TT.A", 
+                  pre_formatted = TRUE)
+alfs$sector <- car::recode(alfs$SUBJECT, recodes = "'YA994TL1_ST' = 'total_sector';
+'YA994AL1_ST' = 'sector_ag';
+'YA994IL1_ST' = 'sector_ind';
+'YA994SL1_ST' = 'sector_ser';
+'YA99A4L1_ST' = 'sectorA';
+'YA99B4L1_ST' = 'sectorB';
+'YA99C4L1_ST' = 'sectorC';
+'YA99D4L1_ST' = 'sectorD';
+'YA99E4L1_ST' = 'sectorE';
+'YA99F4L1_ST' = 'sectorF';
+'YA99G4L1_ST' = 'sectorG';
+'YA99H4L1_ST' = 'sectorH';
+'YA99I4L1_ST' = 'sectorI';
+'YA99J4L1_ST' = 'sectorJ';
+'YA99K4L1_ST' = 'sectorK';
+'YA99L4L1_ST' = 'sectorL';
+'YA99M4L1_ST' = 'sectorM';
+'YA99N4L1_ST' = 'sectorN';
+'YA99O4L1_ST' = 'sectorO';
+'YA99P4L1_ST' = 'sectorP';
+'YA99Q4L1_ST' = 'sectorQ';
+'YA99X4L1_ST' = 'sectorR';
+'YA99S4L1_ST' = 'sectorS';
+'YA99T4L1_ST' = 'sectorT';
+'YA99U4L1_ST' = 'sectorU'") 
+alfs1 <- alfs %>% select(LOCATION, SEX, obsTime, obsValue, sector) %>% 
+  spread(key = "sector", value = "obsValue") 
+alfs1<- pivot_wider(data = alfs1,
+            names_from = SEX, 
+            values_from = sector_ag:total_sector)
+
+alfs1<-setnames(alfs1, old = c("LOCATION", "obsTime"),
+               new = c("iso3c", "year"))
+```
+
+Source: [ALFS](https://stats.oecd.org/restsdmx/sdmx.ashx/GetData/ALFS_EMP/AUS+AUT+BEL+CAN+CHL+COL+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+EA19+EU28+G-7+OECD+NMEC+BRA+CRI+RUS.YAREV4+YA994TL1_ST+YA994AL1_ST+YA99A4L1_ST+YA994IL1_ST+YA99B4L1_ST+YA99C4L1_ST+YA99D4L1_ST+YA99E4L1_ST+YA99F4L1_ST+YA994SL1_ST+YA99G4L1_ST+YA99H4L1_ST+YA99I4L1_ST+YA99J4L1_ST+YA99K4L1_ST+YA99L4L1_ST+YA99M4L1_ST+YA99N4L1_ST+YA99O4L1_ST+YA99P4L1_ST+YA99Q4L1_ST+YA99X4L1_ST+YA99S4L1_ST+YA99T4L1_ST+YA99U4L1_ST.MA+FE+TT.A/all?startTime=1970&endTime=2018). 
+
+
+**Clasification (ISIC rev.4)**
+
+Employment in all activities (A-U): YA994TL1_ST
+- Employment in agriculture, hunting and forestry (A)
+  + Agriculture,hunting and forestry (A): YA99A4L1_ST o YA994AL1_ST
+
+- Employment in Industry (ISIC rev4, B-F)	
+  + Mining and quarrying (B): YA99B4L1_ST
+  + Manufacturing (C): YA99C4L1_ST
+  + Electricity, gas, steam and air conditioning supply (D): YA99D4L1_ST
+Water supply, sewerage, waste management and remediation activities (E): YA99E4L1_ST
+Construction (F): YA99F4L1_ST
+
+- Employment in Services (ISIC rev.4, G-U)
+
+  + Wholesale and retail trade, repair of motor vehicles and motorcycles (G): YA99G4L1_ST
+  + Transportation and storage (H): YA99H4L1_ST	
+  + Accommodation and food service activities (I): YA99I4L1_ST	
+  + Information and communication (J): YA99J4L1_ST
+  + Financial and insurance activities (K): YA99K4L1_ST	
+  + Real estate activities (L): YA99L4L1_ST	
+  + Professional, scientific and technical activities (M): YA99M4L1_ST	
+  + Administrative and support service activities (N): YA99N4L1_ST	
+  + Public administration and defence, Compulsory social security (O): YA99O4L1_ST
+  + Education (P): YA99P4L1_ST	
+  + Human health and social work activities (Q): YA99Q4L1_ST	
+  + Arts, entertainment and recreation ( R): YA99X4L1_ST
+  + Other service activities (S):YA99S4L1_ST	
+  + Activities of households as employers undifferentiated goods- and services-producing activities of households for own use (T): YA99T4L1_ST	
+  + Activities of extraterritorial organisations and bodies (U):  YA99B4L1_ST
+
+## Employment distribution by economic activity (by sex) 
+
+ILO modeled statistics
+
+```{r message=FALSE, warning=FALSE}
+sector <- Rilostat::get_ilostat("EMP_2EMP_SEX_ECO_DT_A")
+sector$sector2 <- sector  %$% gsub("ECO_DETAILS","sector", classif1)
+sector$sector2 <- sector  %$% gsub("ECO_SECTOR","sector", sector2)
+sector <-  sector %>% filter(grepl("sector", sector2)) %>% select(iso3c = ref_area,year=time,sex,sector=sector2, obs_value)
+sector1<- sector %>% filter(sector !="sector_TOTAL") %>% spread(key = "sector", value = "obs_value") 
+sector1<- pivot_wider(data = sector1,
+            names_from = sex, 
+            values_from = sector_A:sector_SER)
+```
+
+## Time Work
+
+Definition: incidence and share consider only dependent workers. Limits of part time and full time emplyment are based on national definitions. 
+
+The definition of part-time work varies considerably across OECD countries. Essentially three main approaches can be distinguished: i) a classification based on the worker's perception of his/her employment situation; ii) a cut-off (generally 30 or 35 hours per week) based on usual working hours, with persons usually working fewer hours being considered part-timers; iii) a comparable cut-off based on actual hours worked during the reference week. A criterion based on actual hours will generally yield a part-time rate higher than one based on usual hours, particularly if there are temporary reductions in working time as a result of holidays, illness, short-timing, etc. On the other hand, it is not entirely clear whether a classification based on the worker's perception will necessarily yield estimates of part-time work that are higher or lower than one based on a fixed cut-off. In one country (France) which changed from 1981 to 1982 from a definition based on an actual hours cut-off (30 hours) to one based on the respondent's perception, the latter criterion appeared to produce slightly higher estimates. 
+
+
++ Incidence full time employment
++ Incidence part-time employment
++ Gender share of part-time employment
+
+Source: [Labor Force Survey](http://www.oecd.org/els/emp/LFS%20Definitions%20-%20Tables.pdf) for each country.
+
+Unit: Data are presented in percentage of total employees
+
+```{r, echo = F, include = FALSE}
+time <- OECD::get_dataset("FTPTN_I",
+                  filter = "AUS+AUT+BEL+CAN+CHL+COL+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+CRI+BGR+HRV+IDN+MLT+ROU+RUS+ZAF+FTFR.MEN+WOMEN+MW.900000.DE.FT+PT+SH_PT.A", 
+                  pre_formatted = TRUE)
+time <- time %>% select(COUNTRY, SEX, SERIES, obsTime, obsValue) %>% 
+  spread(key = "SERIES", value = "obsValue")
+time1 <- pivot_wider(time,
+                     names_from = "SEX",
+                     values_from = FT:SH_PT) %>%  setnames(old = c("COUNTRY", "obsTime"), new = c("iso3c", "year"))
+```
+
+
+## Informal employment
+```{r, warning= FALSE}
+informal <- Rilostat::get_ilostat("IFL_XIEM_SEX_ECO_IFL_RT_A")
+informal1 <- informal %>% filter(classif2 == "IFL_COMP_INFEMP" & classif1 == "ECO_TOTNAG_NAG") %>%  select(iso3c=ref_area, sex,year=time, obs_value) %>% pivot_wider(names_from = "sex", values_from = "obs_value")
+```
+
+Definition: Informal employment comprises persons who in their main jobs were unincorporated enterprises that produce at least partly for the market and are not registered. It excludes households that produce exclusively for own final use, subsistence agriculture, construction of own dwellings, etc. Some characteristics[^1] of informal imployment are: 
+  - Lack of coverage by social security system;
+  - Lack of entitlement to paid annual or sick leave;
+  - Lack of written employment contract.
+    
+[^1]: For a more complete definition see [ILO](https://ilostat.ilo.org/resources/methods/description-informality/)
+
+Source: ILOSTAT,International Labour Organization. 
+
+The harmonized series on informality are derived by the Department of Statistics from processing national household survey microdata files using a consistent navigational path. The process involves identifying the production unit (formal sector, informal sector or household) and the nature of the job (formal job or informal job) of each employed person in their main job in order to derive the final indicators.
+
+Unit: Data are presented in percentage of total employees
+
+# Productivity
+
+## GDP per hour worked
+
+Definition: GDP per hour worked is a measure of labour productivity. It measures how efficiently labour input is combined with other factors of production and used in the production process. Labour input is defined as total hours worked of all persons engaged in production. Labour productivity only partially reflects the productivity of labour in terms of the personal capacities of workers or the intensity of their effort. The ratio between the output measure and the labour input depends to a large degree on the presence and/or use of other inputs (e.g. capital, intermediate inputs, technical, organisational and efficiency change, economies of scale). This indicator is measured in USD (constant prices 2010 and PPPs) and indices.
+
+Source: The default direct source for total hours worked is generally the OECD Annual National Accounts (ANA) Database. However, for a number of countries, long time series of hours worked are not available. For these countries, estimates from the OECD Employment Outlook are used. These are based on annual Labour Force Surveys (LFS) supplemented with information from a detailed OECD survey sent to member countries.
+
+Unit: Average Annual rate of growth. Base year 2010
+
+```{r, echo= F}
+gdp <- OECD::get_dataset("PDB_GR",
+                  filter = "AUS+AUT+BEL+CAN+CHL+COL+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+BRA+BGR+CHN+CRI+HRV+IND+IDN+PER+ROU+RUS+ZAF.T_GDPPOP_V+T_GDPHRS_V+T_GDPEMP_V+T_HRSPOP+T_ULCEX.GRW", 
+                  pre_formatted = TRUE)
+gdp1 <- gdp %>% select(LOCATION, SUBJECT,obsTime, obsValue) 
+gdp1 <- pivot_wider(gdp1,
+                    names_from = "SUBJECT",
+                    values_from =  "obsValue") %>% setnames(old = c("LOCATION", "obsTime"), new = c("iso3c", "year"))
+
+```
+
+## Unit Labor Cost
+
+Definition: Unit labour costs are often viewed as a broad measure of (international) price competitiveness. They are defined as the average cost of labour per unit of output produced. They can be expressed as the ratio of total labour compensation per hour worked to output per hour worked (labour productivity). This indicator is measured in percentage changes and indices. 
+
+# Gender
+
+## Time spent in paid and unpaid work, by sex
+
+Definition: This data looks at how many men and women are in paid work (who works **full-time**) unpaid and total work, in minutes per day. 
+
+Time spent in unpaid work includes: routine housework; shopping; care for household members; child care; adult care; care for non-household members; volunteering; travel related to household activities; other unpaid activities.
+
+Source: [National Time Uses Surveys](https://www.oecd.org/gender/data/time-spent-in-unpaid-paid-and-total-work-by-sex.htm) data set in [OCDE](https://www.oecd.org/gender/data/OECD_1564_TUSupdatePortal.xls)
+
+
+```{r, echo = FALSE}
+# gender <- OECD::get_dataset("GENDER_EMPR", 
+#                             filter = "AUS",
+#                   pre_formatted = T)
+```
+
+## ICTWSS
+
+Coord
+UD
+AdjCov
+
++ ud_fem 2 y ud_male2
+
+```{r, warning= FALSE}
+url <- "https://aias.s3.eu-central-1.amazonaws.com/website/uploads/20191107_ICTWSS_6_1_Dataset.xlsx"
+GET(url, write_disk(tf <- tempfile(fileext = ".xlsx")))
+ictwss2 <- read_excel(tf, 1L, skip = 1)
+ictwss2$country[which(ictwss2$country == "United States of America")] <- "United States"
+#agregar columna de UD
+ictwss <- read_excel("data/excel/ictwss.xlsx")
+ictwss <- select(ictwss, country, year, ud_fem2, ud_male2)
+ictwss3 <- merge(ictwss2, ictwss, by= c("country","year"), all = T)
+ictwss <- ictwss3; remove(ictwss3)
+```
+
+# Merge
+```{r}
+code <- read_excel("data/excel/iso-code.xlsx")
+code <- code %>% mutate(year = 1960)
+code <- code %>%
+    complete(country, year = 1960:2018) %>% fill(iso2c,iso3c,code, .direction = "down") #cambiar cuando sea 2019
+    
+central <- merge(code, ictwss, by = c("iso2c", "year","country"), all.y = T)
+```
+
+```{r, echo= FALSE}
+db <- Reduce(function(x,y) merge(x = x, y = y, by = c("iso3c", "year"), all.x = T),list(central, gwg1, rmw1, lf1,sector1,time1, informal1, gdp1,alfs1))
+db %>% select(country, iso2c,iso3c, year,rmw, T_ULCEX) %>%  subset(country == "United Kingdom")
+```
+
+```{r save, echo = F}
+save(db, file = "database2.RData")
+```
