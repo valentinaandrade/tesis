@@ -3,7 +3,7 @@ delete_merged_file: true
 language:
   label:
     fig: 'Figura '
-    tab: 'Table '
+    tab: 'Tabla '
     eq: 'Ecuación '
     thm: 'Teorema '
     lem: 'Lema '
