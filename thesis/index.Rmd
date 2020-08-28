@@ -9,7 +9,7 @@ description: Tesis para optar al grado de Socióloga de la Universidad de Chile
 documentclass: book
 link-citations: yes
 bibliography:
-- book.bib
+- tesis.bib
 - packages.bib
 site: bookdown::bookdown_site
 subtitle: Un análisis temporal y comparado de la densidad sindical mundial
@@ -18,5 +18,11 @@ biblio-style: apalike
 
 # Presentación {-}
 
-Presentación y agradecimientos 
+La siguiente investigación se ha desarrollado en el marco de la tesis para optar al grado de Socióloga de la Universidad de Chile. 
 
+
+Profesor Guía: Omar Aguilar Novoa
+Co-tutor: Pablo Pérez Ahumada
+
+
+(En desarrollo)
