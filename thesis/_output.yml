@@ -6,11 +6,12 @@ bookdown::gitbook:
       before: |
         <li><a href="./">La feminización del conflicto laboral</a></li>
       after: |
-        <li><a href="https://github.com/valentinaandrade" target="blank">Valentina Andrade - Github</a></li>
+        <li><a href="https://github.com/valentinaandrade" target="blank">Valentina Andrade - Github <i class="fa fa-github"></i></a></li>
     download: ["pdf", "epub"]
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
+    before_body: frontpage.tex
   latex_engine: xelatex
   citation_package: natbib
   keep_tex: yes

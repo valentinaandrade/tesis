@@ -26,4 +26,4 @@ Profesor Guía: Omar Aguilar Novoa
 Co-tutor: Pablo Pérez Ahumada
 
 
-(En desarrollo)
+[En desarrollo]

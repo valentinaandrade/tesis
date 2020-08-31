@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.5.11)  22 AUG 2020 23:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.5.11)  31 AUG 2020 17:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -14,15 +14,15 @@ Document Class: book 2019/12/20 v1.4l Standard LaTeX document class
 k10.clo
 File: bk10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
 )
-\c@part=\count163
-\c@chapter=\count164
-\c@section=\count165
-\c@subsection=\count166
-\c@subsubsection=\count167
-\c@paragraph=\count168
-\c@subparagraph=\count169
-\c@figure=\count170
-\c@table=\count171
+\c@part=\count167
+\c@chapter=\count168
+\c@section=\count169
+\c@subsection=\count170
+\c@subsubsection=\count171
+\c@paragraph=\count172
+\c@subparagraph=\count173
+\c@figure=\count174
+\c@table=\count175
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen134
@@ -81,6 +81,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 h/amsmath.sty
 Package: amsmath 2020/01/20 v2.17e AMS math features
 \@mathmargin=\skip49
+
 For additional information on amsmath, use the `?' option.
 
 (c:/Users/Valentina Andrade/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmat
@@ -102,13 +103,13 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 h/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count172
+\inf@bad=\count176
 LaTeX Info: Redefining \frac on input line 227.
-\uproot@=\count173
-\leftroot@=\count174
+\uproot@=\count177
+\leftroot@=\count178
 LaTeX Info: Redefining \overline on input line 389.
-\classnum@=\count175
-\DOTSCASE@=\count176
+\classnum@=\count179
+\DOTSCASE@=\count180
 LaTeX Info: Redefining \ldots on input line 486.
 LaTeX Info: Redefining \dots on input line 489.
 LaTeX Info: Redefining \cdots on input line 610.
@@ -117,15 +118,15 @@ LaTeX Info: Redefining \cdots on input line 610.
 \big@size=\dimen137
 LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
-\macc@depth=\count177
-\c@MaxMatrixCols=\count178
+\macc@depth=\count181
+\c@MaxMatrixCols=\count182
 \dotsspace@=\muskip16
-\c@parentequation=\count179
-\dspbrk@lvl=\count180
+\c@parentequation=\count183
+\dspbrk@lvl=\count184
 \tag@help=\toks17
-\row@=\count181
-\column@=\count182
-\maxfields@=\count183
+\row@=\count185
+\column@=\count186
+\maxfields@=\count187
 \andhelp@=\toks18
 \eqnshift@=\dimen138
 \alignsep@=\dimen139
@@ -152,8 +153,65 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 x/ifluatex.sty
 Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
 )
+(c:/Users/Valentina Andrade/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/f
+ontenc.sty
+Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 11
+2.
 
-! LaTeX Error: File `unicode-math.sty' not found.
+(c:/Users/Valentina Andrade/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1l
+mr.fd
+File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+))
+(c:/Users/Valentina Andrade/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/i
+nputenc.sty
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks21
+\inpenc@posthook=\toks22
+)
+(c:/Users/Valentina Andrade/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/t
+extcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+)
+(c:/Users/Valentina Andrade/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/upquot
+e/upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
+tim
+)
+(c:/Users/Valentina Andrade/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor
+/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(c:/Users/Valentina Andrade/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphi
+cs-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(c:/Users/Valentina Andrade/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphi
+cs-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(c:/Users/Valentina Andrade/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperr
+ef/hyperref.sty
+Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
+
+(c:/Users/Valentina Andrade/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ltxc
+mds/ltxcmds.sty
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
+)
+
+! LaTeX Error: File `pdftexcmds.sty' not found.
 
 Type X to quit or <RETURN> to proceed,
 or enter new name. (Default extension: sty)
@@ -162,15 +220,17 @@ Enter file name:
 ! Emergency stop.
 <read *> 
          
-l.16   \defaultfontfeatures
-                           {Scale=MatchLowercase}^^M 
-Here is how much of TeX's memory you used:
- 1431 strings out of 481442
- 16951 string characters out of 5925514
- 246529 words of memory out of 5000000
- 18823 multiletter control sequences out of 15000+600000
- 532346 words of font info for 25 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 30i,0n,31p,231b,40s stack positions out of 5000i,500n,10000p,200000b,80000s
+l.108 \RequirePackage{pdftexcmds}[2009/04/10]
+                                             ^^M
+*** (cannot \read from terminal in nonstop modes)
 
-No pages of output.
+ 
+Here is how much of TeX's memory you used:
+ 2500 strings out of 482588
+ 30781 string characters out of 5948283
+ 257198 words of memory out of 5000000
+ 18103 multiletter control sequences out of 15000+600000
+ 535328 words of font info for 25 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 30i,0n,37p,240b,79s stack positions out of 5000i,500n,10000p,200000b,80000s
+!  ==> Fatal error occurred, no output PDF file produced!
