@@ -1,3 +1,61 @@
+--- 
+title: "La feminización del conflicto laboral"
+author: "Valentina Andrade"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+output:
+  html_document:
+    df_print: paged
+description: Tesis para optar al grado de Socióloga de la Universidad de Chile
+documentclass: book
+link-citations: yes
+bibliography:
+- tesis.bib
+- packages.bib
+site: bookdown::bookdown_site
+subtitle: Un análisis temporal y comparado de la densidad sindical mundial
+biblio-style: apalike
+---
+--- 
+title: "La feminización del conflicto laboral"
+author: "Valentina Andrade"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+output:
+  html_document:
+    df_print: paged
+description: Tesis para optar al grado de Socióloga de la Universidad de Chile
+documentclass: book
+link-citations: yes
+bibliography:
+- tesis.bib
+- packages.bib
+site: bookdown::bookdown_site
+subtitle: Un análisis temporal y comparado de la densidad sindical mundial
+biblio-style: apalike
+---
+
+# Presentación {-}
+
+La siguiente investigación se ha desarrollado en el marco de la tesis para optar al grado de Socióloga de la Universidad de Chile. 
+
+
+Profesor Guía: Omar Aguilar Novoa
+
+Co-tutor: Pablo Pérez Ahumada
+
+
+[En desarrollo]
+
+<!--chapter:end:index.Rmd-->
+
+
+# Resumen {-}
+
+  La feminización de la sindicalización hoy es un fenómeno mundial. Distintas investigaciones han abordado el problema de la sindicalización femenina desde factores culturales que redundan en la pasividad de las mujeres y exclusión de estas en la acción colectiva. Ante la insuficiencia de un corpus que logre explicar por qué, en la actualidad,  hoy hay más mujeres en los sindicatos, la siguiente investigación pone énfasis en la importancia de las determinantes cíclicas, estructurales e institucionales de los cambios de la sindicalización. El aumento en la participación laboral femenina, la feminización de ciertas industrias, los cambios en las brechas salariales, aumento del empleo parcial y los distintos arreglos institucionales son algunos de las determinantes a considerar en un análisis de series temporales comparativo entre 56 países. Con la construcción de una [base de datos](../output/data) propia con cobertura de 1980-2018 cuyas principales fuentes de información son encuestas de hogares, datos administrativos, ICTWSS, ILO, Banco Mundial y OCDE, se estimaron modelos de corrección de error y usando efectos fijos se distinguió entre efectos a largo plazo y a corto plazo de las determinantes. 
+
+**Palabras claves**: sindicalización, feminización, mercado laboral, salarios, tiempos de trabajo
+
+<!--chapter:end:01-abstract.Rmd-->
+
 # ¿Más mujeres en los sindicatos? {#intro}
 
 ```{r set up, include = F}
@@ -164,3 +222,58 @@ El [capítulo 3](#cap3) presenta los datos y variables utilizados. Asimismo, se 
 [^2]: Por citar algunos ejemplos están los trabajos de @charlwood2008 sobre Nueva Zelanda, @clawson1999 y @farber1990 sobre Estados Unidos, @visser2007 analizando el caso alemán, @machin2000 sobre el Reino Unido y más recientemente @palm2017a en su análisis sobre  Suecia. Para una perspectiva comparada, @western1995 muestra el declive del sindicalismo en 18 países.
 
 [^3]: Son escasos los estudios que pudieron dar luces de este nuevo fenómeno. @machin2004 señala que en Inglaterra “para el 2001 ya no había brecha de género dentro de la membresía sindical” (p.430), mientras que @blanchflower2006 constata que las mujeres tienen una significativa densidad sindical en países del ex bloque soviético (Latvia, Polonia, Rusia, Eslovaquia y Eslovenia), países escandinavos, Suecia, Nueva Zelanda, Chile, Israel, entre otros. Sin embargo, ambos lo muestran como excepciones a nivel internacional. Recientemente @hassel2019 y @visser2019 confirman esta posibilidad. 
+
+<!--chapter:end:02-intro.Rmd-->
+
+
+# ¿Por qué ellas hoy son más y ellos menos?: hacia un marco analítico de la densidad sindical por sexo 
+
+Placeholder
+
+
+## Una perspectiva histórica y comparada de la densidad sindical en el mundo
+## Determinantes cíclicos del crecimiento sindical: un análisis del empleo y los salarios
+## Determinantes estructurales del declive sindical: el efecto de la globalización y desindustrialización
+## Determinantes institucionales de la densidad sindical 
+
+<!--chapter:end:03-literature.Rmd-->
+
+
+# Metodología
+
+Placeholder
+
+
+## Data y variables
+### Variable dependiente
+### Variables independientes
+### Variables de interacción
+### Variables de control
+## Modelo
+
+<!--chapter:end:04-method.Rmd-->
+
+# Resultados
+
+
+## Analisis descriptivo
+
+## Modelo EMC
+
+## Interacciones
+
+## Ajuste
+
+<!--chapter:end:05-application.Rmd-->
+
+# Conclusión
+
+
+<!--chapter:end:06-conclusion.Rmd-->
+
+`r if (knitr::is_html_output()) '
+# Referencias {-}
+'`
+
+<!--chapter:end:07-references.Rmd-->
+
