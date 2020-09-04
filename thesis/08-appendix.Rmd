@@ -1,2 +1,42 @@
 # Apéndice {-}
 
+## Apéndice A  {- #apendicea}
+
+El siguiente Apéndice resume aspectos metodológicos de la investigación
+
+### Variables {-}
+
+Tabla A.1:  Variables, descripciones y fuentes
+
+| Variable    | Descripción|       Fuente|
+|------------:|-----------:|------------:|
+| **Variable dependiente**|  |           |
+| Índice de Feminización de Densidad Sindical $FUDi$| Densidad sindical femenina en relación a la densidad sindical masculina |  Elaboración propia en base a encuestas de hogares, datos administrativos y ICTWSS -@visser2019 |
+| **Variable independiente**| |          |
+| *A. Cícilicas*|          |              |
+| Desempleo Femenino|   Porcentaje  anual de desocupadas del total de la fuerza de trabajo femenina, dejando afuera a ocupadas e inactivas del cálculo.      |@oecd2020 Principales Indicadores Económicos para el desempleo |
+| Salarios Mínimos| Los salarios mínimos reales por hora y anuales son los salarios mínimos legales convertidos en un salario común por hora y período de pago anual convertido en una unidad monetaria común utilizando las Paridades de Poder Adquisitivo ($PPP$) en dólares de los EE.UU. para los gastos de consumo privado | @oecd2020 Principales Indicadores Económicos de salarios |
+| *B. Estructuales*|         |       |
+| Participación Laboral Feminina| Total de fuerza de trabajo femenina dividida por el total de mujeres en edad de trabajar, la cual depende de los países, pero en general esta va desde los 15 a los 64 años. | @oecd2020 Encuestas a Fuerza de Trabajo (*LFS*)|
+| Sector servicios| Tasa anual de la fuerza de trabajo en el sector servicios, es decir, en las actividades de las secciones económicas que van de la G a la U en ISIC rev.4 |  Estimaciones de @ilo2019 y Banco Mundial -@ilo2019|
+| Empleo parcial| Porcentaje de trabajadores parciales en el total de los asalariados de cada país. Esta es una medida que varía según la definición del empleo parcial para cada país, pero en general se define por jornadas que van entre 30 a 35 horas por semanas. |  @oecd2020 Encuestas a Fuerza de Trabajo (*LFS*) |
+| *C. Institucionales*|          |              |
+| Coordinación | Coordinación de los salarios medida en 5 niveles: (5) Normas vinculantes relativas a las tasas de salario máximo o mínimo o a los aumentos de salario emitidas como resultado de a) la negociación centralizada por la central sindical y las asociaciones patronales, con o sin la participación del gobierno, o b) la imposición unilateral por el gobierno de un plan o congelación de salarios, con o sin consulta y negociación previas con los sindicatos y/o las asociaciones patronales.(4) Normas y/o directrices no vinculantes (recomendaciones sobre tasas de salarios máximos o mínimos o aumentos salariales) emitidas por a) el gobierno o el organismo gubernamental, y/o la central sindical y las asociaciones patronales (juntas o solas), o b) resultantes de un establecimiento de patrones extensos y regularizados junto con un alto grado de concentración y autoridad sindical.(3) Directrices de procedimiento para la negociación (recomendaciones sobre, por ejemplo, la fórmula de demanda salarial relativa a la productividad o la inflación) emitidas por a) el gobierno o el organismo gubernamental, y/o el sindicato central y las asociaciones de empleadores (juntos o solos), o b) resultantes de una fijación de pautas extensiva y regularizada junto con un alto grado de concentración y autoridad sindical.(2) Cierta coordinación de la fijación de salarios, basada en la fijación de patrones por parte de las principales empresas, sectores, políticas salariales del gobierno en el sector público, adjudicaciones judiciales o políticas de salario mínimo.(1) Negociación salarial fragmentada, limitada en gran medida a empresas o plantas individuales, sin coordinación | ICTWSS -@visser2019 |
+| *D. Control* |          |              |
+| Ajuste de la Negociación Colectiva |  Empleados cubiertos por acuerdos de negociación colectiva (salariales) válidos como proporción de todos los asalariados con derecho a negociar, expresada como porcentaje. Esta está ajustada para tener en cuenta la probabilidad de que algunos sectores u ocupaciones queden excluidos del derecho a negociar       |ICTWSS -@visser2019|
+| Densidad Sindical|  Densidad sindical del año anterior, esto es, membresía sindical en proporción a todos los asalariados del año anterior disponible |  ICTWSS-@visser2019|
+
+
+## Apéndice B {- #apendiceb}
+
+### Acrónimos {-}
+
+[**ICTWSS**](https://www.ictwss.org/):  Base de Datis de Características Insititucionales de los Sindicatos, Coordinación Salarial, Intervención Estatal y Pactos Sociales (*o en inglés, Institutional Characteristics of Trade Unions, Wage Setting, State Intervention and Social Pacts*)
+
+[**OECD**](https://www.oecd.org/sdd/oecdmaineconomicindicatorsmei.htm): Organización para la Cooperación y Desarrollo (*o en inglés, Organisation for Economic Co-operation and Development - OECD*)
+
+[**OIT**](https://www.ilo.org/global/lang--es/index.htm): Organización Internacional del Trabajo (*o en inglés, Internacional Labour Organization -ILO* )
+
+[**ISIC**](https://unstats.un.org/unsd/classifications/Family/Detail/27): Clasificación Industrial Estándar Internacional de las Naciones Unidas. En este estudio se hace referencia a la revisión 4 de esta clasificación. 
+
+

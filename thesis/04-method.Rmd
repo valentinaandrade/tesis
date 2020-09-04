@@ -3,21 +3,19 @@
 
 ## Data y variables
 
-Los datos usados en esta investigación provienen de la construcción de una base de datos longitudinal (FDL[^1]) sobre relaciones laborales a partir de la unión de fuentes como ICTWSS, OCDE, ILO y Banco Mundial, que proveen información temporal a nivel de los países. A esto se agrega la estimación y validación de los dos indicadores principales para este estudio, que son la densidad sindical femenina y masculina, que fueron construidas a partir de encuestas de hogares, encuestas a fuerza de trabajo y/o datos administrativos para los países en estudio (ver Apéndice). FDL es una base de datos longitudinal que contiene 3360 observaciones y 340 variables laborales, económicas e instituciones a partir de información desde 1960 a 2018 de 56 países del mundo. Como se puede evidenciar en la Tabla [3.1](#tab3-1), gran parte de estos países corresponden a países OCDE, y aquellos que no son países OCDE pertenecen al G20.
+Los datos usados en esta investigación provienen de la construcción de una base de datos longitudinal (FDL[^1]) sobre relaciones laborales a partir de la unión de fuentes como ICTWSS, OCDE, ILO y Banco Mundial, que proveen información temporal a nivel de los países. A esto se agrega la estimación y validación de los dos indicadores principales para este estudio, que son la densidad sindical femenina y masculina, que fueron construidas a partir de encuestas de hogares, encuestas a fuerza de trabajo y/o datos administrativos para los países en estudio (ver [Apéndice A](#apendicea)). FDL es una base de datos longitudinal que contiene 3360 observaciones y 340 variables laborales, económicas e instituciones a partir de información desde 1960 a 2018 de 56 países del mundo. Como se puede evidenciar en la Tabla [3.1](#tab3-1), gran parte de estos países corresponden a países OCDE, y aquellos que no son países OCDE pertenecen al G20.
 
+Tabla 3.1: Países seleccionados según continente
 
-```{r tab3-1, results='asis', echo=FALSE, tab.cap="Países seleccionados para el estudio", message= F, warning= F}
-db %>% dplyr::select(country, continent) %>% distinct(country, continent) %>%  
-  kable(booktabs = T,col.names = c("País", "Continente"),  caption= "Países seleccionados para el estudio") %>% 
-  kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = F)%>%
-  kableExtra::column_spec(1, width = "9cm") %>%
-  kableExtra::footnote(general = "Fuente: Elaboración propia en base a ICTWSS (2019)",general_title = "") %>%
-  kableExtra::scroll_box(width = "500px", height = "500px")
-
+```{r tab3-1, echo=FALSE, warning= F, message= F}
+db1 <- db %>% dplyr::select("País"="country", "Continente"="continent") %>% dplyr::distinct(País, Continente)
+DT::datatable(db1, options = list(
+  language = list(url = '//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json'),
+  pageLength = 5
+))
 ```
 
-
-
+</br>
 
 El periodo de análisis abarca entre los años 1980 y 2018, por las mismas razones teóricas y empíricas indicadas por Vachon et. al (2016). Primero, no existe disponibilidad de datos para todas las variables rezagadas antes de 1980 – solo 10 países tienen datos desde 1960. Segundo, desde 1980 se reconoce el inicio del periodo neoliberal del desarrollo capitalista [@baccaro2011;@tomaskovic-devey2015] lo que permite evidenciar los inicios del proceso de crecimiento del sector servicio, desregulación del mercado laboral y divergencia del papel del Estado en las relaciones laborales. Tercero, es importante notar que el intervalo de tiempo permite considerar el efecto de la crisis económica de 2008 en la densidad sindical. 
 
@@ -25,7 +23,7 @@ El periodo de análisis abarca entre los años 1980 y 2018, por las mismas razon
 
 *$FUD_{i}$*
 
-La variable dependiente en esta tesis es la feminización de la densidad sindical (Feminization Union Density Index-FUDi), que es un índice que mide la división sexual de la densidad sindical mediante la relación de las densidades sindicales por sexo en una única dimensión, es decir, la afiliación sindical neta de mujeres y hombres como proporción de los asalariados en el empleo. Esta variable fue estimada y validada en base a dos indicadores principales para este estudio, que son la densidad sindical femenina y masculina, que fueron construidas a partir de encuestas de hogares, encuestas a fuerza de trabajo y/o datos administrativos para los 56 países en estudio (para más detalles de fuentes y consistencia ver *Apéndice*).
+La variable dependiente en esta tesis es la feminización de la densidad sindical (Feminization Union Density Index-FUDi), que es un índice que mide la división sexual de la densidad sindical mediante la relación de las densidades sindicales por sexo en una única dimensión, es decir, la afiliación sindical neta de mujeres y hombres como proporción de los asalariados en el empleo. Esta variable fue estimada y validada en base a dos indicadores principales para este estudio, que son la densidad sindical femenina y masculina, que fueron construidas a partir de encuestas de hogares, encuestas a fuerza de trabajo y/o datos administrativos para los 56 países en estudio (para más detalles de fuentes y consistencia ver [Apéndice A](#apendicea)).
 
 $$FUD_{i} = \frac{\frac{NUM_{f}*100}{WSEE_{f}}}{{\frac{NUM_{m}*100}{WSEE_{m}}}} = \frac {UD_{f}}{UD_{m}}$$
 Donde,
@@ -43,11 +41,11 @@ Los valores de $FUDi$ oscilan entre 0,26 a 2,12, mediana 0,9516 y desviación es
 
 Para capturar los efectos del ciclo económico sobre la densidad sindical se probará la relación con el desempleo y los salarios reales, que son obtenidos por la base LFS (Labor Force Statistics) recopiladas por la OIT y OCDE respectivamente.
 
-El *desempleo* se mide como el porcentaje anual de desocupados del total de la fuerza de trabajo, dejando afuera a ocupados e inactivos del cálculo. Los *salarios mínimos* reales se miden por hora y anualmente, deflactadas por los índices nacionales de precios al consumidor. Los datos de salarios mínimos se convierten en una unidad monetaria común que utiliza las Paridades de Poder Adquisitivo (PPA) en dólares, con el objeto de medir el poder de compra efectivo de los salarios. 
+El *desempleo femenino* se mide como el porcentaje anual de desocupadas del total de la fuerza de trabajo femenina, dejando afuera a ocupadas e inactivas del cálculo. Los *salarios mínimos* reales se miden por hora y anualmente, deflactadas por los índices nacionales de precios al consumidor. Los datos de salarios mínimos se convierten en una unidad monetaria común que utiliza las Paridades de Poder Adquisitivo (PPA) en dólares, con el objeto de medir el poder de compra efectivo de los salarios. 
 
 **Determinantes Estructurales**
 
-El *empleo en el sector servicios* se define como la tasa anual de la fuerza de trabajo en el sector servicios, es decir, en las actividades de las secciones económicas que van de la G a la U en la Clasificación Industrial Estándar Internacional [cf. @nacionesunidas2008; Apéndice].  El tamaño de las actividades productivas proviene de la estimación de OIT y son recopiladas por el Banco Mundial. 
+El *empleo en el sector servicios* se define como la tasa anual de la fuerza de trabajo en el sector servicios, es decir, en las actividades de las secciones económicas que van de la G a la U en la Clasificación Industrial Estándar Internacional [cf. Naciones Unidas  -@nacionesunidas2008; ver [Apéndice A](#apendicea) ].  El tamaño de las actividades productivas proviene de la estimación de OIT y son recopiladas por el Banco Mundial. 
 
 La *participación laboral femenina* es calculada como la fuerza de trabajo femenina dividida por el total de mujeres en edad de trabajar, la cual depende de los países, pero en general esta va desde los 15 a los 64 años. 
 
@@ -118,4 +116,4 @@ Finalmente, con el objetivo de probar la hipótesis de interacción entre partic
 
 [^2]: Esto se refiere a que no existe una clarificación de la cadena causal-temporal de las variables. Los modelos han determinado que el salario determina a la densidad sindical, pero no se considera como la inflación pueden mediar esa relación dentro del ciclo económico, y, en consecuencia, se pasa por alto las teorías de la inflación del empuje salarial. También, no es claro si los modelos empíricos es el nivel o tasa de desempleo la que juega el rol de inhibir el crecimiento sindical. Otro problema se deriva de la especificación de los salarios debido a que, si los precios y salarios aumentan al mismo ritmo, los salarios reales no cambiarían, entonces el “efecto crediticio” y “efecto amenaza” deberían modelados a partir de los salarios reales o controlando por la inflación. En consecuencia, si los beneficios sindicales son un bien normal, solo un aumento de los salarios reales debería aumentar la demanda por sindicalización. 
 
-[^3]: Esta ecuación proviene del equilibrio entre la ecuación de las variables a corto plazo y la ecuación de las variables a largo plazo. Para más ver Apéndice
+[^3]: Esta ecuación proviene del equilibrio entre la ecuación de las variables a corto plazo y la ecuación de las variables a largo plazo. Para más ver [Apéndice A](#apendicea)
