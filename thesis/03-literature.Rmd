@@ -17,7 +17,7 @@ options(knitr.kable.NA = '')
 load(file = "../output/data/db-proc.RData")
 ```
 
-# ¿Por qué ellas hoy son más y ellos menos?: hacia un marco analítico de la densidad sindical por sexo 
+# ¿Por qué ellas hoy son más y ellos menos?: hacia un marco analítico de la densidad sindical por sexo {#literature} 
 
 *“Working women needs unions, and unions needs working women: today, union labor force is union working women”*
 

@@ -1,4 +1,4 @@
-# Metodología
+# Metodología {#method}
 
 
 ## Data y variables
