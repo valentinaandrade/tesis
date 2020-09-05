@@ -13,7 +13,7 @@ bibliography:
 - packages.bib
 site: bookdown::bookdown_site
 subtitle: Un análisis temporal y comparado de la densidad sindical mundial
-biblio-style: apalike
+#biblio-style: apalike
 ---
 
 # Presentación {-}

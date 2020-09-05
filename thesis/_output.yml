@@ -1,6 +1,7 @@
 bookdown::gitbook:
   split_bib: no
   css: style.css
+  pandoc_args: [ "--csl", "instituto-de-investigaciones-sobre-la-universidad-y-la-educacion-moderno.csl" ]
   config:
     toc:
       before: |
@@ -13,6 +14,8 @@ bookdown::pdf_book:
     in_header: preamble.tex
     before_body: frontpage.tex
   latex_engine: xelatex
-  citation_package: natbib
+  citation_package: none
+  pandoc_args: [ "--csl", "instituto-de-investigaciones-sobre-la-universidad-y-la-educacion-moderno.csl" ]
   keep_tex: yes
 bookdown::epub_book: default
+  
