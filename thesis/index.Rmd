@@ -1,7 +1,7 @@
 --- 
 title: "La feminización del conflicto laboral"
 author: "Valentina Andrade"
-date: "`r format(Sys.Date(), '%d %B %Y')`"
+date: "4 de septiembre, 2020"
 output:
   html_document:
     df_print: paged
@@ -13,7 +13,7 @@ bibliography:
 - packages.bib
 site: bookdown::bookdown_site
 subtitle: Un análisis temporal y comparado de la densidad sindical mundial
-#biblio-style: apalike
+biblio-style: apalike
 ---
 
 # Presentación {-}
@@ -27,3 +27,6 @@ Co-tutor: Pablo Pérez Ahumada
 
 
 [En desarrollo]
+
+
+*Última actualización de datos: `r format(Sys.Date(), '%d %B %Y')`*
