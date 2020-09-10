@@ -14,7 +14,7 @@ bookdown::pdf_book:
   includes:
     in_header: preamble.tex
     before_body: frontpage.tex
-  latex_engine: xelatex
+  latex_engine: pdflatex
   citation_package: natbib
   pandoc_args: [ 
       "-M", "lang:es"
