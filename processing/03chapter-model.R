@@ -10,21 +10,22 @@ pacman::p_load(tidyverse, # Manage data
                urca) # Philips y Ouliaris test cointegration
 
 # 2. Cargar base de datos
-load(file = "../data/db-proc.RData")
+rm(list = ls())
+load(file = "../output/data/data-model.RData")
+db <- db_model; remove(db_model)
 
-# 3. Seleccionar variables
+db <- db %>% filter(country == "Sweden")
+
+# 3. Construir modelo
 names(db)
-db <- db %>% dplyr::select(country, year, ud_fem2, ud_male2, UR_WOMEN, rmw, LFPR_WOMEN, SH_PT_MW, sector_ser_FE,Coord, UD) %>% 
-  mutate(fudi = (ud_fem2/ud_male2)) %>% dplyr::select(-c(ud_fem2, ud_male2))
-
-model <- db %>% filter(!is.na(fudi)&!is.na(rmw)&!is.na(LFPR_WOMEN)&!is.na(UR_WOMEN)& !is.na(Coord))
-xeq<-model[c('LFPR_WOMEN', 'Coord')]
-xtr<- model['UR_WOMEN']
+model <- db 
+xeq<-model[c('f_LFPR','f_sector_SER','f_SH_PT', 'Coord')]
+xtr<- model[c('f_UR', 'rmw', 'T_GDPHRS_V', 'AdjCov')]
 xeq<-as.data.frame(xeq)
 xtr<-as.data.frame(xtr)
 (ecm1 <- ecm(model$fudi, xeq, xtr, includeIntercept = TRUE))
 summary(ecm1)
 
 # Desempleo femenino tiene un efecto positivo al corto pzo sobre densidad sindical fem
-# Sacar salarios reales. 
-# Imputar ¿MNAR o MAR? 
+
+# Si se pone en xtr (corto plazo) calcula deltas, sino, n
