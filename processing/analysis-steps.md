@@ -52,6 +52,18 @@ Ir incorporando datos y experiencia de organizaciones según variable
 
 Especificación: T=2, N = 40-50 (los serios) --> Panel Data Econometrics by Badi Baltagi
 
+**Robust Standard Error Estimators for PanelModels**
+
+- Robust covariance matrix estimators a la Beck and Katz for panel models (a.k.a. Panel Corrected Standard Errors (PCSE))
+
+Para el diagnóstico que relaja la hipótesis de homocedastecidad de los errores y la independencia de los errores, algo *escencial* para los modelamientos estadísticos donde se consideran unidades comp países en el tiempo (errores heterocedásticos). 
+
+Esto es esperable en muestras panel o "cross sectional time series" donde las unidades (j) comparten las mismas caracteristicas, violando el principio de i.i.d. También las unidades podrían compartir caracteristicas similares basadas en la unidad de tiempo. 
+
+Por eso se debe considerar la correlacion de los errores y la variación de los SE. Un método "robusto" descrito para esta literatura es Beck and Katz (1995) como el ECM.
+(Beck and Katz, one way cluster BK)
+
+- First-differencing, like fixed effects estimation, removes time-invariant effects
 
 
 
