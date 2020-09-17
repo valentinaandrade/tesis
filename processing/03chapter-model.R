@@ -18,7 +18,6 @@ rm(list = ls())
 load(file = "../output/data/data-model.RData")
 db <- db_model
 
-
 # Model 0 ---------------
 #Models correct for panel-specific, first-order autocorrelation
 model0 <-plm(
@@ -57,60 +56,54 @@ screenreg(list(model01, coeftest(model01,
           custom.model.names = c('PVAM - SE', 'PVAM-Corrected Standard Error'))
 
 
+# Model 2:  Autorregresive model - Error Correction Model -----
+model02 <-plm(
+  diff(fudi) ~ diff(f_UR) + diff(T_GDPHRS_V)  + diff(rmw) + lag(f_LFPR) + lag(f_sector_SER) + lag(f_SH_PT) + lag(Coord)  + lag(fudi),
+  index = c("country", "year"),
+  model = "w",
+  effect = "time",
+  data = db_model)
+summary(model02)
 
-# Modelo 2 Panel Vector Autorregresive model Coord  ----------
-db_model$country <- as.factor(db_model$country)
-db_model$country <- as.numeric(db_model$country)
-db_model$year <- as.numeric(db_model$year)
-db_model <- as.data.frame(db_model)
-db_model2 <- filter(db_model, region == "Latin America & Caribbean")
-
-model2 <-pvargmm(
-  dependent_vars = c("fudi"),
-  lags = 1,
-  exog_vars = c("f_UR", "f_LFPR","f_sector_SER",
-                "f_SH_PT","AdjCov","rmw",
-                "T_GDPHRS_V", "Coord","ud"),
-  transformation = "fd",
-  data = db_model2,
-  panel_identifier = c("country", "year"),
-  steps = c("onestep"),
-  system_instruments = FALSE,
-  max_instr_dependent_vars = 99,
-  min_instr_dependent_vars = 2L,
-  collapse = T)
-
-summary(model2)
-
-# Modelo 3 PVAR - Europa
-db_model3 <- filter(db_model, region == "Europe & Central Asia")
-
-model3 <-pvargmm(
-  dependent_vars = c("fudi"),
-  lags = 1,
-  exog_vars = c("f_UR", "f_LFPR","f_sector_SER",
-                "f_SH_PT","AdjCov","rmw",
-                "T_GDPHRS_V", "Coord","ud"),
-  transformation = "fd",
-  data = db_model3,
-  panel_identifier = c("country", "year"),
-  steps = c("onestep"),
-  system_instruments = FALSE,
-  max_instr_dependent_vars = 99,
-  min_instr_dependent_vars = 2L,
-  collapse = T)
-
-summary(model3)
-
-screenreg(list(model2, model3),custom.model.names = c('PVAM - Latinamérica', 'PVAM-Europa'))
-panelvar::extract(model1$)
-knit_print.summary.pvargmm(list(model2, model3))
-
-# Resultados: Coord negativa. 1 = - coordinada, 5 = + coordinada
-## Países con Negociación salarial fragmentada, limitada en gran medida a empresas o plantas individuales, sin coordinación
+# Unconditional Robust covariance matrix estimators a la Beck and Katz for panel models (a.k.a. Panel Corrected Standard Errors (PCSE)). ----
+coeftest(model02, vcov=function(x)vcovBK(x, type="HC1", cluster="time"))
 
 
-# Modelo por países ----
+screenreg(list(model02, coeftest(model02,
+                                 vcov=function(x)vcovBK(x, type="HC1", cluster="time"))),
+          custom.model.names = c('PVECM - SE', 'PVECM-Corrected Standard Error'))
+
+
+# Modelo para AL y Europa
+# Los paneles no balanceados no por razones aleatorias. 
+db_model3 <- filter(db_model, region == "Latin America & Caribbean")
+db_model4 <- filter(db_model, region == "Europe & Central Asia")
+
+model03 <-plm(
+  diff(fudi) ~ diff(f_UR) + diff(T_GDPHRS_V)  + diff(rmw) + lag(f_LFPR) + lag(f_sector_SER) + lag(f_SH_PT) + lag(Coord)  + lag(fudi),
+  index = c("country", "year"),
+  model = "w",
+  effect = "twoways",
+  data = db_model3)
+summary(model03)
+
+model04 <-plm(
+  diff(fudi) ~ diff(f_UR) + diff(T_GDPHRS_V)  + diff(rmw) + lag(f_LFPR) + lag(f_sector_SER) + lag(f_SH_PT) + lag(Coord)  + lag(fudi),
+  index = c("country", "year"),
+  model = "w",
+  effect = "twoways",
+  data = db_model4)
+summary(model04)
+
+# Unconditional Robust covariance matrix estimators a la Beck and Katz for panel models (a.k.a. Panel Corrected Standard Errors (PCSE)). ----
+screenreg(list(coeftest(model04,
+                        vcov=function(x)vcovBK(x, type="HC1", cluster="time")), 
+                        coeftest(model03,
+                                 vcov=function(x)vcovBK(x, type="HC1", cluster="time"))),
+          custom.model.names = c('Europa PVECM', 'América Latina PVECM'))
+
+
+#Modelo por países ----
 table(db$country)
 # Países con mayor n 
 ## Liberales
@@ -324,3 +317,19 @@ screenreg(l = list(ecm_g, ecm_s, ecm_n, ecm_sw, ecm_au, ecm_dk, ecm_ic),
 screenreg(l = list(ecm_uk, ecm_us, ecm_ir, ecm_nw, ecm_cd, ecm_cl, ecm_mx, ecm_sa, ecm_k), 
           custom.model.names = c("Reino Unido","Estados Unidos","Irlanda",
                                  "Nueva Zelanda", "Canadá", "Chile", "México", "Sudáfrica", "Korea"))
+
+# Analisis por coef.
+coefs<-lapply(ecm_models,function(x)coef(x))
+unlist(coefs)
+sig<-lapply(ecm_models,function(x)effects(x))
+x <- as.data.frame(unlist(coefs))
+x <- rownames_to_column(x, "variable")
+y <- as.data.frame(unlist(sig))
+y <- rownames_to_column(y, "variable")
+z <- merge(x,y, by = "variable")
+
+ w<- z %>% filter(abs(`unlist(sig)`)<= 0.05) %>% {
+  if (str_detect(variable, "f_UR")) filter(.,max(`unlist(coef)`)) else filter(.,min(`unlist(coef)`))
+    }
+
+

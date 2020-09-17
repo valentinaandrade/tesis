@@ -14,7 +14,6 @@ options(scipen=999)
 load(file = "../output/data/data-model.RData")
 
 
-
 # Unconditional estimate of standard error (labeled BK) (p.25)
 vcovs <- c("vcov", "Vw", "Vcx", "Vct", "Vcxt", "Vct.L", "Vnw.L", "Vscc.L","Vcxt.L", "vcovBK")
 
