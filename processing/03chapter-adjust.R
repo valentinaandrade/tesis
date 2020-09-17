@@ -47,3 +47,4 @@ model0 <-plm(
   effect = "time",
   data = db_model)
 summary(model0)
+

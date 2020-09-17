@@ -46,7 +46,7 @@ Comparar como cambian con el resultado principal y luego la diferencia entre pa�
 
 Ir incorporando datos y experiencia de organizaciones según variable 
 
-
+# Paises feminizados y no segun coordinacion y segun part. empleo.
 
 ## Robustez
 
@@ -66,5 +66,6 @@ Por eso se debe considerar la correlacion de los errores y la variación de los 
 - First-differencing, like fixed effects estimation, removes time-invariant effects
 
 
-
+## Otros
+verdistribucion de Coord para considerar como continuo
 

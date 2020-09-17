@@ -1,0 +1,47 @@
+---
+title: "Resultados"
+author: "por Valentina Andrade"
+date: "17-09-2020"
+output: html_document
+---
+
+```{r setup, include=FALSE, message= FALSE, echo = F}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, 
+               prompt = FALSE,
+               results='asis',
+               collapse = FALSE)
+summarytools::st_options(bootstrap.css     = FALSE,
+           plain.ascii       = FALSE,
+           style             = "rmarkdown", 
+           dfSummary.silent  = TRUE,
+           footnote          = NA,
+           subtitle.emphasis = FALSE,
+           round.digits = 2)
+
+summarytools::st_css() 
+```
+
+```{r}
+pacman::p_load(summarytools, kableExtra, tidyverse)
+```
+
+## R Markdown
+
+```{r}
+load(file = "../output/data/models.RData")
+load(file = "../output/data/data-model.RData")
+```
+
+
+## Descriptivos
+
+```{r}
+z <- db_model %>% group_by(country) %>% filter(n() > 13) %>%  mutate(fudi_l = fudi[year == max(year)]) %>% ungroup() %>% descr(stats = c("mean", "sd", "min", "max"), transpose = TRUE, headings = FALSE, digits =  2) %>% rownames_to_column() %>% mutate(max_c = case_when(rowname == "fudi"~ "Latvia (2007), Estonia (2003) y Mexico (2000)", rowname == "fudi_l"~ "New Zealand (2018)",rowname == "f_UR"~ "Australia (1970)", rowname == "T_GDPHRS_V"~ "Ireland (2015)",rowname == "rmw"~ "Netherlands (1979)", rowname == "f_LFPR"~ "Norway (2014)", rowname == "f_sector_SER"~ "Ireland (2006)", rowname == "f_SH_PT"~ "Germany (1983)", rowname == "Coord"~ "Central Europe (1970-1980)",rowname == "AdjCov"~ "Austria (1990-2015)",rowname == "ud"~ "Sweden (1994)"),min_c = case_when(rowname == "fudi"~ "Switzerland (1974)",rowname == "fudi_l"~ "Korea (2018)", rowname == "f_UR"~ "Korea (1989)", rowname == "T_GDPHRS_V"~ "Luxemburg (2008)",rowname == "rmw"~ "Nordic countries", rowname == "f_LFPR"~ "Netherlands (1975)", rowname == "f_sector_SER"~ "Korea (1991)", rowname == "f_SH_PT"~ "United States (1970)", rowname == "Coord"~ "Chile (1973-2018)*",rowname == "AdjCov"~ "Chile (2003-2006)",rowname == "ud"~ "Estonia (2005) y France (2008)"))
+
+# Con más de un n en caso de fudi era Latvia (2007) y Estonia (2003)
+
+db_model %>% filter(country != "Poland",country !="Russian Federation", country != "Latvia", country != "Croatia")%>% group_by(country) %>%  filter(year == max(year)) %>% ungroup() %>% filter(fudi == min(fudi))
+
+```
+
+# Paises feminizados y no segun coordinacion y segun part. empleo. 

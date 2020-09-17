@@ -327,9 +327,87 @@ x <- rownames_to_column(x, "variable")
 y <- as.data.frame(unlist(sig))
 y <- rownames_to_column(y, "variable")
 z <- merge(x,y, by = "variable")
+names(z)
 
- w<- z %>% filter(abs(`unlist(sig)`)<= 0.05) %>% {
-  if (str_detect(variable, "f_UR")) filter(.,max(`unlist(coef)`)) else filter(.,min(`unlist(coef)`))
-    }
+f_UR <- z %>% 
+  rename("variable"="variable", "sig" = "unlist(sig)","coef"="unlist(coefs)") %>% 
+  filter(abs(sig)<= 0.05) %>% filter(str_detect(variable, "f_UR")) %>% filter(coef == max(coef))
+f_rmw <- z %>% 
+  rename("variable"="variable", "sig" = "unlist(sig)","coef"="unlist(coefs)") %>% 
+  filter(abs(sig)<= 0.05) %>% filter(str_detect(variable, "rmw")) %>% filter(coef == max(coef))
 
+f_T_GDPHRS_V <- z %>% 
+  rename("variable"="variable", "sig" = "unlist(sig)","coef"="unlist(coefs)") %>% 
+  filter(abs(sig)<= 0.05) %>% filter(str_detect(variable, "T_GDPHRS_V")) %>% filter(coef == max(coef))
 
+f_LFPR <- z %>% 
+  rename("variable"="variable", "sig" = "unlist(sig)","coef"="unlist(coefs)") %>% 
+  filter(abs(sig)<= 0.05) %>% filter(str_detect(variable, "f_LFPR")) %>% filter(coef == max(coef))
+
+f_sector_SER <- z %>% 
+  rename("variable"="variable", "sig" = "unlist(sig)","coef"="unlist(coefs)") %>% 
+  filter(abs(sig)<= 0.05) %>% filter(str_detect(variable, "f_sector_SER")) %>% filter(coef == max(coef))
+
+f_SH_PT <- z %>% 
+  rename("variable"="variable", "sig" = "unlist(sig)","coef"="unlist(coefs)") %>% 
+  filter(abs(sig)<= 0.05) %>% filter(str_detect(variable, "f_SH_PT")) %>% filter(coef == max(coef))
+
+f_Coord <- z %>% 
+  rename("variable"="variable", "sig" = "unlist(sig)","coef"="unlist(coefs)") %>% 
+  filter(abs(sig)<= 0.05) %>% filter(str_detect(variable, "Coord")) %>% filter(coef == max(coef))
+
+f_AdjCov <- z %>% 
+  rename("variable"="variable", "sig" = "unlist(sig)","coef"="unlist(coefs)") %>% 
+  filter(abs(sig)<= 0.05) %>% filter(str_detect(variable, "AdjCov")) %>% filter(coef == max(coef))
+
+f_ud <- z %>% 
+  rename("variable"="variable", "sig" = "unlist(sig)","coef"="unlist(coefs)") %>% 
+  filter(abs(sig)<= 0.1) %>% filter(str_detect(variable, "ud")) %>% filter(coef == max(coef))
+
+ecm_models<-grep("f_",names(.GlobalEnv),value=TRUE)
+ecm_models<-do.call("list",mget(ecm_models))
+ecm_models_max <- bind_rows(ecm_models)
+
+f_UR <- z %>% 
+  rename("variable"="variable", "sig" = "unlist(sig)","coef"="unlist(coefs)") %>% 
+  filter(abs(sig)<= 0.05) %>% filter(str_detect(variable, "f_UR")) %>% filter(coef == min(coef))
+f_rmw <- z %>% 
+  rename("variable"="variable", "sig" = "unlist(sig)","coef"="unlist(coefs)") %>% 
+  filter(abs(sig)<= 0.05) %>% filter(str_detect(variable, "rmw")) %>% filter(coef == min(coef))
+
+f_T_GDPHRS_V <- z %>% 
+  rename("variable"="variable", "sig" = "unlist(sig)","coef"="unlist(coefs)") %>% 
+  filter(abs(sig)<= 0.05) %>% filter(str_detect(variable, "T_GDPHRS_V")) %>% filter(coef == min(coef))
+
+f_LFPR <- z %>% 
+  rename("variable"="variable", "sig" = "unlist(sig)","coef"="unlist(coefs)") %>% 
+  filter(abs(sig)<= 0.05) %>% filter(str_detect(variable, "f_LFPR")) %>% filter(coef == min(coef))
+
+f_sector_SER <- z %>% 
+  rename("variable"="variable", "sig" = "unlist(sig)","coef"="unlist(coefs)") %>% 
+  filter(abs(sig)<= 0.05) %>% filter(str_detect(variable, "f_sector_SER")) %>% filter(coef == min(coef))
+
+f_SH_PT <- z %>% 
+  rename("variable"="variable", "sig" = "unlist(sig)","coef"="unlist(coefs)") %>% 
+  filter(abs(sig)<= 0.05) %>% filter(str_detect(variable, "f_SH_PT")) %>% filter(coef == min(coef))
+
+f_Coord <- z %>% 
+  rename("variable"="variable", "sig" = "unlist(sig)","coef"="unlist(coefs)") %>% 
+  filter(abs(sig)<= 0.05) %>% filter(str_detect(variable, "Coord")) %>% filter(coef == min(coef))
+
+f_AdjCov <- z %>% 
+  rename("variable"="variable", "sig" = "unlist(sig)","coef"="unlist(coefs)") %>% 
+  filter(abs(sig)<= 0.05) %>% filter(str_detect(variable, "AdjCov")) %>% filter(coef == min(coef))
+
+f_ud <- z %>% 
+  rename("variable"="variable", "sig" = "unlist(sig)","coef"="unlist(coefs)") %>% 
+  filter(abs(sig)<= 0.1) %>% filter(str_detect(variable, "ud")) %>% filter(coef == min(coef))
+
+ecm_models<-grep("f_",names(.GlobalEnv),value=TRUE)
+ecm_models<-do.call("list",mget(ecm_models))
+ecm_models_min <- bind_rows(ecm_models)
+
+# Guardar modelos
+save(model01,model02,model03,model04, ecm_g, ecm_s, ecm_n, ecm_sw, ecm_au, ecm_dk, ecm_ic,
+     ecm_uk, ecm_us, ecm_ir, ecm_nw, ecm_cd, ecm_cl, ecm_mx, ecm_sa, ecm_k, ecm_models_max, ecm_models_min, 
+     file = "../output/data/models.RData")
