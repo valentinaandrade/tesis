@@ -36,12 +36,24 @@ load(file = "../output/data/data-model.RData")
 ## Descriptivos
 
 ```{r}
-z <- db_model %>% group_by(country) %>% filter(n() > 13) %>%  mutate(fudi_l = fudi[year == max(year)]) %>% ungroup() %>% descr(stats = c("mean", "sd", "min", "max"), transpose = TRUE, headings = FALSE, digits =  2) %>% rownames_to_column() %>% mutate(max_c = case_when(rowname == "fudi"~ "Latvia (2007), Estonia (2003) y Mexico (2000)", rowname == "fudi_l"~ "New Zealand (2018)",rowname == "f_UR"~ "Australia (1970)", rowname == "T_GDPHRS_V"~ "Ireland (2015)",rowname == "rmw"~ "Netherlands (1979)", rowname == "f_LFPR"~ "Norway (2014)", rowname == "f_sector_SER"~ "Ireland (2006)", rowname == "f_SH_PT"~ "Germany (1983)", rowname == "Coord"~ "Central Europe (1970-1980)",rowname == "AdjCov"~ "Austria (1990-2015)",rowname == "ud"~ "Sweden (1994)"),min_c = case_when(rowname == "fudi"~ "Switzerland (1974)",rowname == "fudi_l"~ "Korea (2018)", rowname == "f_UR"~ "Korea (1989)", rowname == "T_GDPHRS_V"~ "Luxemburg (2008)",rowname == "rmw"~ "Nordic countries", rowname == "f_LFPR"~ "Netherlands (1975)", rowname == "f_sector_SER"~ "Korea (1991)", rowname == "f_SH_PT"~ "United States (1970)", rowname == "Coord"~ "Chile (1973-2018)*",rowname == "AdjCov"~ "Chile (2003-2006)",rowname == "ud"~ "Estonia (2005) y France (2008)"))
-
-# Con más de un n en caso de fudi era Latvia (2007) y Estonia (2003)
-
-db_model %>% filter(country != "Poland",country !="Russian Federation", country != "Latvia", country != "Croatia")%>% group_by(country) %>%  filter(year == max(year)) %>% ungroup() %>% filter(fudi == min(fudi))
-
+summary(db_model$fudi)
+db_model <- db_model %>% group_by(country)  %>%  mutate(fudi_l = fudi[year == max(year)], pond = 46/n()) 
+z <- db_model  %>% ungroup() %>% descr(stats = c("mean", "sd", "min", "max"), transpose = TRUE, headings = FALSE,  weights = db_model$pond) %>% rownames_to_column() %>% mutate(max_c = case_when(rowname == "fudi"~ "Latvia (2007), Estonia (2003) y Mexico (2000)", rowname == "fudi_l"~ "New Zealand (2018)",rowname == "f_UR"~ "Australia (1970)", rowname == "T_GDPHRS_V"~ "Ireland (2015)",rowname == "rmw"~ "Netherlands (1979)", rowname == "f_LFPR"~ "Norway (2014)", rowname == "f_sector_SER"~ "Ireland (2006)", rowname == "f_SH_PT"~ "Germany (1983)", rowname == "Coord"~ "Central Europe (1970-1980)",rowname == "AdjCov"~ "Austria (1990-2015)",rowname == "ud"~ "Sweden (1994)"),min_c = case_when(rowname == "fudi"~ "Switzerland (1974)",rowname == "fudi_l"~ "Korea (2018)", rowname == "f_UR"~ "Korea (1989)", rowname == "T_GDPHRS_V"~ "Luxemburg (2008)",rowname == "rmw"~ "Nordic countries", rowname == "f_LFPR"~ "Netherlands (1975)", rowname == "f_sector_SER"~ "Korea (1991)", rowname == "f_SH_PT"~ "United States (1970)", rowname == "Coord"~ "Chile (1973-2018)*",rowname == "AdjCov"~ "Chile (2003-2006)",rowname == "ud"~ "Estonia (2005) y France (2008)")) %>% dplyr::select(rowname, Mean, Std.Dev, Min, min_c, Max, max_c) %>% na.omit()
+z$rowname <- car::recode(z$rowname, recodes = c("'fudi'='FUDi';'fudi_l'='Last FUDi';'f_UR'='Fem. Desempleo';'rmw'='Salario Mínimo Real';'T_GDPHRS_V'='Productividad laboral';'f_LFPR'='Fem. Participación laboral';'f_sector_SER'='Fem. Sector servicios';'f_SH_PT'='Fem. Incidencia empleo part time';'Coord'='Coordinación salarial';'AdjCov'='Cobertura negociación colectiva';'ud'='Densidad sindical'"), as.factor =  T)
+z$rowname <- factor(z$rowname, levels = c('FUDi', 'Last FUDi', 'Fem. Desempleo', 'Salario Mínimo Real','Productividad laboral', 'Fem. Participación laboral', 'Fem. Sector servicios','Fem. Incidencia empleo part time', 'Coordinación salarial','Cobertura negociación colectiva', 'Densidad sindical' ))
+z <- as.data.frame(z)
+z %>% arrange(rowname) %>% 
+  knitr::kable(digits = 2, row.names = F,  booktabs = T, 
+             col.names = c("Variable", "Media", "Desviación Estándar","" , "Mínimo", "", "Máximo")) %>%
+  pack_rows("Dependientes", 1, 2) %>%
+  pack_rows("Cíclo económico", 3, 5) %>%
+  pack_rows("Estrcuturales", 6, 8) %>%
+  pack_rows("Institucionales", 9,9 ) %>%
+  pack_rows("Controles", 10, 11) %>%
+            kableExtra::kable_styling(latex_options = "hold_position")%>%
+            kableExtra::kable_styling(bootstrap_options = "striped", full_width = F) %>%
+            kableExtra::column_spec(1, width = "9cm") %>%
+  kableExtra::footnote(general = "Fuente: Elaboración propia en base a FDL (2020)", general_title = "")
 ```
 
 # Paises feminizados y no segun coordinacion y segun part. empleo. 
