@@ -66,6 +66,12 @@ Por eso se debe considerar la correlacion de los errores y la variación de los 
 - First-differencing, like fixed effects estimation, removes time-invariant effects
 
 
+- ¿Test F? y ¿Wald?
+
 ## Otros
 verdistribucion de Coord para considerar como continuo
+
+- No se hace ARIMA porque: Para seguir utilizando el enfoque de Box-Jenkins , se podrían diferenciar las series y luego estimar modelos como ARIMA , dado que muchas series de tiempo comúnmente utilizadas (por ejemplo, en economía) parecen ser estacionarias en las primeras diferencias. Los pronósticos de dicho modelo seguirán reflejando los ciclos y la estacionalidad que están presentes en los datos. Sin embargo, se omite cualquier información sobre ajustes a largo plazo que puedan contener los datos en niveles y los pronósticos a largo plazo no serán confiables. 
+
+1) En mi caso ya sin la primera diferencia es evidentemente no-estacionaria. En l(0) y l(1). Y con un método así tambien se pasa por alto los ajustes a largo plazo. 
 

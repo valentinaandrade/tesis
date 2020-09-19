@@ -405,9 +405,8 @@ f_ud <- z %>%
 
 ecm_models<-grep("f_",names(.GlobalEnv),value=TRUE)
 ecm_models<-do.call("list",mget(ecm_models))
-ecm_models_min <- bind_rows(ecm_models)
 
 # Guardar modelos
-save(model01,model02,model03,model04, ecm_g, ecm_s, ecm_n, ecm_sw, ecm_au, ecm_dk, ecm_ic,
+save(model0, model01,model02,model03,model04, ecm_g, ecm_s, ecm_n, ecm_sw, ecm_au, ecm_dk, ecm_ic,
      ecm_uk, ecm_us, ecm_ir, ecm_nw, ecm_cd, ecm_cl, ecm_mx, ecm_sa, ecm_k, ecm_models_max, ecm_models_min, 
      file = "../output/data/models.RData")

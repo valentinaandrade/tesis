@@ -1,15 +1,22 @@
 ---
-title: "Resultados"
+title: "Resultados Preliminares"
+subtitle: "Tesis para optar al grado de Socióloga, Universidad de Chile"
 author: "por Valentina Andrade"
-date: "17-09-2020"
-output: html_document
+date: "17 de septiembre 2020"
+lang: es-CL
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    number_sections: true
 ---
 
 ```{r setup, include=FALSE, message= FALSE, echo = F}
 knitr::opts_chunk$set(echo = TRUE, comment = NA, 
                prompt = FALSE,
                results='asis',
-               collapse = FALSE)
+               collapse = FALSE, message =  F, warning =  F)
 summarytools::st_options(bootstrap.css     = FALSE,
            plain.ascii       = FALSE,
            style             = "rmarkdown", 
@@ -21,39 +28,132 @@ summarytools::st_options(bootstrap.css     = FALSE,
 summarytools::st_css() 
 ```
 
-```{r}
-pacman::p_load(summarytools, kableExtra, tidyverse)
-```
-
-## R Markdown
-
-```{r}
+```{r load, echo = FALSE, message=FALSE}
+pacman::p_load(summarytools, kableExtra,
+               tidyverse, # Manage data
+               ecm,# Error correction model
+               tseries,
+               vars, # augmented Dickey-Fuller test
+               urca, # Philips y Ouliaris test cointegration
+               panelvar, # PVAL
+               plm, #poleed data model
+               lmtest,  
+               texreg,
+               pcse) #BBeck and Katz -Baily and Katz  
 load(file = "../output/data/models.RData")
 load(file = "../output/data/data-model.RData")
 ```
 
+# Descriptivos
 
-## Descriptivos
+A continuación de presentan estadísticos descriptivos para discusión de resultados. 
 
-```{r}
+```{r, echo = F}
+db_model %>%   filter(year >=1980, fudi[year == max(year)] >= 1) %>% 
+  ggplot(aes(x = round(year,0), y = fudi)) + 
+  geom_line(size = 1, color = "purple") + labs(x= "Año", y = "FUDi") +facet_wrap(.~country, scales = "free_x") + theme_classic() 
+```
+**Figura 1**. Evolución de la feminización de la densidad sindical en países donde el último año la densidad sindical estuvo masculinizada. En color morado están indicados los países que tuvieron un $\triangle FUD_i$ favorable a la feminización. 
+
+```{r, echo = F}
+db_model$diff <- ave(db_model$fudi, factor(db_model$country), FUN=function(x) c(0,diff(x)))
+
+db_model  %>%  mutate(d_var = if_else(diff[year == max(year)] > 0, "Fem","Mas")) %>%filter(year >=1980, fudi[year == max(year)] < 1) %>% ggplot(aes(x = round(year,0), y = fudi, color = d_var)) + 
+  geom_line(size = 1) + labs(x= "Año", y = "FUDi") + scale_y_continuous(limits = c(0.3, 2.2)) + facet_wrap(.~country, scales = "free_x") + theme_classic() + scale_color_manual(values = c("purple", "lightblue")) + guides(color = F)
+
+```
+**Figura 2**. Evolución de la feminización de la densidad sindical en países donde el último año la densidad sindical estuvo masculinizada. En color morado están indicados los países que tuvieron un $\triangle FUD_i$ favorable a la feminización, mientras que en celeste aquellos que mantienen y profundizan la tendencia a la masculinización.  
+
+
+```{r, echo = F, results='asis'}
 summary(db_model$fudi)
 db_model <- db_model %>% group_by(country)  %>%  mutate(fudi_l = fudi[year == max(year)], pond = 46/n()) 
-z <- db_model  %>% ungroup() %>% descr(stats = c("mean", "sd", "min", "max"), transpose = TRUE, headings = FALSE,  weights = db_model$pond) %>% rownames_to_column() %>% mutate(max_c = case_when(rowname == "fudi"~ "Latvia (2007), Estonia (2003) y Mexico (2000)", rowname == "fudi_l"~ "New Zealand (2018)",rowname == "f_UR"~ "Australia (1970)", rowname == "T_GDPHRS_V"~ "Ireland (2015)",rowname == "rmw"~ "Netherlands (1979)", rowname == "f_LFPR"~ "Norway (2014)", rowname == "f_sector_SER"~ "Ireland (2006)", rowname == "f_SH_PT"~ "Germany (1983)", rowname == "Coord"~ "Central Europe (1970-1980)",rowname == "AdjCov"~ "Austria (1990-2015)",rowname == "ud"~ "Sweden (1994)"),min_c = case_when(rowname == "fudi"~ "Switzerland (1974)",rowname == "fudi_l"~ "Korea (2018)", rowname == "f_UR"~ "Korea (1989)", rowname == "T_GDPHRS_V"~ "Luxemburg (2008)",rowname == "rmw"~ "Nordic countries", rowname == "f_LFPR"~ "Netherlands (1975)", rowname == "f_sector_SER"~ "Korea (1991)", rowname == "f_SH_PT"~ "United States (1970)", rowname == "Coord"~ "Chile (1973-2018)*",rowname == "AdjCov"~ "Chile (2003-2006)",rowname == "ud"~ "Estonia (2005) y France (2008)")) %>% dplyr::select(rowname, Mean, Std.Dev, Min, min_c, Max, max_c) %>% na.omit()
-z$rowname <- car::recode(z$rowname, recodes = c("'fudi'='FUDi';'fudi_l'='Last FUDi';'f_UR'='Fem. Desempleo';'rmw'='Salario Mínimo Real';'T_GDPHRS_V'='Productividad laboral';'f_LFPR'='Fem. Participación laboral';'f_sector_SER'='Fem. Sector servicios';'f_SH_PT'='Fem. Incidencia empleo part time';'Coord'='Coordinación salarial';'AdjCov'='Cobertura negociación colectiva';'ud'='Densidad sindical'"), as.factor =  T)
-z$rowname <- factor(z$rowname, levels = c('FUDi', 'Last FUDi', 'Fem. Desempleo', 'Salario Mínimo Real','Productividad laboral', 'Fem. Participación laboral', 'Fem. Sector servicios','Fem. Incidencia empleo part time', 'Coordinación salarial','Cobertura negociación colectiva', 'Densidad sindical' ))
+z <- db_model  %>% ungroup() %>% descr(stats = c("mean", "sd", "min", "max"), transpose = TRUE, headings = FALSE,  weights = db_model$pond) %>% rownames_to_column() %>% mutate(max_c = case_when(rowname == "fudi"~ "Latvia (2007), Estonia (2003) y Mexico (2000)", rowname == "diff"~ "México (2000) y Chile (2018)", rowname == "fudi_l"~ "New Zealand (2018)",rowname == "f_UR"~ "Australia (1970)", rowname == "T_GDPHRS_V"~ "Ireland (2015)",rowname == "rmw"~ "Netherlands (1979)", rowname == "f_LFPR"~ "Norway (2014)", rowname == "f_sector_SER"~ "Ireland (2006)", rowname == "f_SH_PT"~ "Germany (1983)", rowname == "Coord"~ "Central Europe (1970-1980)",rowname == "AdjCov"~ "Austria (1990-2015)",rowname == "ud"~ "Sweden (1994)"),min_c = case_when(rowname == "fudi"~ "Switzerland (1974)",rowname == "diff"~ "Latvia (2015)",rowname == "fudi_l"~ "Korea (2018)", rowname == "f_UR"~ "Korea (1989)", rowname == "T_GDPHRS_V"~ "Luxemburg (2008)",rowname == "rmw"~ "Nordic countries", rowname == "f_LFPR"~ "Netherlands (1975)", rowname == "f_sector_SER"~ "Korea (1991)", rowname == "f_SH_PT"~ "United States (1970)", rowname == "Coord"~ "Chile (1973-2018)*",rowname == "AdjCov"~ "Chile (2003-2006)",rowname == "ud"~ "Estonia (2005) y France (2008)")) %>% dplyr::select(rowname, Mean, Std.Dev, Min, min_c, Max, max_c) %>% na.omit()
+z$rowname <- car::recode(z$rowname, recodes = c("'fudi'='FUDi';'diff'='Var. FUDi';'fudi_l'='Último FUDi';'f_UR'='Fem. Desempleo';'rmw'='Salario Mínimo Real';'T_GDPHRS_V'='Productividad laboral';'f_LFPR'='Fem. Participación laboral';'f_sector_SER'='Fem. Sector servicios';'f_SH_PT'='Fem. Incidencia empleo part time';'Coord'='Coordinación salarial';'AdjCov'='Cobertura negociación colectiva';'ud'='Densidad sindical'"), as.factor =  T)
+z$rowname <- factor(z$rowname, levels = c('FUDi','Var. FUDi', 'Último FUDi', 'Fem. Desempleo', 'Salario Mínimo Real','Productividad laboral', 'Fem. Participación laboral', 'Fem. Sector servicios','Fem. Incidencia empleo part time', 'Coordinación salarial','Cobertura negociación colectiva', 'Densidad sindical' ))
 z <- as.data.frame(z)
 z %>% arrange(rowname) %>% 
   knitr::kable(digits = 2, row.names = F,  booktabs = T, 
              col.names = c("Variable", "Media", "Desviación Estándar","" , "Mínimo", "", "Máximo")) %>%
-  pack_rows("Dependientes", 1, 2) %>%
-  pack_rows("Cíclo económico", 3, 5) %>%
-  pack_rows("Estrcuturales", 6, 8) %>%
-  pack_rows("Institucionales", 9,9 ) %>%
-  pack_rows("Controles", 10, 11) %>%
+  pack_rows("Dependientes", 1, 3) %>%
+  pack_rows("Cíclo económico", 4, 6) %>%
+  pack_rows("Estrcuturales", 7, 9) %>%
+  pack_rows("Institucionales", 10,10 ) %>%
+  pack_rows("Controles", 11, 12) %>%
             kableExtra::kable_styling(latex_options = "hold_position")%>%
             kableExtra::kable_styling(bootstrap_options = "striped", full_width = F) %>%
             kableExtra::column_spec(1, width = "9cm") %>%
   kableExtra::footnote(general = "Fuente: Elaboración propia en base a FDL (2020)", general_title = "")
 ```
 
-# Paises feminizados y no segun coordinacion y segun part. empleo. 
+
+# Modelos
+
+
+**Tabla 2.** Modelos Panel con Error de Corrección para predecir la sindicalización feminizada en 45 países, 1980-2018, Efectos Fijos [$^{a,b,c}$]
+
+```{r model0, results='asis', echo= FALSE, message= FALSE, warning= FALSE}
+vars <- c("diff. Fem. Desempleo","Fem. Participación Laboral Femenina", "Fem. Sector Servicios", "Fem. Incidencia empleo part-time", "Coordinación Salarial", "Productividad laboral", "Salarios Mínimos Reales")
+knitreg(list(model0, coeftest(model0,
+                                vcov=function(x)vcovBK(x, type="HC1", cluster="time"))),custom.model.names = c('Modelo 0', 'Model 0 (b)'), custom.coef.names = vars, stars = c(0.001, 0.01, 0.05, 0.1),  custom.note = "$^{***}$ p < 0.001; $^{**}$ p < 0.01; $^{*}$ p < 0.05 ; $^{.}$ p < 0.1 \n **Nota**: a. Variables incluidas en el modelo pero no son mostradas son efectos fijos por países y controles estadísticos como densidad sindical nacional y cobertura de la negociación colectiva; \nb. Modelo con errores corregidos específicamente para panel desbalanceado, por método de Beck y Katz (1995) (Panel Cluster Error Correction); \nc. Coeficientes son estadísticamente significativos según test de Wald (test de dos colas)", caption = "",caption.above = T)
+
+```
+
+**Tabla 3.** Modelos Panel Autoregresivos con Error de Corrección para predecir la sindicalización feminizada en 45 países, 1980-2018, Efectos Fijos [$^{a,b,c}$]
+
+```{r model1, results='asis', echo= FALSE, message= FALSE, warning= FALSE}
+vars <- c("diff. Fem. Desempleo","Fem. Participación Laboral Femenina", "Fem. Sector Servicios", "Fem. Incidencia empleo part-time", "Coordinación Salarial", "Productividad laboral", "Salarios Mínimos Reales", "Lag(FUDi)")
+knitreg(list(model01, coeftest(model01,
+                                vcov=function(x)vcovBK(x, type="HC1", cluster="time"))),custom.model.names = c('Modelo 1', 'Model 1 (b)'), custom.coef.names = vars, stars = c(0.001, 0.01, 0.05, 0.1), custom.note = "$^{***}$ p < 0.001; $^{**}$ p < 0.01; $^{*}$ p < 0.05 ; $^{.}$ p < 0.1 \n **Nota**: a. Variables incluidas en el modelo pero no son mostradas son efectos fijos por países y controles estadísticos como densidad sindical nacional y cobertura de la negociación colectiva;\n b. Modelo autoregresivo de primer orden con errores corregidos específicamente para panel desbalanceado, por método de Beck y Katz (1995) (Panel Cluster Error Correction); \nc. Coeficientes son estadísticamente significativos según test de Wald (test de dos colas)", caption = "",caption.above = T,)
+
+#custom.header = list("A" = 1:2, "B" = 3:4),
+# aggregar valores p
+
+```
+
+- Modelo autoregresivo es más robusto que modelo no autoregresivo
+
+## Estimación de efectos a corto y largo plazo sobre la feminización de la densidad sindical
+
+**Tabla 4.** Modelos Panel Autoregresivos con Error de Corrección para predecir la Feminización de la sindicalización en 45 países, 1980-2018, Efectos a corto y largo plazo  [$^{a,b,c}$]
+
+```{r model2, results='asis', echo= FALSE, message= FALSE, warning= FALSE}
+vars <- c("diff. Fem. Desempleo","diff. Productividad laboral","diff. Salarios Mínimos Reales","Lag Fem. Participación Laboral Femenina", "Lag Fem. Sector Servicios", "Lag Fem. Incidencia empleo part-time", "Lag Coordinación Salarial", "Lag(FUDi)")
+knitreg(list(model02, coeftest(model03,vcov=function(x)vcovBK(x, type="HC1", cluster="time")), coeftest(model04,vcov=function(x)vcovBK(x, type="HC1", cluster="time"))), stars = c(0.001, 0.01, 0.05, 0.1),
+        custom.header = list("Modelo 2" = 1:3),custom.model.names = c('Mundial', 'Latinoamérica', "Europa"), custom.coef.names = vars, include.rsquared = F,  include.sig= T, include.adjrs = F, include.nobs = F, 
+        custom.gof.rows=list("Adj. R^2" = c(0.351,0.284,0.141),
+                             "N obs" = c(661,56,271)), custom.note = "$^{***}$ p < 0.001; $^{**}$ p < 0.01; $^{*}$ p < 0.05 ; $^{.}$ p < 0.1  \n**Nota**: a. Coeficientes a corto (diff) y largo plazo (lag) (errores panel corregidos entreparéntesis) \nb. Variables incluidas en el modelo pero no son mostradas son efectos fijos por países y controles estadísticos como densidad sindical nacional y cobertura de la negociación colectiva; \nc. Modelo autoregresivo de primer orden con errores corregidos específicamente para panel desbalanceado, por método de Beck y Katz (1995) (Panel Cluster Error Correction); \nd. Coeficientes son estadísticamente significativos según test de Wald (test de dos colas)", caption = "",caption.above = T)
+
+```
+
+- A diferencia de modelos anteriores estima a corto y largo plazo
+- Podría agregar  "cluster" país segun si se ha feminizado y variables relevantes (como para posicionarlos)
+
+## Efectos específicos a nivel nacional
+
+```{r, echo = F, results= 'asis'}
+z <- as.data.frame(model02$coefficients)
+z <- rownames_to_column(z, "variable")
+#ecm_max and ecm_min
+vars <- c("diff. Fem. Desempleo","diff. Productividad laboral","diff. Salarios Mínimos Reales","Lag Fem. Participación Laboral Femenina", "Lag Fem. Sector Servicios", "Lag Fem. Incidencia empleo part-time", "Lag Coordinación Salarial", "Lag Cobertura Negociación Colectiva")
+
+z <- data.frame(variable = vars, model02 = c("-0.01","-0.00","-0.00","0.03*", "0.07**", "-0.00", "0.001*", "-0.04**"), coefmax = c("0.07**","0.001**", "0.002***", "4.333***", "3.223***","0.09**", "0.025***", "0.031**"), c_max = c("Korea", "Alemania", "Sudáfrica", "Nueva Zelanda", "Chile", "Islandia", "Estados Unidos", "México"), coefmin = c("-0.377**","-0.005**", "-0.0001**", "-1.572**", "-0.526**","-0.111*", "-0.017***", "-0.015***"), c_max = c("Nueva Zelanda", "Estados Unidos", "Chile", "Chile", "Japón", "Sudáfrica", "Japón", "Estados Unidos"))
+knitr::kable(z, row.names = F,  booktabs = T,
+             col.names = c("Predictores","Modelo Mundial", "Coeficiente", "País", "Coeficiente", "País")) %>% add_header_above(c(" " = 1," " = 1, "Máximo" = 2, "Mínimo" = 2)) %>%   
+            pack_rows("Cíclicas", 1, 3) %>%
+            pack_rows("Estructurales", 4, 6) %>%
+            pack_rows("Región", 7, 8) %>%
+            kableExtra::kable_styling(latex_options = "hold_position")%>%
+            kableExtra::kable_styling(full_width = T)%>%
+            kableExtra::column_spec(1, width = "7cm") %>%
+  kableExtra::footnote(general = "$^{***}$ p < 0.001; $^{**}$ p < 0.01; $^{*}$ p < 0.05 ; $^{.}$ p < 0.1 \n **Nota**: a. Coeficientes a corto (diff) y largo plazo (lag) \nb. Coeficientes provienen de la estimación de Modelos de Correción de Error por país (ver detalles en Apéndice C); \nc. Casos influyentes porpredictor identificados por método Jackknife; \nd. Coeficientes son estadísticamente significativos según test de Wald (test de dos colas)", general_title = "")
+```
+
+- CL con gran peso del sector servicios (ejemplos movilización)
+
+
+```{r}
+model02$df.residual
+
+```
+
