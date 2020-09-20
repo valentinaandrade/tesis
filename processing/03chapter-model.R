@@ -306,6 +306,16 @@ xtr<-as.data.frame(xtr)
 (ecm_sa <- ecm(model$fudi, xeq, xtr, includeIntercept = TRUE))
 summary(ecm_sa)
 
+# Mundial (ecm) ------------
+db1 <- db 
+model <- db1 
+xeq<-model[c('f_LFPR','f_sector_SER','f_SH_PT', 'Coord')]
+xtr<- model[c('f_UR', 'rmw','T_GDPHRS_V', 'AdjCov')]
+xeq<-as.data.frame(xeq)
+xtr<-as.data.frame(xtr)
+(ecm <- ecm(model$fudi, xeq, xtr, includeIntercept = TRUE))
+summary(ecm)
+
 
 # Resumen ---
 ecm_models<-grep("ecm",names(.GlobalEnv),value=TRUE)
@@ -407,6 +417,8 @@ ecm_models<-grep("f_",names(.GlobalEnv),value=TRUE)
 ecm_models<-do.call("list",mget(ecm_models))
 
 # Guardar modelos
-save(model0, model01,model02,model03,model04, ecm_g, ecm_s, ecm_n, ecm_sw, ecm_au, ecm_dk, ecm_ic,
+save(model0, model01,model02,model03,model04,ecm, ecm_g, ecm_s, ecm_n, ecm_sw, ecm_au, ecm_dk, ecm_ic,
      ecm_uk, ecm_us, ecm_ir, ecm_nw, ecm_cd, ecm_cl, ecm_mx, ecm_sa, ecm_k, ecm_models_max, ecm_models_min, 
      file = "../output/data/models.RData")
+
+

@@ -18,12 +18,12 @@ load(file = "../output/data/data-model.RData")
 db <- db_model; remove(db_model)
 
 # 3. Crear variables de series de tiempo
-modelo1 <- lm(fudi ~  f_UR + f_LFPR + f_sector_SER + f_SH_PT + Coord + AdjCov + rmw + T_GDPHRS_V + ud, data = db)
-summary(modelo1) # ¿? country y 90
-residuales=modelo1$residuals
+modelo00 <- lm(fudi ~  f_UR + f_LFPR + f_sector_SER + f_SH_PT + Coord + AdjCov + rmw + T_GDPHRS_V + ud, data = db)
+summary(modelo00) # ¿? country y 90
+residuales=modelo00$residuals
 summary(residuales)
-mod1 <- augment(modelo1)
-ggplot(mod1, aes(x = .fitted, y = .resid)) + geom_point()
+mod00 <- augment(modelo00)
+ggplot(mod00, aes(x = .fitted, y = .resid)) + geom_point() + theme_classic()
 
 # 4. Probar si son estacionarios
 # 4.1 
@@ -52,3 +52,14 @@ urca::ca.po(test, demean = "constant", lag = "short", type = "Pz") # Rechazamos 
 car::vif(modelo1)
 
 # Multicolineal con ud
+
+# Cross sectional UR
+db1 <- db_model %>% group_by(country) %>%  filter(n() >= 8)
+p_db <- pdata.frame(db1)
+
+purtest(fudi ~ 1, data = p_db, index = "country", pmax = 1, test = "madwu")
+### chisq = 203.29, df = 42, p-value <
+#0.00000000000000022
+#alternative hypothesis: stationarity
+
+cipstest(p_db$fudi, type = "trend" ,lags = 1,truncated = FALSE)

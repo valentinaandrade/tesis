@@ -68,6 +68,10 @@ Por eso se debe considerar la correlacion de los errores y la variación de los 
 
 - ¿Test F? y ¿Wald?
 
+- Test de causalidad. (Granger)
+W (W-bar),  Z (Z-bar), and e Z (Z-
+bar tilde). For the latter two statistics, p-values are provided based on the standard normal distribution.
+
 ## Otros
 verdistribucion de Coord para considerar como continuo
 
