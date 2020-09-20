@@ -3087,42 +3087,56 @@ Estados Unidos
 <ul>
 <li>CL con gran peso del sector servicios (ejemplos movilización)</li>
 </ul>
-<pre class="r"><code>db1 &lt;- db_model %&gt;% group_by(country) %&gt;%  filter(n() &gt;= 8)
-
-# Granger with panel dat
-x&lt;- pgrangertest(fudi ~ f_UR, order = 1, index = c(&quot;country&quot;, &quot;year&quot;),  data = db1)
-x$statistic</code></pre>
-<p>Ztilde 5.332725</p>
 </div>
 <div id="test-de-causalidad" class="section level2" number="2.3">
 <h2 number="2.3"><span class="header-section-number">2.3</span> Test de Causalidad</h2>
-<p>5.332725</p>
 <table>
 <thead>
 <tr class="header">
-<th align="right">Variable</th>
 <th align="right">Predictores</th>
+<th align="right">Granger test - Causalidad</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">Modelo 0</td>
-<td align="right">modelo nulo (sin predictores)</td>
+<td align="right">Feminización Desempleo</td>
+<td align="right">5.332725 <span class="math inline">\(^{***}\)</span></td>
 </tr>
 <tr class="even">
-<td align="right">Modelo 1</td>
-<td align="right">Incluye sexo</td>
+<td align="right">Productividad laboral</td>
+<td align="right">0.8101262<span class="math inline">\(^{*}\)</span></td>
 </tr>
 <tr class="odd">
-<td align="right">Modelo 2</td>
-<td align="right">Incluye edad</td>
+<td align="right">Salarios Mínimos Reales</td>
+<td align="right">Multicolineal</td>
 </tr>
 <tr class="even">
-<td align="right">Modelo 3</td>
-<td align="right">Incluye sexo, edad y nivel educacional</td>
+<td align="right">Feminización Participación Laboral</td>
+<td align="right">3.47816<span class="math inline">\(^{***}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="right">Feminización Sector Servicios</td>
+<td align="right">1.486648<span class="math inline">\(^{**}\)</span></td>
+</tr>
+<tr class="even">
+<td align="right">Feminización Empleo Parcial</td>
+<td align="right">1.1482<span class="math inline">\(^{.}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="right">Coordinación Salarial</td>
+<td align="right">Multicolineal</td>
+</tr>
+<tr class="even">
+<td align="right">Cobertura Negociación Colectiva</td>
+<td align="right">47.69182<span class="math inline">\(^{***}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="right">Densidad sindical</td>
+<td align="right">4.339187<span class="math inline">\(^{***}\)</span></td>
 </tr>
 </tbody>
 </table>
+<p><span class="math inline">\(^{***}\)</span> p &lt; 0.001; <span class="math inline">\(^{**}\)</span> p &lt; 0.01; <span class="math inline">\(^{*}\)</span> p &lt; 0.05 ; <span class="math inline">\(^{.}\)</span> p &lt; 0.1</p>
 </div>
 </div>
 

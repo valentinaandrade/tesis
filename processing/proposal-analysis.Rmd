@@ -160,22 +160,35 @@ knitr::kable(z, row.names = F,  booktabs = T,
 
 
 
-```{r}
+```{r granger, echo = F, message = F, warning= F}
 db1 <- db_model %>% group_by(country) %>%  filter(n() >= 8)
 
 # Granger with panel dat
-x<- pgrangertest(fudi ~ f_UR, order = 1, index = c("country", "year"),  data = db1)
-x$statistic
+f_UR<- pgrangertest(fudi ~ f_UR, order = 1, index = c("country", "year"),  data = db1)
+T_GDPHRS_V<- pgrangertest(fudi ~ T_GDPHRS_V, order = 1, index = c("country", "year"),  data = db1)
+#rmw<- pgrangertest(fudi ~ rmw, order = 1, index = c("country", "year"),  data = db1)
+f_LFPR<- pgrangertest(fudi ~ f_LFPR, order = 1, index = c("country", "year"),  data = db1)
+f_sector_SER<- pgrangertest(fudi ~ f_sector_SER, order = 1, index = c("country", "year"),  data = db1)
+f_SH_PT<- pgrangertest(fudi ~ f_SH_PT, order = 1, index = c("country", "year"),  data = db1)
+#Coord<- pgrangertest( Coord~ fudi, order = 1, index = c("country", "year"),  data = db1)
+AdjCov<- pgrangertest(fudi ~ AdjCov, order = 1, index = c("country", "year"),  data = db1)
+ud<- pgrangertest(fudi ~ ud, order = 1, index = c("country", "year"),  data = db1)
 ```
 
 
 ## Test de Causalidad
 
-`r format(x$statistic)`
 
-|  Variable|  Predictores|
+|  Predictores|  Granger test - Causalidad|
 |--:|--:|
-|  Modelo 0|  modelo nulo (sin predictores)|
-|  Modelo 1|  Incluye sexo|
-|  Modelo 2|  Incluye edad|
-|  Modelo 3|  Incluye sexo, edad y nivel educacional|
+|  Feminización Desempleo|  `r format(f_UR$statistic)` $^{***}$|
+|  Productividad laboral|  `r format(T_GDPHRS_V$statistic)`$^{*}$|
+|  Salarios Mínimos Reales|  Multicolineal|
+|  Feminización Participación Laboral|  `r format(f_LFPR$statistic)`$^{***}$|
+|  Feminización Sector Servicios|  `r format(f_sector_SER$statistic)`$^{**}$|
+|  Feminización Empleo Parcial|  `r format(f_SH_PT$statistic)`$^{.}$|
+|  Coordinación Salarial|  Multicolineal|
+|  Cobertura Negociación Colectiva|  `r format(AdjCov$statistic)`$^{***}$|
+|  Densidad sindical|  `r format(ud$statistic)`$^{***}$|
+
+$^{***}$ p < 0.001; $^{**}$ p < 0.01; $^{*}$ p < 0.05 ; $^{.}$ p < 0.1
