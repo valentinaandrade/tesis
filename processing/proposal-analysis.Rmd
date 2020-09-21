@@ -10,6 +10,12 @@ output:
     toc_depth: 2
     toc_float: true
     number_sections: true
+    fig.caption: yes
+    bibliography:
+      - ../thesis/tesis.bib
+      - ../thesis/packages.bib
+    biblio-style: apalike
+    link-citations: yes
 ---
 
 ```{r setup, include=FALSE, message= FALSE, echo = F}
@@ -28,6 +34,7 @@ summarytools::st_options(bootstrap.css     = FALSE,
            round.digits = 2)
 
 summarytools::st_css() 
+library(ggplot2); ggplot2::theme_set(theme_classic() + theme(axis.text.x = element_text(vjust = 0.5, hjust=1)))
 ```
 
 ```{r load, echo = FALSE, message=FALSE}
@@ -51,27 +58,43 @@ load(file = "../output/data/data-model.RData")
 
 # Descriptivos
 
-A continuación de presentan estadísticos descriptivos para discusión de resultados. 
+Antes de proceder con el análisis de los modelos, en la \@ref(fig:fig10) y \@ref(fig:fig11) se muestra las tendencias de feminización de la sindicalización de los 45 países en estudio, siendo divididas entre aquellas que tienen una sindicalización feminizada a la fecha (\@ref(fig:fig10)) y aquellas que aun tienen una afiliación sindical masculinizada (\@ref(fig:fig11)). En la actualidad, la mayor parte de los países estudiados presentan una sindicalización feminizada (25 de 45 países). De estos, Finlandia, Dinamarca, Suecia, Islandia e Irlanda destacan por ser pioneros en tener afiliaciones sindicales más feminizadas. Si bien los países Nórdicos inaguraron en los 80 índices que superaban la igualdad de densidad sindical entre hombres y mujeres (eg. $FUDi$ > 1), ya desde 1990 a esta tendencia se suma  el Reino Unido, Canadá y Australia. Ahora bien, a diferencia de los países escandinavos que muestran una serie más bien estable (a excepción de Noruega), estos últimos países demuestran una evidente tendencia hacia la feminización de la sindicalización. Sumando a este marco el caso de Estados Unidos (que se indica en Figura \@ref(fig:fig11) pues aun no alcanza la feminización) es posible notificar una posible convergencia entre la feminización sindical y la instalación del neoliberalismo en esas naciones (siendo un caso emblemático Inglaterra). De hecho, países con tendencias de distribución similares a los países antes indicados son Brasil y Chile pero que evidencian la feminización sindical tiempo más tarde, específicamente desde la segunda década del siglo XXI. Otros países a destacar son los ex-soviéticos (Rusia y los bálticos como Estonia, Letonia y Lituania), los ex-países yugoslavos (Eslovenia y Croacia)
+y latinoamericaános (México y Uruguay), que solo considerando las estadísticas disponibles, son países estables en el tiempo y que siempre han tenido una sindicalización feminizada o igualitaria.  
 
-```{r, echo = F}
-db_model %>%   filter(year >=1980, fudi[year == max(year)] >= 1) %>% 
-  ggplot(aes(x = round(year,0), y = fudi)) + 
-  geom_line(size = 1, color = "purple") + labs(x= "Año", y = "FUDi") +facet_wrap(.~country, scales = "free_x") + theme_classic() 
+
+```{r fig10, echo = F,  fig.cap="(ref:fig10)"}
+
+db_model %>%   filter(year >=1980, fudi[year == max(year)] >= 1) %>%
+  mutate(day = "1-1", year = lubridate::parse_date_time(year, "y"), year = as.Date(year)) %>% ggplot(aes(x = year, y = fudi)) + scale_x_date(date_labels = "%Y") +
+  geom_line(size = 1, color = "purple") + labs(x= "Año", y = "FUDi") +
+  geom_hline(yintercept = 1, linetype = 2) +
+  facet_wrap(.~country, scales = "free_x") 
+
 ```
-**Figura 1**. Evolución de la feminización de la densidad sindical en países donde el último año la densidad sindical estuvo masculinizada. En color morado están indicados los países que tuvieron un $\triangle FUD_i$ favorable a la feminización. 
+(ref:fig10) Evolución de la feminización de la densidad sindical en países donde el último año la densidad sindical estuvo feminizada. En color morado están indicados los países que tuvieron un $\triangle FUD_i$ favorable a la feminización. 
 
-```{r, echo = F}
+Pero como indicamos al inicio, a la fecha hay al menos 20 países que no han alcanzado la feminización (Figura \@ref(fig:fig11)). Entre ellos destacan diversos países como Francia (reconocido por su baja densidad sindical de cerca un 8% [@visser2002], pero con alta cobertura de la negociación colectiva), Argentina (nación latinoamericana destacada por su fuerte tradición sindical (cita)) y Alemania (país donde los trabajadores tienen un importante poder estructural).  
+Ahora bien, entre en la Figura \@ref(fig:fig10) podemos notar una diferenciación de colores, que en resumidas palabras, indica si la variación de los últimos años es a favor de la feminización (coloreadas de púrpura) o a favor de la masculinización (coloreadas de celeste). Con esta información podemos vislumbrar que en los últimos años, al menos un 60% de los países masculinizados está en tendencia de feminizar su sindicalización. De hecho, países como Estados Unidos, Páises Bajos, Portugal, Suiza y Eslovaquia tienen una clara pendiente positiva hacia el aumento de mujeres en organizaciones sindicales. 
+
+
+```{r, echo = F, fig.cap="(ref:fig11)"}
 db_model$diff <- ave(db_model$fudi, factor(db_model$country), FUN=function(x) c(0,diff(x)))
 
 db_model  %>%  mutate(d_var = if_else(diff[year == max(year)] > 0, "Fem","Mas")) %>%filter(year >=1980, fudi[year == max(year)] < 1) %>% ggplot(aes(x = round(year,0), y = fudi, color = d_var)) + 
-  geom_line(size = 1) + labs(x= "Año", y = "FUDi") + scale_y_continuous(limits = c(0.3, 2.2)) + facet_wrap(.~country, scales = "free_x") + theme_classic() + scale_color_manual(values = c("purple", "lightblue")) + guides(color = F)
+  geom_line(size = 1) + labs(x= "Año", y = "FUDi") +
+  geom_hline(yintercept = 1, linetype = 2) + scale_y_continuous(limits = c(0.3, 2.2)) + facet_wrap(.~country, scales = "free_x") + theme_classic() + scale_color_manual(values = c("purple", "lightblue")) + guides(color = F)
 
 ```
-**Figura 2**. Evolución de la feminización de la densidad sindical en países donde el último año la densidad sindical estuvo masculinizada. En color morado están indicados los países que tuvieron un $\triangle FUD_i$ favorable a la feminización, mientras que en celeste aquellos que mantienen y profundizan la tendencia a la masculinización.  
+(ref: fig11) Evolución de la feminización de la densidad sindical en países donde el último año la densidad sindical estuvo masculinizada. En color morado están indicados los países que tuvieron un $\triangle FUD_i$ favorable a la feminización, mientras que en celeste aquellos que mantienen y profundizan la tendencia a la masculinización.  
 
+En consecuencia, tanto los países feminizados como los masculinizados muestran dos tendencias evidente: (1) hacia la estabilización, que significa que los países tienden a mantener la misma división sexual de la sindicalización (un 28,8% de los países en estudio); (2) hacia la feminización de la densidad sindical, que como hemos descrito hasta ahora, sus niveles e inicios han estado asociado a ciertas regiones y grupo de países. 
+
+En la *Tabla 2* se reportan estadísticos descriptivos para todas las variables en análisis. 
+
+La densidad sindical tiene una media de X, una Max
+Variación y last fudi 
 
 ```{r, echo = F, results='asis'}
-summary(db_model$fudi)
 db_model <- db_model %>% group_by(country)  %>%  mutate(fudi_l = fudi[year == max(year)], pond = 46/n()) 
 z <- db_model  %>% ungroup() %>% summarytools::descr(stats = c("mean", "sd", "min", "max"), transpose = TRUE, headings = FALSE,  weights = db_model$pond) %>% rownames_to_column() %>% mutate(max_c = case_when(rowname == "fudi"~ "Latvia (2007), Estonia (2003) y Mexico (2000)", rowname == "diff"~ "México (2000) y Chile (2018)", rowname == "fudi_l"~ "New Zealand (2018)",rowname == "f_UR"~ "Australia (1970)", rowname == "T_GDPHRS_V"~ "Ireland (2015)",rowname == "rmw"~ "Netherlands (1979)", rowname == "f_LFPR"~ "Norway (2014)", rowname == "f_sector_SER"~ "Ireland (2006)", rowname == "f_SH_PT"~ "Germany (1983)", rowname == "Coord"~ "Central Europe (1970-1980)",rowname == "AdjCov"~ "Austria (1990-2015)",rowname == "ud"~ "Sweden (1994)"),min_c = case_when(rowname == "fudi"~ "Switzerland (1974)",rowname == "diff"~ "Latvia (2015)",rowname == "fudi_l"~ "Korea (2018)", rowname == "f_UR"~ "Korea (1989)", rowname == "T_GDPHRS_V"~ "Luxemburg (2008)",rowname == "rmw"~ "Nordic countries", rowname == "f_LFPR"~ "Netherlands (1975)", rowname == "f_sector_SER"~ "Korea (1991)", rowname == "f_SH_PT"~ "United States (1970)", rowname == "Coord"~ "Chile (1973-2018)*",rowname == "AdjCov"~ "Chile (2003-2006)",rowname == "ud"~ "Estonia (2005) y France (2008)")) %>% dplyr::select(rowname, Mean, Std.Dev, Min, min_c, Max, max_c) %>% na.omit()
 z$rowname <- car::recode(z$rowname, recodes = c("'fudi'='FUDi';'diff'='Var. FUDi';'fudi_l'='Último FUDi';'f_UR'='Fem. Desempleo';'rmw'='Salario Mínimo Real';'T_GDPHRS_V'='Productividad laboral';'f_LFPR'='Fem. Participación laboral';'f_sector_SER'='Fem. Sector servicios';'f_SH_PT'='Fem. Incidencia empleo part time';'Coord'='Coordinación salarial';'AdjCov'='Cobertura negociación colectiva';'ud'='Densidad sindical'"), as.factor =  T)
@@ -156,7 +179,9 @@ knitr::kable(z, row.names = F,  booktabs = T,
   kableExtra::footnote(general = "$^{***}$ p < 0.001; $^{**}$ p < 0.01; $^{*}$ p < 0.05 ; $^{.}$ p < 0.1 \n **Nota**: a. Coeficientes a corto (diff) y largo plazo (lag) \nb. Coeficientes provienen de la estimación de Modelos de Correción de Error por país (ver detalles en Apéndice C); \nc. Casos influyentes porpredictor identificados por método Jackknife; \nd. Coeficientes son estadísticamente significativos según test de Wald (test de dos colas)", general_title = "")
 ```
 
-- CL con gran peso del sector servicios (ejemplos movilización)
+Resultados
+
+- Chile con gran peso del sector servicios (Se podrían dar ejemplos de movilización).
 
 
 
@@ -192,3 +217,8 @@ ud<- pgrangertest(fudi ~ ud, order = 1, index = c("country", "year"),  data = db
 |  Densidad sindical|  `r format(ud$statistic)`$^{***}$|
 
 $^{***}$ p < 0.001; $^{**}$ p < 0.01; $^{*}$ p < 0.05 ; $^{.}$ p < 0.1
+
+`r if (knitr::is_html_output()){ '
+# Referencias {-}
+<div id="refs"></div>
+'}`

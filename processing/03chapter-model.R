@@ -307,7 +307,7 @@ xtr<-as.data.frame(xtr)
 summary(ecm_sa)
 
 # Mundial (ecm) ------------
-db1 <- db 
+db1 <- db_model 
 model <- db1 
 xeq<-model[c('f_LFPR','f_sector_SER','f_SH_PT', 'Coord')]
 xtr<- model[c('f_UR', 'rmw','T_GDPHRS_V', 'AdjCov')]
