@@ -135,6 +135,8 @@ z %>% arrange(rowname) %>%
 
 # Modelos de Feminización de Densidad Sindical
 
+El modelo mundial es presentado en la Tabla 4 donde se presentan los efectos a corto y largo plazo de las covariables de la feminización de la densidad sindical para los 45 países en estudio, a partir del cálculo de una ecuación de equilibrio que incorpora las variables a largo plazo (esto es, la feminización de la `participación laboral`. del `sector servicios` y del `empleo a jornada parcial`) y una a corto plazo (esto es, `productividad laboral`, `salarios mínimos` y `feminización del desempleo`)
+
 ## Estimación de modelos panel
 
 
