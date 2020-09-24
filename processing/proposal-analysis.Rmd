@@ -92,7 +92,7 @@ db_model  %>%  mutate(d_var = if_else(diff[year == max(year)] > 0, "Fem","Mas"))
 
 En consecuencia, tanto los países feminizados como los masculinizados muestran dos tendencias evidente: (1) hacia la estabilización, que significa que los países tienden a mantener la misma división sexual de la sindicalización (un 28,8% de los países en estudio); (2) hacia la feminización de la densidad sindical, que como hemos descrito hasta ahora, sus niveles e inicios han estado asociado a ciertas regiones y grupo de países. 
 
-En la *Tabla 2* se reportan estadísticos descriptivos para todas las variables en análisis, considerando no solo la distribución mundial sino que los mínimos y máximos indicando el país y fecha involucrada. La feminización de la densidad sindical tiene una media de 0.95, esto significa que considerando todos los años y países, en promedio el índice está bajo 1, y en consecuencia, la sindicalización entre 1980 a 2018 en los 45 países en estudio estaría masculinizada pero muy cercana a la igualdad. Ahora bien, considerando la distribución y escala de $FUDi$, la dispersión de los datos es considerable (0,34). La masculinización de la sindicalización más alta ocurrió el año 1974 en Suiza, tres años después de que se generalizara el voto femenino en esa nación, mientras que la máxima feminización de la densidad sindical ocurre ya a inicios del siglo en México (2000), Estonia (2003) y Letonia (2007) puntuando la sindicalización femenina un poco más del doble que la sindicalización masculina. 
+En la *Tabla 1* se reportan estadísticos descriptivos para todas las variables en análisis, considerando no solo la distribución mundial sino que los mínimos y máximos indicando el país y fecha involucrada. La feminización de la densidad sindical tiene una media de 0.95, esto significa que considerando todos los años y países, en promedio el índice está bajo 1, y en consecuencia, la sindicalización entre 1980 a 2018 en los 45 países en estudio estaría masculinizada pero muy cercana a la igualdad. Ahora bien, considerando la distribución y escala de $FUDi$, la dispersión de los datos es considerable (0,34). La masculinización de la sindicalización más alta ocurrió el año 1974 en Suiza, tres años después de que se generalizara el voto femenino en esa nación, mientras que la máxima feminización de la densidad sindical ocurre ya a inicios del siglo en México (2000), Estonia (2003) y Letonia (2007) puntuando la sindicalización femenina un poco más del doble que la sindicalización masculina. 
 
 Como se indicó a un inicio de esta investigación, la feminización de la sindicalización es un fenómeno reciente. Muestra de ello no es solo que los $FUDi$ más altos daten en las últimas dos décadas, sino que si se mira la última estadística disponible para cada país, en promedio el $FUDi$ alcanza a nivel mundial un 1,02 , siendo Nueva Zelanda el territorio que alcanzó un mayor índice de feminización. Si bien el indicador es cercano a la igualdad en la densidad sindical, es importante notar que las variaciones más grandes a favor de la densidad sindical femenina están ocurriendo en los últimos años (eg. Chile (2018)) y en promedio superan las variaciones negativas del $FUDi$. 
 
@@ -133,13 +133,15 @@ z %>% arrange(rowname) %>%
 ```
 
 
-# Modelos
+# Modelos de Feminización de Densidad Sindical
+
+## Estimación de modelos panel
 
 
 **Tabla 2.** Modelos Panel con Error de Corrección para predecir la sindicalización feminizada en 45 países, 1980-2018, Efectos Fijos [$^{a,b,c}$]
 
 ```{r model0, results='asis', echo= FALSE, message= FALSE, warning= FALSE}
-vars <- c("diff. Fem. Desempleo","Fem. Participación Laboral Femenina", "Fem. Sector Servicios", "Fem. Incidencia empleo part-time", "Coordinación Salarial", "Productividad laboral", "Salarios Mínimos Reales")
+vars <- c("diff. Fem. Desempleo","Fem. Participación Laboral", "Fem. Sector Servicios", "Fem. Incidencia empleo part-time", "Coordinación Salarial", "Productividad laboral", "Salarios Mínimos Reales")
 knitreg(list(model0, coeftest(model0,
                                 vcov=function(x)vcovBK(x, type="HC1", cluster="time"))),custom.model.names = c('Modelo 0', 'Model 0 (b)'), custom.coef.names = vars, stars = c(0.001, 0.01, 0.05, 0.1),  custom.note = "$^{***}$ p < 0.001; $^{**}$ p < 0.01; $^{*}$ p < 0.05 ; $^{.}$ p < 0.1 \n **Nota**: a. Variables incluidas en el modelo pero no son mostradas son efectos fijos por países y controles estadísticos como densidad sindical nacional y cobertura de la negociación colectiva; \nb. Modelo con errores corregidos específicamente para panel desbalanceado, por método de Beck y Katz (1995) (Panel Cluster Error Correction); \nc. Coeficientes son estadísticamente significativos según test de Wald (test de dos colas)", caption = "",caption.above = T,   
         custom.gof.rows=list("Dickey-Fuller" = c("-9.8611**",""),
@@ -149,7 +151,7 @@ knitreg(list(model0, coeftest(model0,
 **Tabla 3.** Modelos Panel Autoregresivos con Error de Corrección para predecir la sindicalización feminizada en 45 países, 1980-2018, Efectos Fijos [$^{a,b,c}$]
 
 ```{r model1, results='asis', echo= FALSE, message= FALSE, warning= FALSE}
-vars <- c("diff. Fem. Desempleo","Fem. Participación Laboral Femenina", "Fem. Sector Servicios", "Fem. Incidencia empleo part-time", "Coordinación Salarial", "Productividad laboral", "Salarios Mínimos Reales", "Lag(FUDi)")
+vars <- c("diff. Fem. Desempleo","Fem. Participación Laboral", "Fem. Sector Servicios", "Fem. Incidencia empleo part-time", "Coordinación Salarial", "Productividad laboral", "Salarios Mínimos Reales", "Lag(FUDi)")
 knitreg(list(model01, coeftest(model01,
                                 vcov=function(x)vcovBK(x, type="HC1", cluster="time"))),custom.model.names = c('Modelo 1', 'Model 1 (b)'), custom.coef.names = vars, stars = c(0.001, 0.01, 0.05, 0.1), custom.note = "$^{***}$ p < 0.001; $^{**}$ p < 0.01; $^{*}$ p < 0.05 ; $^{.}$ p < 0.1 \n **Nota**: a. Variables incluidas en el modelo pero no son mostradas son efectos fijos por países y controles estadísticos como densidad sindical nacional y cobertura de la negociación colectiva;\n b. Modelo autoregresivo de primer orden con errores corregidos específicamente para panel desbalanceado, por método de Beck y Katz (1995) (Panel Cluster Error Correction); \nc. Coeficientes son estadísticamente significativos según test de Wald (test de dos colas)", caption = "",caption.above = T,  
         custom.gof.rows=list("Dickey-Fuller" = c("-7.2691**",""),
@@ -160,12 +162,13 @@ knitreg(list(model01, coeftest(model01,
 
 - Modelo autoregresivo es más robusto que modelo no autoregresivo
 
+
 ## Estimación de efectos a corto y largo plazo sobre la feminización de la densidad sindical
 
 **Tabla 4.** Modelos Panel Autoregresivos con Error de Corrección para predecir la Feminización de la sindicalización en 45 países, 1980-2018, Efectos a corto y largo plazo  [$^{a,b,c}$]
 
 ```{r model2, results='asis', echo= FALSE, message= FALSE, warning= FALSE}
-vars <- c("diff. Fem. Desempleo","diff. Productividad laboral","diff. Salarios Mínimos Reales","Lag Fem. Participación Laboral Femenina", "Lag Fem. Sector Servicios", "Lag Fem. Incidencia empleo part-time", "Lag Coordinación Salarial", "Lag(FUDi)")
+vars <- c("diff. Fem. Desempleo","diff. Productividad laboral","diff. Salarios Mínimos Reales","Lag Fem. Participación Laboral", "Lag Fem. Sector Servicios", "Lag Fem. Incidencia empleo part-time", "Lag Coordinación Salarial", "Lag(FUDi)")
 knitreg(list(model02, coeftest(model03,vcov=function(x)vcovBK(x, type="HC1", cluster="time")), coeftest(model04,vcov=function(x)vcovBK(x, type="HC1", cluster="time"))), stars = c(0.001, 0.01, 0.05, 0.1),
         custom.header = list("Modelo 2" = 1:3),custom.model.names = c('Mundial', 'Latinoamérica', "Europa"), custom.coef.names = vars, include.rsquared = F,  include.sig= T, include.adjrs = F, include.nobs = F, 
         custom.gof.rows=list("Adj. R^2" = c(0.351,0.284,0.141),
@@ -182,7 +185,7 @@ knitreg(list(model02, coeftest(model03,vcov=function(x)vcovBK(x, type="HC1", clu
 z <- as.data.frame(model02$coefficients)
 z <- rownames_to_column(z, "variable")
 #ecm_max and ecm_min
-vars <- c("diff. Fem. Desempleo","diff. Productividad laboral","diff. Salarios Mínimos Reales","Lag Fem. Participación Laboral Femenina", "Lag Fem. Sector Servicios", "Lag Fem. Incidencia empleo part-time", "Lag Coordinación Salarial", "Lag Cobertura Negociación Colectiva")
+vars <- c("diff. Fem. Desempleo","diff. Productividad laboral","diff. Salarios Mínimos Reales","Lag Fem. ", "Lag Fem. Sector Servicios", "Lag Fem. Incidencia empleo part-time", "Lag Coordinación Salarial", "Lag Cobertura Negociación Colectiva")
 
 z <- data.frame(variable = vars, model02 = c("-0.01","-0.00","-0.00","0.03*", "0.07**", "-0.00", "0.001*", "-0.04**"), coefmax = c("0.07**","0.001**", "0.002***", "4.333***", "3.223***","0.09**", "0.025***", "0.031**"), c_max = c("Korea", "Alemania", "Sudáfrica", "Nueva Zelanda", "Chile", "Islandia", "Estados Unidos", "México"), coefmin = c("-0.377**","-0.005**", "-0.0001**", "-1.572**", "-0.526**","-0.111*", "-0.017***", "-0.015***"), c_max = c("Nueva Zelanda", "Estados Unidos", "Chile", "Chile", "Japón", "Sudáfrica", "Japón", "Estados Unidos"))
 knitr::kable(z, row.names = F,  booktabs = T,
@@ -226,7 +229,7 @@ ud<- pgrangertest(fudi ~ ud, order = 1, index = c("country", "year"),  data = db
 |  Feminización Desempleo|  `r format(f_UR$statistic)` $^{***}$|
 |  Productividad laboral|  `r format(T_GDPHRS_V$statistic)`$^{*}$|
 |  Salarios Mínimos Reales|  Multicolineal|
-|  Feminización Participación Laboral|  `r format(f_LFPR$statistic)`$^{***}$|
+|  Feminización |  `r format(f_LFPR$statistic)`$^{***}$|
 |  Feminización Sector Servicios|  `r format(f_sector_SER$statistic)`$^{**}$|
 |  Feminización Empleo Parcial|  `r format(f_SH_PT$statistic)`$^{.}$|
 |  Coordinación Salarial|  Multicolineal|
