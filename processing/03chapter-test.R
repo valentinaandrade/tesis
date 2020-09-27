@@ -1,6 +1,6 @@
 # Chapter 3:  Test de cointegración en R
 # Si esas dos variables no pasan la prueba de cointegración
-# Se testeará si los residuales son estacionarios o no. Vemos descriptivamente que tienen tendencia 
+# Se testeará si los residuales son estacionarios o no. Vemos descriptivamente que tienen tendencia
 # Es probable que sean estacionarios
 
 # 1. Cargar base de datos
@@ -23,17 +23,18 @@ summary(modelo00) # ¿? country y 90
 residuales=modelo00$residuals
 summary(residuales)
 mod00 <- augment(modelo00)
+
 ggplot(mod00, aes(x = .fitted, y = .resid)) + geom_point() + theme_classic()
 
 # 4. Probar si son estacionarios
-# 4.1 
+# 4.1
 adf.test(residuales) # Dikey Fuller Test
 ## Estacionaria
 
 #4.2 Dikey Fuller
 dktest = ur.df(residuales, type = "trend", selectlags = "AIC")
 summary(dktest)
-## Se rechaza hipotesis nula: es estacionaria, no hay raiz unitaria, 
+## Se rechaza hipotesis nula: es estacionaria, no hay raiz unitaria,
 ## Cointegración posible
 
 # 4.3. Phillips y Ouliaris test cointegration
@@ -42,7 +43,7 @@ test <- db[,-1]
 tseries::po.test(test, demean = T, lshort = T) # p=0.01 #Rechazamos H0
 urca::ca.po(test, demean = "constant", lag = "short", type = "Pz") # Rechazamos H0
 
-# Es cointegrada 
+# Es cointegrada
 
 # Conclusion
 # 1. Hay que hacer un ECm
