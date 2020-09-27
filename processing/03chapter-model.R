@@ -77,7 +77,18 @@ screenreg(list(model02, coeftest(model02,
 # Modelo para AL y Europa
 # Los paneles no balanceados no por razones aleatorias. 
 db_model3 <- filter(db_model, region == "Latin America & Caribbean")
+db_model32 <- filter(db_model, region %in% c("Latin America & Caribbean", "North America"))
 db_model4 <- filter(db_model, region == "Europe & Central Asia")
+
+
+model32 <-plm(
+  diff(fudi) ~ diff(f_UR) + diff(T_GDPHRS_V)  + diff(rmw) + lag(f_LFPR) + lag(f_sector_SER) + lag(f_SH_PT) + lag(Coord)  + lag(fudi),
+  index = c("country", "year"),
+  model = "w",
+  effect = "twoways",
+  data = db_model32)
+summary(model32)
+
 
 model03 <-plm(
   diff(fudi) ~ diff(f_UR) + diff(T_GDPHRS_V)  + diff(rmw) + lag(f_LFPR) + lag(f_sector_SER) + lag(f_SH_PT) + lag(Coord)  + lag(fudi),
@@ -86,6 +97,8 @@ model03 <-plm(
   effect = "twoways",
   data = db_model3)
 summary(model03)
+
+
 
 model04 <-plm(
   diff(fudi) ~ diff(f_UR) + diff(T_GDPHRS_V)  + diff(rmw) + lag(f_LFPR) + lag(f_sector_SER) + lag(f_SH_PT) + lag(Coord)  + lag(fudi),
@@ -417,8 +430,9 @@ ecm_models<-grep("f_",names(.GlobalEnv),value=TRUE)
 ecm_models<-do.call("list",mget(ecm_models))
 
 # Guardar modelos
-save(model0, model01,model02,model03,model04,ecm, ecm_g, ecm_s, ecm_n, ecm_sw, ecm_au, ecm_dk, ecm_ic,
+save(model0, model01,model02,model03, model32 ,model04,ecm, ecm_g, ecm_s, ecm_n, ecm_sw, ecm_au, ecm_dk, ecm_ic,
      ecm_uk, ecm_us, ecm_ir, ecm_nw, ecm_cd, ecm_cl, ecm_mx, ecm_sa, ecm_k, ecm_models_max, ecm_models_min, 
      file = "../output/data/models.RData")
 
 
+# Modelo32 -> Mex. 
