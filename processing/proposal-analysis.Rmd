@@ -153,7 +153,7 @@ knitreg(list(model02, coeftest(model32,vcov=function(x)vcovBK(x, type="HC1", clu
 
 ```
 
-## El efecto de los cíclos económicos
+### El efecto de los cíclos económicos
 
 Considerando los determinantes cíclicos, esto es, principalmente cómo incide la feminización del desempleo en la feminización sindical, a nivel mundial no existe evidencia concluyente sobre el efecto negativo de la feminización del desempleo sobre la feminización sindical. Ahora bien, si se mira el modelo para América Latina, con un 90% de confianza podemos rechazar la hipótesis nula, indicando que existe evidencia favorable sobre el efecto negativo que tiene la feminización del desempleo sobre la feminización sindical ($\beta$ = -0.08, SE = 0.05 , p < .01), controlando por el resto de las variables del modelo. Mientras que, si solo se apunta al modelo europeo, notaremos que, a corto plazo, la feminización del desempleo no tiene un impacto significativo sobre la feminización sindical.
 
@@ -169,7 +169,7 @@ Los salarios mínimos reales y la productividad fueron incorporadas como variabl
 
 Con los resultados reportados se puede concluir dos puntos centrales sobre las determinantes cíclicas: (1) no hay evidencia concluyente del efecto de la masculinización del desempleo sobre la feminización sindical, así como tampoco de otras variables de ciclo económico; (2) los modelos regionales nos aportan lo sensible que podrían ser variables como estas a, por ejemplo, ausencia o presencia de sistemas de seguridad social. Por último, es importante no olvidar que todos estos coeficientes son probados a corto plazo ¿qué incidencia podrán tener estas a largo plazo?
 
-## ¿Cómo afecta el crecimiento de las *pink collars*?
+### ¿Cómo afecta el crecimiento de las *pink collars*?
 
 Se planteo en la $H_2$ que, con la feminización del mercado laboral, a largo plazo  se generará un cambio en la estructura sindical que, por un lado, va a producir un aumento de la densidad sindical femenina y, por otro, un escape de la membresía masculina.
 
@@ -182,18 +182,38 @@ Por último, si bien no se puede rechazar la hipótesis nula sobre el efecto de 
 
 En consecuencia, si se mira en general los resultados para los determinanes estructurales, es probable encontrar evidencia a favor de la hipótesis planteada. La lógica que subyace a las tres variables se desprende de que, a partir de 1980, la fuerza de trabajo femenina ha aumentado notablemente de la mano con la expansión del sector servicios, cambiando significativamente la composición de género de sectores económicos. La literatura planteó que con la incorporación de mujeres en la fuerza de trabajo y sindicatos, se produce un cambio en la estructura sindical que se pone en tensión con la estructura tradicional sindical dominada por los hombres, y por ello podría ocurrir también un ‘escape’ de los miembros masculinos (Haile 2017). En resumidas palabras, el corolario se cumple si crecen lo suficientemente las mujeres en la fuerza de trabajo, de tal modo de que la composición se feminice. Tal como se vió en la Figura \@ref(fig:fig8) y \@ref(fig:fig8-2), los sectores con mayor potencial se feminización son el sector servicios y el empleo *part-time*, dos sectores que con su feminización solo mostraron evidencia a favor de nuestras hipótesis en el caso del sector servicios (tal como indico @artus) y solo para América Latina en el empleo parcial.
 
-## Los determinantes institucionales: la coordinación salarial
+### Los determinantes institucionales: la coordinación salarial
 
-# Conclusiones/ Discusiones
-- Retomar Hipotesis/Hallazgos: i. sensibilidad var economicas; ii. fuerza hiótesis pinkcollars
-- Control estadístico
-- Temporalidad
+La hipótesis que busca medir el efecto de la centralización de la economía sobre la feminización sindical se testeó a partir de la coordinación salarial, que como indicamos en el capítulo metodológico, se mide en una escala de 1 a 5, donde 5 indica una mayor centralización y concentración de las negociaciones de condiciones laborales a nivel nacional. Con respecto a esta variable, *ceteris paribus*, en el modelo mundial es posible observar un coeficiente de -0.0005 ($\beta$ = -0.00, SE = 0.001 , p < .005), esto indica que si bien es significativa presenta un tamaño de efecto muy inferior considerando el resto el coeficiente del resto de las variables del modelo. En estricto rigor, es posible rechazar la hipótesis nula, observando que a menor coordinación salarial mayor $FUDi$. Sin embargo, el tamaño del coeficiente hace pensar que, a pesar de que la variable fue ingresada al modelo para captar su incidencia a largo plazo, por su gran estabilidad temporal, puede que más que cambios temporales produzca diferencias entre los países. Otra opción se puede puntualizar si se puede vislumbran los resultados del modelo para América Latina y Europa, los que hacen posible pensar que si bien esta variable es significativa para Europa (tal como fuertemente argumentó Ebbinghaus et al. 2011), para América Latina estos resultados no son concluyentes, produciendo que el coeficiente general reduzca en su tamaño.
+
+Ahora bien, más allá del tamaño del efecto, que a largo plazo una menor coordinación salarial produzca una mayor feminización sindical tiene sentido teórico y empírico. En primer lugar, el mecanismo de la hipótesis indica que, si la participación laboral femenina está creciendo, y hay falta o ausencia de coordinación salarial, más mujeres se sindicalizarán como un modo de mejorar las condiciones de trabajo (algo similar a lo indicado en la $H_1$ con feminización del desempleo). En segundo lugar, empíricamente nuestros datos muestran evidencia contundente de esa tendencia no-estacionaria de la participación laboral femenina, esto es, un aumento sostenido a corto y largo plazo de este predictor ($\beta$ = 0.26, SE = 0.07 , p < .0001; Dickey-Fuller = -9.8611, p < .001. Para más modelos ver Apéndice C), y que tal como muestran los resultados de la *Tabla 2*, cuando existe coordinación a nivel central de condiciones de trabajo, no se produciría un efecto de "conciencia en el trabajo", esto es, una afiliación por búsqueda de un mayor bienestar laboral.
+
+Necesariamente, dos puntos se deben concluir de este reporte: (1) el análisis debe poner *entre comillas* el aprobar la $H_3$, en primera instancia no solo por el pequeño tamaño del coeficiente, sino que, recordemos que estos regresores se calculan controlando por el resto de las variables del modelo, inclusive la feminización de la participación laboral. Por ello, modelar un efecto conjunto de estas variables implica estimar la mediación entre la participación laboral y el $FUDi$, posiblemente a partir de técnicas que mezclen este tipo de modelos *time series cross national* y un *path analysis*; (2) puede ser importante combinar análisis de los modelos reportados con un énfasis comparado entre países, de modo de dar mayor claridad empírica de cómo este indicador de centralización de las economías, en conjunto con las otras variables, puede explicar la feminización de la densidad sindical.
+
+### Ajuste global del modelos y Control
+- Controles estadísticos **NO OLVIDAR**
+- R cuadrado ajustado - comparar con autoregresivos y luego señalar r2 de modelos latino y europa (aunque distintos n y casos). No se estimo de otras regiones por n tan chiquitito (problemas de especificacion) --> Lo importante es generalidad
 
 # Ideitas finales
 - A diferencia de modelos anteriores estima a corto y largo plazo
 - Podría agregar  "cluster" país segun si se ha feminizado y variables relevantes (como para posicionarlos)
 
 ## Efectos específicos a nivel nacional
+* arreglar coeftest
+
+En función de lo discutido anteriormente, se prosigió a analizar
+
+- Retomar resultados anteriores y discutir con paáises que destacan (más alto coeficiente, influyente)
+
+- feminizacion desempleo, nueva zelanda (ver seguridad desempleo y mujeres)
+- PL + nueva zelanda
+- PL negativa Chile ppero SS fuertemente. - Chile con gran peso del sector servicios (Se podrían dar ejemplos de movilización).
+- México cobertura + (pero lomás que será?)
+- Islandia + empleo parcial
+- Estados Unidos juego entre coord salarial juega rol positivo y a la vez negativo cobertura negociación (quizás esa es + import)
+- Japón fem sector servicios ¿qué hay?
+- Sudáfrica empleo parcial --> negativo
+
 
 ```{r, echo = F, results= 'asis'}
 z <- as.data.frame(model02$coefficients)
@@ -201,7 +221,7 @@ z <- rownames_to_column(z, "variable")
 #ecm_max and ecm_min
 vars <- c("diff. Fem. Desempleo","diff. Productividad laboral","diff. Salarios Mínimos Reales","Lag Fem. ", "Lag Fem. Sector Servicios", "Lag Fem. Incidencia empleo part-time", "Lag Coordinación Salarial", "Lag Cobertura Negociación Colectiva")
 
-z <- data.frame(variable = vars, model02 = c("-0.01","-0.00","-0.00","0.03*", "0.07**", "-0.00", "0.001*", "-0.04**"), coefmax = c("0.07**","0.001**", "0.002***", "4.333***", "3.223***","0.09**", "0.025***", "0.031**"), c_max = c("Korea", "Alemania", "Sudáfrica", "Nueva Zelanda", "Chile", "Islandia", "Estados Unidos", "México"), coefmin = c("-0.377**","-0.005**", "-0.0001**", "-1.572**", "-0.526**","-0.111*", "-0.017***", "-0.015***"), c_max = c("Nueva Zelanda", "Estados Unidos", "Chile", "Chile", "Japón", "Sudáfrica", "Japón", "Estados Unidos"))
+z <- data.frame(variable = vars, model02 = c("-0.01","-0.00","-0.00","0.03**", "0.07***", "-0.00", "0.001**", "-0.04***"), coefmax = c("0.07**","0.001**", "0.002***", "4.333***", "3.223***","0.09**", "0.025***", "0.031**"), c_max = c("Korea", "Alemania", "Sudáfrica", "Nueva Zelanda", "Chile", "Islandia", "Estados Unidos", "México"), coefmin = c("-0.377**","-0.005**", "-0.0001**", "-1.572**", "-0.526**","-0.111*", "-0.017***", "-0.015***"), c_max = c("Nueva Zelanda", "Estados Unidos", "Chile", "Chile", "Japón", "Sudáfrica", "Japón", "Estados Unidos"))
 knitr::kable(z, row.names = F,  booktabs = T,
              col.names = c("Predictores","Modelo Mundial", "Coeficiente", "País", "Coeficiente", "País")) %>% add_header_above(c(" " = 1," " = 1, "Máximo" = 2, "Mínimo" = 2)) %>%
             pack_rows("Cíclicas", 1, 3) %>%
@@ -210,13 +230,16 @@ knitr::kable(z, row.names = F,  booktabs = T,
             kableExtra::kable_styling(latex_options = "hold_position")%>%
             kableExtra::kable_styling(full_width = T)%>%
             #kableExtra::column_spec(1, width = "7cm") %>%
-  kableExtra::footnote(general = "$^{***}$ p < 0.001; $^{**}$ p < 0.01; $^{*}$ p < 0.05 ; $^{.}$ p < 0.1 \n **Nota**: a. Coeficientes a corto (diff) y largo plazo (lag) \nb. Coeficientes provienen de la estimación de Modelos de Correción de Error por país (ver detalles en Apéndice C); \nc. Casos influyentes porpredictor identificados por método Jackknife; \nd. Coeficientes son estadísticamente significativos según test de Wald (test de dos colas)", general_title = "")
+  kableExtra::footnote(general = "$^{***}$ p < 0.001; $^{**}$ p < 0.05; $^{*}$ p < 0.1 \n **Nota**: a. Coeficientes a corto (diff) y largo plazo (lag) \nb. Coeficientes provienen de la estimación de Modelos de Correción de Error por país (ver detalles en Apéndice C); \nc. Casos influyentes porpredictor identificados por método Jackknife; \nd. Coeficientes son estadísticamente significativos según test de Wald (test de dos colas)", general_title = "")
 ```
 
-Resultados
+# Conclusiones/ Discusiones
+- Retomar Hipotesis/Hallazgos: i. sensibilidad var economicas; ii. fuerza hiótesis pinkcollars
+- Baja importancia institucional pa fudi --> retomar la importancia de laboral economico
+- Control estadístico
+- Temporalidad
 
-- Chile con gran peso del sector servicios (Se podrían dar ejemplos de movilización).
-
+-
 
 # Apéndice C
 
