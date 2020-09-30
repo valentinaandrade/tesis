@@ -74,6 +74,16 @@ screenreg(list(model02, coeftest(model02,
           custom.model.names = c('PVECM - SE', 'PVECM-Corrected Standard Error'))
 
 
+model12 <-plm(
+  diff(fudi) ~ diff(f_UR) + diff(T_GDPHRS_V)  + diff(rmw) + lag(f_LFPR) + lag(f_sector_SER) + lag(f_SH_PT) + lag(Coord) + lag(AdjCov)  + lag(fudi) + lag(ud),
+  index = c("country", "year"),
+  model = "w",
+  effect = "time",
+  data = db_model)
+summary(model12)
+
+
+
 # Modelo para AL y Europa
 # Los paneles no balanceados no por razones aleatorias. 
 db_model3 <- filter(db_model, region == "Latin America & Caribbean")
