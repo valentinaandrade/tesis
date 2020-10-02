@@ -106,3 +106,24 @@ pdwtest(model01)
 pdwtest(model02)
 pdwtest(model03)
 pdwtest(model04)
+
+
+# Ajuste general 
+
+a <- db_model %>% 
+  as.data.frame %>% 
+  rowid_to_column %>% 
+  mutate(model02 = rowid %in% names(model02$residuals))%>%
+  filter(model02 == T) %>%
+  dplyr::select("country", "year")
+
+# sjPlot::plot_model(b,title = "",vline.color = "grey",line.size = 1, show.values = TRUE, value.offset = .3)
+
+c <- model02$model 
+c <- cbind(a,c)
+c <- as.data.frame(c$model)
+yhat<-  predict(model02)
+c <- c %>%  
+  mutate(p = yhat, d_fudi = if_else(fudi >= 1, "Feminization", "Masculinization"))
+
+save(a, c, yhat, file = "../output/data/ajust-model.RData")
