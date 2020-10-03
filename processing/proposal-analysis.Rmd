@@ -195,47 +195,91 @@ Necesariamente, dos puntos se deben concluir de este reporte: (1) el análisis d
 
 ### Ajuste global del modelos y Control
 
-```{r,echo = F, eval = F, include= F }
+
+En relación al ajuste global del modelo, esto es, la proporción de la varianza del cambio en la feminización sindical predicha por los determinantes cíclicos, estructurales e institucionales es de un 35% ($R^2 ajustado$ = 0.35). En los modelos estimados con los controles cobertura de la negociación colectiva y densidad sindical del año anterior, estos no solo no son significativos, sino que también reducen el ajuste del modelo considerablemente ($R^2 ajustado$ = 0.06). Es por ello, que se decide mantener en el modelo mundial los controles autoregresivos y de efectos fijos, de modo de poder modelar los modelos regionales y no tener problemas de especificación (por el número de observaciones y el número de predictores). Los controles autoregresivos muestran ser significativos para la estimación global del modelo: en primer lugar, la estimación del modelo sin controlar por el efecto del pasado de la misma variable dependiente tiene un $R^2$ de 0.27 (en Apéndice C, ver comparación entre Modelo 0 y Modelo 1) y mostrando relaciones espúreas para algunas variables; en segundo lugar, cuando se realiza control por $lag(FUDi)$ se controlan las relaciones espúreas pero crece el $R^2$ a 0.96, lo que indica la necesidad de los controles autoregresivos para todos los predictores (en Apéndice C, ver Modelo 1). Como resultado, el modelo reportado en la *Tabla 2* muestran un modelo que controlando por el efecto a corto y largo plazo del pasado de los predictores, obtiene un ajuste general aceptable y robusto. 
+
+Con todo, el potencial que muestran los modelos de series temporales es la posibilidad de testear si los efectos de estas variables son causales. A partir del método de Granger para análisis panel (en nuestro caso, *time series cross national model*), se estimó la relación causal de cada uno de nuestros predictores sobre $FUDi$ (ver Apéndice C, Tabla 3C). Los resultado muestran que la causalidad está concentrada en predictores que guardan relación con la feminización: por ejemplo,  todas las variables estructurales ($H_2$), solo en feminización del desempleo ($H_1$) y sin evidencia concluyente en coordinación salarial y salarios mínimos reales.
+
+```{r,echo = F}
 ggcoef(model02, exclude_intercept = TRUE, 
   conf.level = 0.91,errorbar_height = .2, color = "purple", sort = "ascending") + 
   labs(x = "Estimación", y = "Predictores") + annotate("text", x = 0.07, y = 1, label = "italic(R) ^ 2 == 0.35",
   parse = TRUE)
 ```
 
-En relación al ajuste global del modelo, esto es, la proporción de la varianza del cambio en la feminización sindical predicha por los determinantes cíclicos, estructurales e institucionales es de un 35% ($R^2 ajustado$ = 0.35). En los modelos estimados con los controles cobertura de la negociación colectiva y densidad sindical del año anterior, estos no solo no son significativos, sino que también reducen el ajuste del modelo considerablemente ($R^2 ajustado$ = 0.06). Es por ello, que se decide mantener en el modelo mundial los controles autoregresivos y de efectos fijos, de modo de poder modelar los modelos regionales y no tener problemas de especificación (por el número de observaciones y el número de predictores). Los controles autoregresivos muestran ser significativos para la estimación global del modelo: en primer lugar, la estimación del modelo sin controlar por el efecto del pasado de la misma variable dependiente tiene un $R^2$ de 0.27 (en Apéndice C, ver comparación entre Modelo 0 y Modelo 1) y mostrando relaciones espúreas para algunas variables; en segundo lugar, cuando se realiza control por $lag(FUDi)$ se controlan las relaciones espúreas pero crece el $R^2$ a 0.96, lo que indica la necesidad de los controles autoregresivos para todos los predictores (en Apéndice C, ver Modelo 1). Como resultado, el modelo reportado en la *Tabla 2* muestran un modelo que controlando por el efecto a corto y largo plazo del pasado de los predictores, obtiene un ajuste general aceptable y robusto. 
 
-Con todo, el potencial que muestran los modelos de series temporales es la posibilidad de testear si los efectos de estas variables son causales. A partir del método de Granger para análisis panel (en nuestro caso, *time series cross national model*), se estimó la relación causal de cada uno de nuestros predictores sobre $FUDi$ (ver Apéndice C, Tabla 3C). Los resultado muestran que la causalidad está concentrada en predictores que guardan relación con la feminización: por ejemplo,  todas las variables estructurales ($H_2$), solo en feminización del desempleo ($H_1$) y sin evidencia concluyente en coordinación salarial y salarios mínimos reales. 
-
-En síntesis, los resultados muestran evidencia a favor de dos nociones generales que se plantearon en [¿Más mujeres en los sindicatos?](#intro), esto es, que aquellos factores que explican la feminización sindical pueden ser los tradicionalmente ocupados por los estudios laborales, es decir, determinantes económicos-laborales. Pero, a su vez, esto no solo significa observar en general "el aumento del empleo", sino que testear estas determinantes económico-laborales en su "genderización". Y la evidencia es robusta a este respecto: en su mayoría, las variables de feminización muestran resultados favorables a nuestras hipótesis, e inclusive, nos permiten hablar de que estas realmente explican los cambios en la feminización sindical (ie. una relación de causalidad). 
+En síntesis, los resultados muestran evidencia a favor de dos nociones generales que se plantearon en [¿Más mujeres en los sindicatos?](#intro), esto es, que aquellos factores que explican la feminización sindical pueden ser los que tradicionalmente han ocupado los estudios laborales, es decir, determinantes económicos-laborales propiamente tal. Pero, a su vez, esto no solo significa observar en general este tipo de factores (eg. el aumento del empleo), sino que testear estas determinantes económico-laborales en su "genderización" (eg. feminización del empleo). Y la evidencia presentada en los modelos es robusta a este respecto: en su mayoría, las variables de feminización del mercado laboral muestran resultados favorables a nuestras hipótesis (Figura coef), e inclusive, nos permiten hablar de que estas realmente explican los cambios en la feminización sindical (ie. una relación de causalidad). 
 
 ```{r,echo = F, result ='asis'}
 # En apartado 03-chaptger adjust
-ggplot(c, aes(x=f_sector_SER, y=p, color = region)) +
-   geom_point() +
-   facet_wrap(.~ region) + ggsci::scale_color_futurama() + labs(x = "", y = "") + theme(legend.position = "none")
+c <- c %>% mutate(period = ifelse(year >=1970& year <1990, "1980-1990",
+                             ifelse(year >=1990& year <2000, "1990-2000",
+                                    ifelse(year >=2000& year <2010, "2000-2010","2010-2018"))))
 
-g1 <- c %>% filter(year >=1980& year <2000) %>% 
+g1 <- c %>% filter(year >=1970& year <1990) %>% 
 ggplot(aes(x=f_LFPR, y=p, color = region)) +
    geom_point() +
-   facet_wrap(. ~ d_fudi) + ggsci::scale_color_futurama() + labs(x = "", y = "", title = "1980-1990 ") + theme(legend.position = "bottom")
+   facet_wrap(. ~ d_fudi) + ggsci::scale_color_futurama() + labs(x = "", y = "", col = "", title = "1980-1990 ") + theme(legend.position = "bottom")
 
-g2 <- c %>% filter(year >=1970& year <=1990) %>% 
+g2 <- c %>% filter(year >=1990& year <2000) %>% 
 ggplot(aes(x=f_LFPR, y=p, color = region)) +
    geom_point() +
-   facet_wrap(. ~ d_fudi) + ggsci::scale_color_futurama() + labs(x = "", y = "", title = "1990-2000 ") + theme(legend.position = "bottom")
+   facet_wrap(. ~ d_fudi) + ggsci::scale_color_futurama() + labs(x = "", y = "", col = "", title = "1990-2000 ") + theme(legend.position = "bottom")
 
-g3 <- c %>% filter(year >=1990& year <=2000) %>% 
+g3 <- c %>% filter(year >=2000& year <2010) %>% 
 ggplot(aes(x=f_LFPR, y=p, color = region)) +
    geom_point() +
-   facet_wrap(. ~ d_fudi) + ggsci::scale_color_futurama() + labs(x = "", y = "", title = "2000-2010") + theme(legend.position = "bottom")
+   facet_wrap(. ~ d_fudi) + ggsci::scale_color_futurama() + labs(x = "", y = "",  col = "", title = "2000-2010") + theme(legend.position = "bottom")
 
 g4 <- c %>% filter(year >=2010) %>% 
 ggplot(aes(x=f_LFPR, y=p, color = region)) +
    geom_point() +
-   facet_wrap(. ~ d_fudi) + ggsci::scale_color_futurama() + labs(x = "", y = "", title = "2010-2018") + theme(legend.position = "bottom")
+   facet_wrap(. ~ d_fudi) + ggsci::scale_color_futurama() + labs(x = "", y = "", col = "", title = "2010-2018") + theme(legend.position = "bottom")
 
 ggpubr::ggarrange(g1,g2,g3,g4, common.legend = TRUE, legend="bottom")
 ```
+
+
+
+```{r,echo = F, result ='asis'}
+# En apartado 03-chaptger adjust
+g1 <- c %>% filter(year >=1970& year <1990) %>% 
+ggplot(aes(x=f_sector_SER, y=p, color = region)) +
+   geom_point() +
+   facet_wrap(. ~ d_fudi) + ggsci::scale_color_futurama() + labs(x = "", y = "", col = "", title = "1980-1990 ") + theme(legend.position = "bottom")
+
+g2 <- c %>% filter(year >=1990& year <2000) %>% 
+ggplot(aes(x=f_sector_SER, y=p, color = region)) +
+   geom_point() +
+   facet_wrap(. ~ d_fudi) + ggsci::scale_color_futurama() + labs(x = "", y = "", col = "", title = "1990-2000 ") + theme(legend.position = "bottom")
+
+g3 <- c %>% filter(year >=2000& year <=2010) %>% 
+ggplot(aes(x=f_sector_SER, y=p, color = region)) +
+   geom_point() +
+   facet_wrap(. ~ d_fudi) + ggsci::scale_color_futurama() + labs(x = "", y = "",  col = "", title = "2000-2010") + theme(legend.position = "bottom")
+
+g4 <- c %>% filter(year >=2010) %>% 
+ggplot(aes(x=f_sector_SER, y=p, color = region)) +
+   geom_point() +
+   facet_wrap(. ~ d_fudi) + ggsci::scale_color_futurama() + labs(x = "", y = "", col = "", title = "2010-2018") + theme(legend.position = "bottom")
+
+ggpubr::ggarrange(g1,g2,g3,g4, common.legend = TRUE, legend="bottom")
+```
+
+# Discusión 
+
+A partir de la presentación de resultados y la discusión general sobre las hipótesis propuestas, en el siguiente apartado se retomarán algunos elementos mencionados anteriormente pero que requieren una mayor profundización empírica y teórica 
+
+## La tesis de las *pink collars*
+
+Retomemos la tesis central de este estudio, esto es, la convergencia mundial de la feminización sindical. En términos simples, recordemos que la hipótesis central de la *convergencia* indica que hoy el potencial de sindicalización está puesto en las mujeres, esto debido a que además de aumentar su participación laboral de (ya sea de manera más rápida que los hombres o estos saliendo del mercado laboral), las mujeres se concentran en los sectores de actividad económica que principalmente están en crecimiento desde 1980. 
+
+Ahora bien esta tesis solo ha sido defendida en términos descriptivos o solo mostrando que los coeficientes con mayor tamaño efecto y significancia muestran una relación positiva con la feminización de la tasa de sindicalización. Ahora bien, los modelos de correción de error tienen un gran potencial predictivo cómo es el movimiento temporal de nuestra variable dependiente, y con ello, podemos predecir cuál es el movimiento de aquellos países que incluso aun siguen con una tasa de afiliación sindical masculinizada.
+
+Los siguientes gráficos de nubes nos muestran la relación entre los valores predichos y las variables que muestran un mayor efecto sobre el cambio en la división sexual de la densidad sindical, esto es, la feminización de la participación laboral (Figura W) y la feminización del sector servicios (Figura Z). Una primera imagen de ambas, permite notar claramente que entre 1980 a 2000 es cuando se produce el mayor movimiento de los países  hacia la feminización de la fuerza de trabajo (ie. movimiento positivo en el eje de las abscisas). En el mismo examen, es notable que, a partir de 2000 no solo se da un movimiento favorable en la variación de la feminización (ie. en el eje $y$), sino que esta variación se vuelve cada vez más homogénea en los últimos años. Si bien desde el 2010 en adelante gran parte de los países con su sindicalización feminizada no tienen grandes variaciones año a año, los países que aun no alcanzan la feminización siguen avanzando en ella.
+
+
+Con estos tres puntos indicados, sumado a los test de causalidad, se puede indicar que al menos para los países en estudio, existe evidencia contundente sobre el efecto temporal que tiene la feminización del mercado laboral sobre la feminización de la sindicalización. Esto entrega soporte para decir que si para los especialistas 1980 comenzó la época de la flexibilización, deregulación y feminización del mercado laboral (Standing), esta investigación puede sumar que, estos cambios tuvieron un efecto importante en la feminización sindical, inagurándose en los 2000 la época del sindicalismo de mujeres. 
 
 
 ## Efectos específicos a nivel nacional
@@ -360,6 +404,15 @@ ud<- pgrangertest(fudi ~ ud, order = 1, index = c("country", "year"),  data = db
 |  Densidad sindical|  `r format(ud$statistic)`$^{***}$|
 
 $^{***}$ p < 0.001; $^{**}$ p < 0.01; $^{*}$ p < 0.05 ; $^{.}$ p < 0.1
+
+```{r, echo = F}
+ggplot(c, aes(x=f_sector_SER, y=p, color = region)) +
+   geom_point() +
+   facet_wrap(.~ region) + ggsci::scale_color_futurama() + labs(x = "", y = "", col = "") +
+  guides(col = guide_legend(nrow = 2, byrow = T)) + theme(legend.position = "bottom")
+
+```
+Figura X. Valores predichos de la variación de la feminización sindical según feminización del sector servicios. Los colores indican cada una de las divisiones regionales utilizadas por el Banco Mundial
 
 `r if (knitr::is_html_output()){ '
 # Referencias {-}
