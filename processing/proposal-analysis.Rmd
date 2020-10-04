@@ -291,29 +291,43 @@ Con estos tres puntos indicados, sumado a los test de causalidad, se puede indic
 
 Otro punto importante a explorar tiene que ver con qué variables tienen una mayor incidencia en determinados países. Indagar esto resulta de interés principalmente debido a los resultados que se obtienen particularmente en las variables institucionales, tras la obtención de un coeficiente negativo y estadísticamente significativo. Ahora bien, como indicamos, los coeficientes por si solos no nos permiten sacar conclusiones taxativas y hacen complejo ver cómo podría operar el mecanismo de la feminización sindical en ciertos países de economías más o menos coordinadas. De hecho, tal cómo se hipotetizó luego de la comparación del modelo mundial con el latinoamericano, es probable que estas variables solo sean significativas dependiendo del tipo de sistema de relaciones industriales al que se someta a análisis dichos factores. 
 
-En primer lugar, es interesante notar que para los predictores cíclicos
+En primer lugar, es interesante notar que para los predictores cíclicos, los países que reportan tener coeficientes positivos son aquellos países que en la actualidad tienen una afiliación sindical aun masculinizada (fig 11) y que de hecho, no son los países que muestran una tendencia marcada hacia la feminización; mientras que los países que tienen los coeficientes negativos en los determinantes cíclicos, son precisamente aquellos que tienen una sindicalización feminizada en la actualidad. Lo que sugiere esto es que el peso de estos predictores en la variación de la feminización sindical es muy bajo, y con ello, su incidencia no solo no es percibible a nivel mundial (coeficientes no significativos), sino que ya sea positivo o negativo su efecto no son relevantes incluso para definir las tendencias a nivel nacional.
+
+De manera similar ocurre con la coordinación salarial. Los países que muestran los coeficientes con mayor y menor incidencia no solo no se diferencian en torno a si su sindicalización se feminizó, sino que también - y más importante - ambos son naciones que han sido catalogadas como economías libre de mercado. En consecuencia, la variable de coordinación salarial más que esclarecer qué ocurre en cierto grupo de países que no centralizan sus decisiones a partir del diálogo social entre sindicatos, empresarios y Estado, más bien hace difícil establecer una relación causal entre este factor y la feminización sindical. 
+
+Las variables que sí son definitorias para entender la tendencia global son las estructurales. Como se puede notar, lo que tienen en común aquellos países que indican que el $FUDi$ crecerá en la medida en que se feminice el mercado laboral, es que precisamente es en estos países donde la sindicalización ya se ha feminizado (ie. Nueva Zelanda, Chile e Islandia). Mientras que la feminización del sector servicios y del empleo parcial tienen un efecto negativo sobre Japón y Sudáfrica, dos países que tienen hasta hoy su sindicalización masculinizada. Pasaremos a comentar brevemente algunos casos de estos
+
+### El caso de Chile y Nueva Zelanda
+
+Chile y Nueva Zelanda son dos paises neoliberales
+
+Comparten que su sindicalización se feminizó. 
+
+Chile y Nueva Zelanda gran sector servicios y feminizado. Pese a coeficientes negativos. 
+
+Además son sectores que crecen mucho y rapidamente: Chile X y Nueva Zelanda X. 
+
+Sus organizaciones sindicales más fuertes son: X e Y. Si bien en Chile prevalecen las tradicionales en el ultimo tiempo toman fuerza (y nombrar)
+
+Del mismo modo pasa con las de Nueva Zelanda
+
+--> Hacer comentario similar al de MIlkman
+
+### La permanencia de los sectores tradicionales: el caso japonés
+
+Japón es un país 
+
+- Sistema laboral vitalicio
+
+- Recién en 2010 se flexibiliza. Se evidencia en que el régimen part time incluso solo empieza a ser legal el año 1993 (Ley de trabajo parcial PTWL) y si bien un 91% de ellas son mujeres, representan muy poco de la ufuerza de trabajo (14,7%) (fuente: Ministerio de Administración Pública, Asuntos Internos, Correos y Telecomunicaciones)
 
 
-## Nueva Zelanda
+- De igual forma el sector más fuerte es: automóvil del Japón y el Sindicato de trabajadores del sector electrónico y de la información del Japón. Si bien estos ultimos son "comunicaciones" y podrían ser cat. servicios son sectores masculinizados. 
 
-## Chile
+- Eso se expresa en que sus organizaciones sindicales más fuertes son:
+De igual forma sindicatos a nivel empresa
 
-## Coordinados con coef + pero chicos 
-
-* arreglar coeftest
-
-En función de lo discutido anteriormente, se prosigió a analizar
-
-- Retomar resultados anteriores y discutir con paáises que destacan (más alto coeficiente, influyente)
-
-- feminizacion desempleo, nueva zelanda (ver seguridad desempleo y mujeres)
-- PL + nueva zelanda
-- PL negativa Chile ppero SS fuertemente. - Chile con gran peso del sector servicios (Se podrían dar ejemplos de movilización).
-- México cobertura + (pero lomás que será?)
-- Islandia + empleo parcial
-- Estados Unidos juego entre coord salarial juega rol positivo y a la vez negativo cobertura negociación (quizás esa es + import)
-- Japón fem sector servicios ¿qué hay?
-- Sudáfrica empleo parcial --> negativo
+- Habrá que esperar unos añospara ver que pasa ahora
 
 
 ```{r, echo = F, results= 'asis'}
@@ -335,9 +349,10 @@ knitr::kable(z, row.names = F,  booktabs = T,
 ```
 
 
+# Conclusiones/ Discusiones
+
 - Podría agregar  "cluster" país segun si se ha feminizado y variables relevantes (como para posicionarlos)
 
-# Conclusiones/ Discusiones
 - Retomar Hipotesis/Hallazgos: i. sensibilidad var economicas; ii. fuerza hiótesis pinkcollars
 - Baja importancia institucional pa fudi --> retomar la importancia de laboral economico
 - Control estadístico
