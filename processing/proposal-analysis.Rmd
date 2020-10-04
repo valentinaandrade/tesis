@@ -207,8 +207,21 @@ ggcoef(model02, exclude_intercept = TRUE,
   parse = TRUE)
 ```
 
+(Figura X) Tamaño efecto y significancia de coeficientes del modelo mundial para estimar la feminización de la sindicalización. Se indica el $R^2_{ajustado}$ a un costado derecho. 
 
 En síntesis, los resultados muestran evidencia a favor de dos nociones generales que se plantearon en [¿Más mujeres en los sindicatos?](#intro), esto es, que aquellos factores que explican la feminización sindical pueden ser los que tradicionalmente han ocupado los estudios laborales, es decir, determinantes económicos-laborales propiamente tal. Pero, a su vez, esto no solo significa observar en general este tipo de factores (eg. el aumento del empleo), sino que testear estas determinantes económico-laborales en su "genderización" (eg. feminización del empleo). Y la evidencia presentada en los modelos es robusta a este respecto: en su mayoría, las variables de feminización del mercado laboral muestran resultados favorables a nuestras hipótesis (Figura coef), e inclusive, nos permiten hablar de que estas realmente explican los cambios en la feminización sindical (ie. una relación de causalidad). 
+
+# Discusión 
+
+A partir de la presentación de resultados y la discusión general sobre las hipótesis propuestas, en el siguiente apartado se retomarán algunos elementos mencionados anteriormente pero que requieren una mayor profundización empírica y teórica 
+
+## La tesis de las *pink collars*
+
+Retomemos la tesis central de este estudio, esto es, la convergencia mundial de la feminización sindical. En términos simples, recordemos que la hipótesis central de la *convergencia* indica que hoy el potencial de sindicalización está puesto en las mujeres, esto debido a que además de aumentar su participación laboral de (ya sea de manera más rápida que los hombres o estos saliendo del mercado laboral), las mujeres se concentran en los sectores de actividad económica que principalmente están en crecimiento desde 1980. 
+
+Ahora bien esta tesis solo ha sido defendida en términos descriptivos o solo mostrando que los coeficientes con mayor tamaño efecto y significancia muestran una relación positiva con la feminización de la tasa de sindicalización. Ahora bien, los modelos de correción de error tienen un gran potencial predictivo cómo es el movimiento temporal de nuestra variable dependiente, y con ello, podemos predecir cuál es el movimiento de aquellos países que incluso aun siguen con una tasa de afiliación sindical masculinizada.
+
+Los siguientes gráficos de nubes nos muestran la relación entre los valores predichos y las variables que muestran un mayor efecto sobre el cambio en la división sexual de la densidad sindical, esto es, la feminización de la participación laboral (Figura W) y la feminización del sector servicios (Figura Z). Una primera imagen de ambas, permite notar claramente que entre 1980 a 2000 es cuando se produce el mayor movimiento de los países  hacia la feminización de la fuerza de trabajo (ie. movimiento positivo en el eje de las abscisas). En el mismo examen, es notable que, a partir de 2000 no solo se da un movimiento favorable en la variación de la feminización (ie. en el eje $y$), sino que esta variación se vuelve cada vez más homogénea en los últimos años. Si bien desde el 2010 en adelante gran parte de los países con su sindicalización feminizada no tienen grandes variaciones año a año, los países que aun no alcanzan la feminización siguen avanzando en ella.
 
 ```{r,echo = F, result ='asis'}
 # En apartado 03-chaptger adjust
@@ -239,6 +252,9 @@ ggplot(aes(x=f_LFPR, y=p, color = region)) +
 ggpubr::ggarrange(g1,g2,g3,g4, common.legend = TRUE, legend="bottom")
 ```
 
+(Figura W) Evolución de valores predichos para la variación de la feminización sindical según niveles de feminización de la participación laboral. Para evidenciar mejor el movimiento de ambas variables se dividieron los gráficos de cohortes temporales cada 1 década y según si el país tenía feminizada o no su sindicalización en ese periodo. Los colores indican la región geográfica. 
+
+Evolución de la feminización de la densidad sindical en países donde el último año la densidad sindical estuvo masculinizada. En color morado están indicados los países que tuvieron un △FUDi favorable a la feminización, mientras que en celeste aquellos que mantienen y profundizan la tendencia a la masculinización.
 
 
 ```{r,echo = F, result ='asis'}
@@ -266,30 +282,23 @@ ggplot(aes(x=f_sector_SER, y=p, color = region)) +
 ggpubr::ggarrange(g1,g2,g3,g4, common.legend = TRUE, legend="bottom")
 ```
 
-# Discusión 
+(Figura W) Evolución de valores predichos para la variación de la feminización sindical según niveles de feminización del sector servicios. Para evidenciar mejor el movimiento de ambas variables se dividieron los gráficos de cohortes temporales cada 1 década y según si el país tenía feminizada o no su sindicalización en ese periodo. Los colores indican la región geográfica. 
 
-A partir de la presentación de resultados y la discusión general sobre las hipótesis propuestas, en el siguiente apartado se retomarán algunos elementos mencionados anteriormente pero que requieren una mayor profundización empírica y teórica 
-
-## La tesis de las *pink collars*
-
-Retomemos la tesis central de este estudio, esto es, la convergencia mundial de la feminización sindical. En términos simples, recordemos que la hipótesis central de la *convergencia* indica que hoy el potencial de sindicalización está puesto en las mujeres, esto debido a que además de aumentar su participación laboral de (ya sea de manera más rápida que los hombres o estos saliendo del mercado laboral), las mujeres se concentran en los sectores de actividad económica que principalmente están en crecimiento desde 1980. 
-
-Ahora bien esta tesis solo ha sido defendida en términos descriptivos o solo mostrando que los coeficientes con mayor tamaño efecto y significancia muestran una relación positiva con la feminización de la tasa de sindicalización. Ahora bien, los modelos de correción de error tienen un gran potencial predictivo cómo es el movimiento temporal de nuestra variable dependiente, y con ello, podemos predecir cuál es el movimiento de aquellos países que incluso aun siguen con una tasa de afiliación sindical masculinizada.
-
-Los siguientes gráficos de nubes nos muestran la relación entre los valores predichos y las variables que muestran un mayor efecto sobre el cambio en la división sexual de la densidad sindical, esto es, la feminización de la participación laboral (Figura W) y la feminización del sector servicios (Figura Z). Una primera imagen de ambas, permite notar claramente que entre 1980 a 2000 es cuando se produce el mayor movimiento de los países  hacia la feminización de la fuerza de trabajo (ie. movimiento positivo en el eje de las abscisas). En el mismo examen, es notable que, a partir de 2000 no solo se da un movimiento favorable en la variación de la feminización (ie. en el eje $y$), sino que esta variación se vuelve cada vez más homogénea en los últimos años. Si bien desde el 2010 en adelante gran parte de los países con su sindicalización feminizada no tienen grandes variaciones año a año, los países que aun no alcanzan la feminización siguen avanzando en ella.
-
-
-Con estos tres puntos indicados, sumado a los test de causalidad, se puede indicar que al menos para los países en estudio, existe evidencia contundente sobre el efecto temporal que tiene la feminización del mercado laboral sobre la feminización de la sindicalización. Esto entrega soporte para decir que si para los especialistas 1980 comenzó la época de la flexibilización, deregulación y feminización del mercado laboral (Standing), esta investigación puede sumar que, estos cambios tuvieron un efecto importante en la feminización sindical, inagurándose en los 2000 la época del sindicalismo de mujeres. 
+Con estos tres puntos indicados, sumado a los test de causalidad, se puede indicar que al menos para los países en estudio, existe evidencia contundente sobre el efecto que tiene en el tiempo la feminización del mercado laboral sobre la feminización de la sindicalización. Esto entrega soporte para decir que, si para los especialistas 1980 comenzó la época de la flexibilización, deregulación y feminización del mercado laboral (Standing), esta investigación puede sumar que, estos cambios tuvieron un efecto importante en la feminización sindical, inagurándose en los 2000 la época del sindicalismo de mujeres. 
 
 
 ## Efectos específicos a nivel nacional
 
-En la discusión de resultados se sugiere abordar los siguientes puntos relevantes: 
+Otro punto importante a explorar tiene que ver con qué variables tienen una mayor incidencia en determinados países. Indagar esto resulta de interés principalmente debido a los resultados que se obtienen particularmente en las variables institucionales, tras la obtención de un coeficiente negativo y estadísticamente significativo. Ahora bien, como indicamos, los coeficientes por si solos no nos permiten sacar conclusiones taxativas y hacen complejo ver cómo podría operar el mecanismo de la feminización sindical en ciertos países de economías más o menos coordinadas. De hecho, tal cómo se hipotetizó luego de la comparación del modelo mundial con el latinoamericano, es probable que estas variables solo sean significativas dependiendo del tipo de sistema de relaciones industriales al que se someta a análisis dichos factores. 
 
-# Ideitas finales
+En primer lugar, es interesante notar que para los predictores cíclicos
 
-- A diferencia de modelos anteriores estima a corto y largo plazo
-- Podría agregar  "cluster" país segun si se ha feminizado y variables relevantes (como para posicionarlos)
+
+## Nueva Zelanda
+
+## Chile
+
+## Coordinados con coef + pero chicos 
 
 * arreglar coeftest
 
@@ -311,12 +320,12 @@ En función de lo discutido anteriormente, se prosigió a analizar
 z <- as.data.frame(model02$coefficients)
 z <- rownames_to_column(z, "variable")
 #ecm_max and ecm_min
-vars <- c("diff. Fem. Desempleo","diff. Productividad laboral","diff. Salarios Mínimos Reales","Lag Fem. ", "Lag Fem. Sector Servicios", "Lag Fem. Incidencia empleo part-time", "Lag Coordinación Salarial", "Lag FUDi")
+vars <- c("diff. Fem. Desempleo","diff. Productividad laboral","diff. Salarios Mínimos Reales","Lag Fem.Participación Laboral ", "Lag Fem. Sector Servicios", "Lag Fem. Incidencia empleo part-time", "Lag Coordinación Salarial", "Lag FUDi")
 
 z <- data.frame(variable = vars, model02 = c("-0.01","-0.00","-0.00","0.03**", "0.07***", "-0.00", "0.001**", "-0.04***"), coefmax = c("0.07**","0.001**", "0.002***", "4.333***", "3.223***","0.09**", "0.025***", "0.031**"), c_max = c("Korea", "Alemania", "Sudáfrica", "Nueva Zelanda", "Chile", "Islandia", "Estados Unidos", "México"), coefmin = c("-0.377**","-0.005**", "-0.0001**", "-1.572**", "-0.526**","-0.111*", "-0.017***", "-0.015***"), c_max = c("Nueva Zelanda", "Estados Unidos", "Chile", "Chile", "Japón", "Sudáfrica", "Japón", "Estados Unidos"))
 knitr::kable(z, row.names = F,  booktabs = T,
              col.names = c("Predictores","Modelo Mundial", "Coeficiente", "País", "Coeficiente", "País")) %>% add_header_above(c(" " = 1," " = 1, "Máximo" = 2, "Mínimo" = 2)) %>%
-            pack_rows("Cíclicas", 1, 3) %>%
+            pack_rows("Cíclicos", 1, 3) %>%
             pack_rows("Estructurales", 4, 6) %>%
             pack_rows("Institucionales", 7, 8) %>%
             kableExtra::kable_styling(latex_options = "hold_position")%>%
@@ -324,6 +333,9 @@ knitr::kable(z, row.names = F,  booktabs = T,
             #kableExtra::column_spec(1, width = "7cm") %>%
   kableExtra::footnote(general = "$^{***}$ p < 0.001; $^{**}$ p < 0.05; $^{*}$ p < 0.1 \n **Nota**: a. Coeficientes a corto (diff) y largo plazo (lag) \nb. Coeficientes provienen de la estimación de Modelos de Correción de Error por país (ver detalles en Apéndice C); \nc. Casos influyentes porpredictor identificados por método Jackknife; \nd. Coeficientes son estadísticamente significativos según test de Wald (test de dos colas)", general_title = "")
 ```
+
+
+- Podría agregar  "cluster" país segun si se ha feminizado y variables relevantes (como para posicionarlos)
 
 # Conclusiones/ Discusiones
 - Retomar Hipotesis/Hallazgos: i. sensibilidad var economicas; ii. fuerza hiótesis pinkcollars
@@ -368,8 +380,6 @@ knitreg(list(model01, coeftest(model01,
 #custom.header = list("A" = 1:2, "B" = 3:4),
 # aggregar valores p
 ```
-
-- Modelo autoregresivo es más robusto que modelo no autoregresivo
 
 
 
