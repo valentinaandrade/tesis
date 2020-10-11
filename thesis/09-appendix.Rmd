@@ -39,4 +39,4 @@ Tabla A.1:  Variables, descripciones y fuentes
 
 [**ISIC**](https://unstats.un.org/unsd/classifications/Family/Detail/27): Clasificación Industrial Estándar Internacional de las Naciones Unidas. En este estudio se hace referencia a la revisión 4 de esta clasificación. 
 
-
+## Apéndice C  {- #apendicec}
