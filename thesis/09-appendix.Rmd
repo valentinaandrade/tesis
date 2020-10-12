@@ -6,7 +6,7 @@ El siguiente Apéndice resume aspectos metodológicos de la investigación
 
 ### Variables {-}
 
-Tabla A.1:  Variables, descripciones y fuentes
+**Tabla A.1**:  Variables, descripciones y fuentes
 
 | Variable    | Descripción|       Fuente|
 |------------:|-----------:|------------:|
@@ -31,33 +31,38 @@ Tabla A.1:  Variables, descripciones y fuentes
 
 ### Acrónimos {-}
 
+[CUT](www.cut.cl): Central Única de Trabajadores de Chile
+
+[FETRACALL](https://fetracall.wordpress.com/): Federación de Trabajadores de Call Cener en Chile.
+
+[FESINTRACAP](https://idwfed.org/en/affiliates/latin-america/chile-federacion-de-sindicatos-de-fesintracap): Federación Nacional de Sindicatos de Trabajadoras de Casa Particular.
+
 [**ICTWSS**](https://www.ictwss.org/):  Base de Datis de Características Insititucionales de los Sindicatos, Coordinación Salarial, Intervención Estatal y Pactos Sociales (*o en inglés, Institutional Characteristics of Trade Unions, Wage Setting, State Intervention and Social Pacts*)
+
+[**ISIC**](https://unstats.un.org/unsd/classifications/Family/Detail/27): Clasificación Industrial Estándar Internacional de las Naciones Unidas. En este estudio se hace referencia a la revisión 4 de esta clasificación.
+
+[**NCW**](https://www.ncwnz.org.nz/): *National Council of Women of Services of New Zealand* o Consejo Nacional de Mujeres de los Servicios de Nueva Zelanda
+
+[NZNO](www.nzno.org.nz): *New Zealand Nurses Organisation*, o en español, Organización de Enfermeras de Nueva Zelanda
+
+[**NZCTU**](https://www.union.org.nz/womens-council/): Consejo de los Sindicatos de Nueva Zelanda, o en inglés, *New Zealand Council of Trade Unions* que esta constituido por una estructura con un "Consejo de Mujeres"
 
 [**OECD**](https://www.oecd.org/sdd/oecdmaineconomicindicatorsmei.htm): Organización para la Cooperación y Desarrollo (*o en inglés, Organisation for Economic Co-operation and Development - OECD*)
 
 [**OIT**](https://www.ilo.org/global/lang--es/index.htm): Organización Internacional del Trabajo (*o en inglés, Internacional Labour Organization -ILO* )
 
-[**ISIC**](https://unstats.un.org/unsd/classifications/Family/Detail/27): Clasificación Industrial Estándar Internacional de las Naciones Unidas. En este estudio se hace referencia a la revisión 4 de esta clasificación.
+[PTWL](https://www.ilo.org/ifpdial/information-resources/national-labour-law-profiles/WCMS_158904/lang--en/index.htm): Ley de Trabajo Parcial en Japón
 
-[WTUL]
+[SFWU](www.sfwu.org):  *Service & Food Workers Union*, o en español, Sindicato de Trabajadores de la Alimentación de Nueva Zelanda
 
-[CTU]
+[**UNAMA**]: Unión Nacional de Manipuladoras de Alimentos de Chile. Otras federación o confederaciones son la Federación Nacional de Manipuladoras de Alimentos (FENAMA) y Federación de Manipuladoras de Alimentos de Chile (FEMACh)
 
-[NCW]: Red de Mujeres de los Servicios
+[**WTUL**](https://www.britannica.com/topic/Womens-Trade-Union-League): *Women's Trade Union League* es una organización de la clase trabajadora que reune a las mujeres sindicalistas. Su raíz está en el WTUL británico, pero también estuvo presente en los Estados Unidos.
 
-[SFWU]: Sindicato de Trabajadores de la Alimentación
-
-[NZNO]: Organización de Enfermeras de Nueva Zelanda
-
-[UNAMA, FENAMA, FEMACh]
-
-[FETRACALL]
-
-[PTWL]: Ley de Trabajo Parcial en Japón
 
 ## Apéndice C  {- #apendicec}
 
-**Tabla 4.** Modelos Panel con Corrección de Error (ECMs) para predecir la sindicalización feminizada en 45 países, 1980-2018, Efectos Fijos [$^{a,b,c}$]
+**Tabla C.1** Modelos Panel con Corrección de Error (ECMs) para predecir la sindicalización feminizada en 45 países, 1980-2018, Efectos Fijos [$^{a,b,c}$]
 
 ```{r model0, results='asis', echo= FALSE, message= FALSE, warning= FALSE}
 vars <- c("diff. Fem. Desempleo","Fem. Participación Laboral", "Fem. Sector Servicios", "Fem. Incidencia empleo part-time", "Coordinación Salarial", "Productividad laboral", "Salarios Mínimos Reales")
@@ -67,7 +72,7 @@ knitreg(list(model0, coeftest(model0,
                              "Durbin-Watson" = c("4.3392***","")))
 ```
 
-**Tabla 5.** Modelos Panel Autoregresivos con Error de Corrección para predecir la sindicalización feminizada en 45 países, 1980-2018, Efectos Fijos [$^{a,b,c}$]
+**Tabla C.2** Modelos Panel Autoregresivos con Error de Corrección para predecir la sindicalización feminizada en 45 países, 1980-2018, Efectos Fijos [$^{a,b,c}$]
 
 ```{r model1, results='asis', echo= FALSE, message= FALSE, warning= FALSE}
 vars <- c("diff. Fem. Desempleo","Fem. Participación Laboral", "Fem. Sector Servicios", "Fem. Incidencia empleo part-time", "Coordinación Salarial", "Productividad laboral", "Salarios Mínimos Reales", "Lag(FUDi)")
@@ -80,7 +85,7 @@ knitreg(list(model01, coeftest(model01,
 ```
 
 
-**Tabla 6.** Test de Causalidad de Granger 
+**Tabla C.3** Test de Causalidad de Granger 
 ```{r granger, echo = F, message = F, warning= F}
 db1 <- db_model %>% group_by(country) %>%  filter(n() >= 8)
 
@@ -119,4 +124,4 @@ ggplot(c, aes(x=f_sector_SER, y=p, color = region)) +
   guides(col = guide_legend(nrow = 2, byrow = T)) + theme(legend.position = "bottom")
 
 ```
-Figura X. Valores predichos de la variación de la feminización sindical según feminización del sector servicios. Los colores indican cada una de las divisiones regionales utilizadas por el Banco Mundial
+Figura C.1 Valores predichos de la variación de la feminización sindical según feminización del sector servicios. Los colores indican cada una de las divisiones regionales utilizadas por el Banco Mundial

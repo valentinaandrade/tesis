@@ -1,7 +1,7 @@
 --- 
-title: "La feminización del conflicto laboral"
-author: "Valentina Andrade"
-date: "4 de septiembre, 2020"
+title: "<center>La feminización del conflicto laboral</center>"
+author: "<center>Valentina Andrade de la Horra </center>"
+date: ""
 output:
   html_document:
     df_print: paged
@@ -12,21 +12,19 @@ bibliography:
 - tesis.bib
 - packages.bib
 site: bookdown::bookdown_site
-subtitle: Un análisis temporal y comparado de la densidad sindical mundial
+subtitle: "<center>Un análisis temporal y comparado de la densidad sindical mundial</center>"
 biblio-style: apalike
 ---
-
+<center>
 # Presentación {-}
 
-La siguiente investigación se ha desarrollado en el marco de la tesis para optar al grado de Socióloga de la Universidad de Chile. 
+La siguiente investigación se ha desarrollado en el marco de la tesis para optar al grado de Socióloga de la Universidad de Chile. El profesor guía a cargo es el Dr. Omar Aguilar Novoa, y cómo co-tutor el Dr. Pablo Pérez Ahumada.
 
+La tesis  ha sido desarrollado bajo el proyecto FONDECYT N°11190229 *"Determinantes institucionales y políticos del conflicto entre empresarios y trabajadores: los casos de Argentina y Chile en perspectiva comparada"*
 
-Profesor Guía: Omar Aguilar Novoa
+[Estado]
 
-Co-tutor: Pablo Pérez Ahumada
+- En evaluación. Hasta ahora se ha evaluado hasta el capítulo 3 y enviado borrador del capítulo 4 y 5. 
 
-
-[En desarrollo]
-
-
-*Última actualización de datos: `r format(Sys.Date(), '%d %B %Y')`*
+- *Última actualización de datos: `r format(Sys.Date(), '%d %B %Y')`*
+</center>
