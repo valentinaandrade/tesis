@@ -37,6 +37,86 @@ Tabla A.1:  Variables, descripciones y fuentes
 
 [**OIT**](https://www.ilo.org/global/lang--es/index.htm): Organización Internacional del Trabajo (*o en inglés, Internacional Labour Organization -ILO* )
 
-[**ISIC**](https://unstats.un.org/unsd/classifications/Family/Detail/27): Clasificación Industrial Estándar Internacional de las Naciones Unidas. En este estudio se hace referencia a la revisión 4 de esta clasificación. 
+[**ISIC**](https://unstats.un.org/unsd/classifications/Family/Detail/27): Clasificación Industrial Estándar Internacional de las Naciones Unidas. En este estudio se hace referencia a la revisión 4 de esta clasificación.
+
+[WTUL]
+
+[CTU]
+
+[NCW]: Red de Mujeres de los Servicios
+
+[SFWU]: Sindicato de Trabajadores de la Alimentación
+
+[NZNO]: Organización de Enfermeras de Nueva Zelanda
+
+[UNAMA, FENAMA, FEMACh]
+
+[FETRACALL]
+
+[PTWL]: Ley de Trabajo Parcial en Japón
 
 ## Apéndice C  {- #apendicec}
+
+**Tabla 4.** Modelos Panel con Corrección de Error (ECMs) para predecir la sindicalización feminizada en 45 países, 1980-2018, Efectos Fijos [$^{a,b,c}$]
+
+```{r model0, results='asis', echo= FALSE, message= FALSE, warning= FALSE}
+vars <- c("diff. Fem. Desempleo","Fem. Participación Laboral", "Fem. Sector Servicios", "Fem. Incidencia empleo part-time", "Coordinación Salarial", "Productividad laboral", "Salarios Mínimos Reales")
+knitreg(list(model0, coeftest(model0,
+                                vcov=function(x)vcovBK(x, type="HC1", cluster="time"))),custom.model.names = c('Modelo 0', 'Model 0 (b)'), custom.coef.names = vars, stars = c(0.001, 0.01, 0.05, 0.1),  custom.note = "$^{***}$ p < 0.001; $^{**}$ p < 0.01; $^{*}$ p < 0.05 ; $^{.}$ p < 0.1 \n **Nota**: a. Variables incluidas en el modelo pero no son mostradas son efectos fijos por países y controles estadísticos como densidad sindical nacional y cobertura de la negociación colectiva; \nb. Modelo con errores corregidos específicamente para panel desbalanceado, por método de Beck y Katz (1995) (Panel Cluster Error Correction); \nc. Coeficientes son estadísticamente significativos según test de Wald (test de dos colas)", caption = "",caption.above = T,
+        custom.gof.rows=list("Dickey-Fuller" = c("-9.8611**",""),
+                             "Durbin-Watson" = c("4.3392***","")))
+```
+
+**Tabla 5.** Modelos Panel Autoregresivos con Error de Corrección para predecir la sindicalización feminizada en 45 países, 1980-2018, Efectos Fijos [$^{a,b,c}$]
+
+```{r model1, results='asis', echo= FALSE, message= FALSE, warning= FALSE}
+vars <- c("diff. Fem. Desempleo","Fem. Participación Laboral", "Fem. Sector Servicios", "Fem. Incidencia empleo part-time", "Coordinación Salarial", "Productividad laboral", "Salarios Mínimos Reales", "Lag(FUDi)")
+knitreg(list(model01, coeftest(model01,
+                                vcov=function(x)vcovBK(x, type="HC1", cluster="time"))),custom.model.names = c('Modelo 1', 'Model 1 (b)'), custom.coef.names = vars, stars = c(0.001, 0.01, 0.05, 0.1), custom.note = "$^{***}$ p < 0.001; $^{**}$ p < 0.01; $^{*}$ p < 0.05 ; $^{.}$ p < 0.1 \n **Nota**: a. Variables incluidas en el modelo pero no son mostradas son efectos fijos por países y controles estadísticos como densidad sindical nacional y cobertura de la negociación colectiva;\n b. Modelo autoregresivo de primer orden con errores corregidos específicamente para panel desbalanceado, por método de Beck y Katz (1995) (Panel Cluster Error Correction); \nc. Coeficientes son estadísticamente significativos según test de Wald (test de dos colas)", caption = "",caption.above = T,
+        custom.gof.rows=list("Dickey-Fuller" = c("-7.2691**",""),
+                             "Durbin-Watson" = c("0.31426","")))
+#custom.header = list("A" = 1:2, "B" = 3:4),
+# aggregar valores p
+```
+
+
+**Tabla 6.** Test de Causalidad de Granger 
+```{r granger, echo = F, message = F, warning= F}
+db1 <- db_model %>% group_by(country) %>%  filter(n() >= 8)
+
+# Granger with panel dat
+f_UR<- pgrangertest(fudi ~ f_UR, order = 1, index = c("country", "year"),  data = db1)
+T_GDPHRS_V<- pgrangertest(fudi ~ T_GDPHRS_V, order = 1, index = c("country", "year"),  data = db1)
+#rmw<- pgrangertest(fudi ~ rmw, order = 1, index = c("country", "year"),  data = db1)
+f_LFPR<- pgrangertest(fudi ~ f_LFPR, order = 1, index = c("country", "year"),  data = db1)
+f_sector_SER<- pgrangertest(fudi ~ f_sector_SER, order = 1, index = c("country", "year"),  data = db1)
+f_SH_PT<- pgrangertest(fudi ~ f_SH_PT, order = 1, index = c("country", "year"),  data = db1)
+#Coord<- pgrangertest( Coord~ fudi, order = 1, index = c("country", "year"),  data = db1)
+AdjCov<- pgrangertest(fudi ~ AdjCov, order = 1, index = c("country", "year"),  data = db1)
+ud<- pgrangertest(fudi ~ ud, order = 1, index = c("country", "year"),  data = db1)
+```
+
+
+|  Predictores|  Granger test - Causalidad|
+|--:|--:|
+|  Feminización Desempleo|  `r format(f_UR$statistic)` $^{***}$|
+|  Productividad laboral|  `r format(T_GDPHRS_V$statistic)`$^{*}$|
+|  Salarios Mínimos Reales|  Multicolineal|
+|  Feminización |  `r format(f_LFPR$statistic)`$^{***}$|
+|  Feminización Sector Servicios|  `r format(f_sector_SER$statistic)`$^{**}$|
+|  Feminización Empleo Parcial|  `r format(f_SH_PT$statistic)`$^{.}$|
+|  Coordinación Salarial|  Multicolineal|
+|  Cobertura Negociación Colectiva|  `r format(AdjCov$statistic)`$^{***}$|
+|  Densidad sindical|  `r format(ud$statistic)`$^{***}$|
+
+$^{***}$ p < 0.001; $^{**}$ p < 0.01; $^{*}$ p < 0.05 ; $^{.}$ p < 0.1
+
+
+```{r, echo = F}
+ggplot(c, aes(x=f_sector_SER, y=p, color = region)) +
+   geom_point() +
+   facet_wrap(.~ region) + ggsci::scale_color_futurama() + labs(x = "", y = "", col = "") +
+  guides(col = guide_legend(nrow = 2, byrow = T)) + theme(legend.position = "bottom")
+
+```
+Figura X. Valores predichos de la variación de la feminización sindical según feminización del sector servicios. Los colores indican cada una de las divisiones regionales utilizadas por el Banco Mundial

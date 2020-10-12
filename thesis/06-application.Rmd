@@ -148,7 +148,7 @@ La feminización del sector servicios con mayor tamaño de efecto y significanci
 
 Por último, si bien no se puede rechazar la hipótesis nula sobre el efecto de la feminización de empleo parcial sobre $FUDi$, para el modelo latinoamericano encontramos evidencia favorable sobre la relación positiva entre la feminización del empleo parcial y la feminización del sector servicios, controlando por el resto de las variables. Es probable esperar resultados no concluyentes para Europa (pudiendo influenciar el modelo general) debido a los diferentes modelos de empleo *part-time* que se instalaron en los países centrales [@rubery1998, pp. 140–142]. Como se indicó en el apartado descriptivo, durante los 90 Alemania y Francia son dos casos de implementación de empleos parciales, sobre todo para mujeres, como un modo de reducir costos de producción; mientras que en Inglaterra y Suecia se produce este cambio a raíz de la expansión del sector de servicios sociales, salud y educación [@treas2010].
 
-En consecuencia, si se mira en general los resultados para los determinanes estructurales, es probable encontrar evidencia a favor de la hipótesis planteada. La lógica que subyace a las tres variables se desprende de que, a partir de 1980, la fuerza de trabajo femenina ha aumentado notablemente de la mano con la expansión del sector servicios, cambiando significativamente la composición de género de sectores económicos. La literatura planteó que con la incorporación de mujeres en la fuerza de trabajo y sindicatos, se produce un cambio en la estructura sindical que se pone en tensión con la estructura tradicional sindical dominada por los hombres, y por ello podría ocurrir también un ‘escape’ de los miembros masculinos [@haile2017]. En resumidas palabras, el corolario se cumple si crecen lo suficientemente las mujeres en la fuerza de trabajo, de tal modo de que la composición se feminice. Tal como se vió en la Figura \@ref(fig:fig8) y \@ref(fig:fig8-2), los sectores con mayor potencial se feminización son el sector servicios y el empleo *part-time*, dos sectores que con su feminización solo mostraron evidencia a favor de nuestras hipótesis en el caso del sector servicios (tal como indico @artus2015) y solo para América Latina en el empleo parcial.
+En consecuencia, si se mira en general los resultados para los determinanes estructurales, es probable encontrar evidencia a favor de la hipótesis planteada. La lógica que subyace a las tres variables se desprende de que, a partir de 1980, la fuerza de trabajo femenina ha aumentado notablemente de la mano con la expansión del sector servicios, cambiando significativamente la composición de género de sectores económicos. La literatura planteó que con la incorporación de mujeres en la fuerza de trabajo y sindicatos, se produce un cambio en la estructura sindical que se pone en tensión con la estructura tradicional sindical dominada por los hombres, y por ello podría ocurrir también un ‘escape’ de los miembros masculinos [@haile2017]. En resumidas palabras, el corolario se cumple si crecen lo suficientemente las mujeres en la fuerza de trabajo, de tal modo de que la composición se feminice. Tal como se vió en la Figura \@ref(fig:fig8) y \@ref(fig:fig8-2), los sectores con mayor potencial se feminización son el sector servicios y el empleo *part-time*, dos sectores que con su feminización solo mostraron evidencia a favor de nuestras hipótesis en el caso del sector servicios (tal como indicó @artus2015) y solo para América Latina en el empleo parcial.
 
 #### Los determinantes institucionales: la coordinación salarial
 
@@ -174,4 +174,138 @@ ggcoef(model02, exclude_intercept = TRUE,
 
 (ref:fig12) Tamaño efecto y significancia de coeficientes del modelo mundial para estimar la feminización de la sindicalización. Se indica el $R^2_{ajustado}$ a un costado derecho. 
 
-En síntesis, los resultados muestran evidencia a favor de dos nociones generales que se plantearon en [¿Más mujeres en los sindicatos?](#intro), esto es, que aquellos factores que explican la feminización sindical pueden ser los que tradicionalmente han ocupado los estudios laborales, es decir, determinantes económicos-laborales propiamente tal. Pero, a su vez, esto no solo significa observar en general este tipo de factores (eg. el aumento del empleo), sino que testear estas determinantes económico-laborales en su "genderización" (eg. feminización del empleo). Y la evidencia presentada en los modelos es robusta a este respecto: en su mayoría, las variables de feminización del mercado laboral muestran resultados favorables a nuestras hipótesis (Figura coef), e inclusive, nos permiten hablar de que estas realmente explican los cambios en la feminización sindical (ie. una relación de causalidad). 
+En síntesis, los resultados muestran evidencia a favor de dos nociones generales que se plantearon en [¿Más mujeres en los sindicatos?](#intro), esto es, que aquellos factores que explican la feminización sindical pueden ser los que tradicionalmente han ocupado los estudios laborales, es decir, determinantes económicos-laborales propiamente tal. Pero, a su vez, esto no solo significa observar en general este tipo de factores (eg. el aumento del empleo), sino que testear estas determinantes económico-laborales en su "genderización" (eg. feminización del empleo). Y la evidencia presentada en los modelos es robusta a este respecto: en su mayoría, las variables de feminización del mercado laboral muestran resultados favorables a nuestras hipótesis (Figura \@ref(fig:fig12)), e inclusive, nos permiten hablar de que estas realmente explican los cambios en la feminización sindical (ie. una relación de causalidad). 
+
+# Discusión 
+
+A partir de la presentación de resultados y la discusión general sobre las hipótesis propuestas, en el siguiente apartado se retomarán algunos elementos mencionados anteriormente pero que requieren una mayor profundización empírica y teórica 
+
+## La tesis de las *pink collars*
+
+Retomemos la tesis central de este estudio, esto es, la convergencia mundial de la feminización sindical. En términos simples, recordemos que la hipótesis central de la *convergencia* indica que hoy el potencial de sindicalización está puesto en las mujeres, esto debido a que además de aumentar su participación laboral de (ya sea de manera más rápida que los hombres o estos saliendo del mercado laboral), las mujeres se concentran en los sectores de actividad económica que principalmente están en crecimiento desde 1980. 
+
+Ahora bien esta tesis solo ha sido defendida en términos descriptivos o solo mostrando que los coeficientes con mayor tamaño efecto y significancia muestran una relación positiva con la feminización de la tasa de sindicalización. Ahora bien, los modelos de correción de error tienen un gran potencial predictivo cómo es el movimiento temporal de nuestra variable dependiente, y con ello, podemos predecir cuál es el movimiento de aquellos países que incluso aun siguen con una tasa de afiliación sindical masculinizada.
+
+Los siguientes gráficos de nubes nos muestran la relación entre los valores predichos y las variables que muestran un mayor efecto sobre el cambio en la división sexual de la densidad sindical, esto es, la feminización de la participación laboral (Figura \@ref(fig:fig13)) y la feminización del sector servicios (Figura \@ref(fig:fig14)). Una primera imagen de ambas, permite notar claramente que entre 1980 a 2000 es cuando se produce el mayor movimiento de los países  hacia la feminización de la fuerza de trabajo (ie. movimiento positivo en el eje de las abscisas). En el mismo examen, es notable que, a partir de 2000 no solo se da un movimiento favorable en la variación de la feminización (ie. en el eje $y$), sino que esta variación se vuelve cada vez más homogénea en los últimos años. Si bien desde el 2010 en adelante gran parte de los países con su sindicalización feminizada no tienen grandes variaciones año a año, los países que aun no alcanzan la feminización siguen avanzando en ella.
+
+```{r fig13,results='asis', echo = F,  fig.cap="(ref:fig13)"}
+# En apartado 03-chaptger adjust
+c <- c %>% mutate(period = ifelse(year >=1970& year <1990, "1980-1990",
+                             ifelse(year >=1990& year <2000, "1990-2000",
+                                    ifelse(year >=2000& year <2010, "2000-2010","2010-2018"))))
+
+g1 <- c %>% filter(year >=1970& year <1990) %>% 
+ggplot(aes(x=f_LFPR, y=p, color = region)) +
+   geom_point() +
+   facet_wrap(. ~ d_fudi) + ggsci::scale_color_futurama() + labs(x = "", y = "", col = "", title = "1980-1990 ") + theme(legend.position = "bottom")
+
+g2 <- c %>% filter(year >=1990& year <2000) %>% 
+ggplot(aes(x=f_LFPR, y=p, color = region)) +
+   geom_point() +
+   facet_wrap(. ~ d_fudi) + ggsci::scale_color_futurama() + labs(x = "", y = "", col = "", title = "1990-2000 ") + theme(legend.position = "bottom")
+
+g3 <- c %>% filter(year >=2000& year <2010) %>% 
+ggplot(aes(x=f_LFPR, y=p, color = region)) +
+   geom_point() +
+   facet_wrap(. ~ d_fudi) + ggsci::scale_color_futurama() + labs(x = "", y = "",  col = "", title = "2000-2010") + theme(legend.position = "bottom")
+
+g4 <- c %>% filter(year >=2010) %>% 
+ggplot(aes(x=f_LFPR, y=p, color = region)) +
+   geom_point() +
+   facet_wrap(. ~ d_fudi) + ggsci::scale_color_futurama() + labs(x = "", y = "", col = "", title = "2010-2018") + theme(legend.position = "bottom")
+
+ggpubr::ggarrange(g1,g2,g3,g4, common.legend = TRUE, legend="bottom")
+```
+
+(ref:fig13) Evolución de valores predichos para la variación de la feminización sindical según niveles de feminización de la participación laboral. Para evidenciar mejor el movimiento de ambas variables se dividieron los gráficos de cohortes temporales cada 1 década y según si el país tenía feminizada o no su sindicalización en ese periodo. Los colores indican la región geográfica. 
+
+
+```{r fig14,results='asis', echo = F,  fig.cap="(ref:fig14)"}
+# En apartado 03-chaptger adjust
+g1 <- c %>% filter(year >=1970& year <1990) %>% 
+ggplot(aes(x=f_sector_SER, y=p, color = region)) +
+   geom_point() +
+   facet_wrap(. ~ d_fudi) + ggsci::scale_color_futurama() + labs(x = "", y = "", col = "", title = "1980-1990 ") + theme(legend.position = "bottom")
+
+g2 <- c %>% filter(year >=1990& year <2000) %>% 
+ggplot(aes(x=f_sector_SER, y=p, color = region)) +
+   geom_point() +
+   facet_wrap(. ~ d_fudi) + ggsci::scale_color_futurama() + labs(x = "", y = "", col = "", title = "1990-2000 ") + theme(legend.position = "bottom")
+
+g3 <- c %>% filter(year >=2000& year <=2010) %>% 
+ggplot(aes(x=f_sector_SER, y=p, color = region)) +
+   geom_point() +
+   facet_wrap(. ~ d_fudi) + ggsci::scale_color_futurama() + labs(x = "", y = "",  col = "", title = "2000-2010") + theme(legend.position = "bottom")
+
+g4 <- c %>% filter(year >=2010) %>% 
+ggplot(aes(x=f_sector_SER, y=p, color = region)) +
+   geom_point() +
+   facet_wrap(. ~ d_fudi) + ggsci::scale_color_futurama() + labs(x = "", y = "", col = "", title = "2010-2018") + theme(legend.position = "bottom")
+
+ggpubr::ggarrange(g1,g2,g3,g4, common.legend = TRUE, legend="bottom")
+```
+
+(ref:fig14) Evolución de valores predichos para la variación de la feminización sindical según niveles de feminización del sector servicios. Para evidenciar mejor el movimiento de ambas variables se dividieron los gráficos de cohortes temporales cada 1 década y según si el país tenía feminizada o no su sindicalización en ese periodo. Los colores indican la región geográfica. 
+
+Con estos tres puntos indicados, sumado a los test de causalidad, se puede indicar que al menos para los países en estudio, existe evidencia contundente sobre el efecto que tiene en el tiempo la feminización del mercado laboral sobre la feminización de la sindicalización. Esto entrega soporte para decir que, si para los especialistas 1980 comenzó la época de la flexibilización, deregulación y feminización del mercado laboral [@standing1989], esta investigación puede sumar que, estos cambios tuvieron un efecto importante en la feminización sindical, inagurándose en los 2000 la época del sindicalismo de mujeres. 
+
+
+## Efectos específicos a nivel nacional
+
+Otro punto importante a explorar tiene que ver con qué variables tienen una mayor incidencia en determinados países. Indagar esto resulta de interés principalmente debido a los resultados que se obtienen particularmente en las variables institucionales, tras la obtención de un coeficiente negativo y estadísticamente significativo. Ahora bien, como indicamos, los coeficientes por si solos no nos permiten sacar conclusiones taxativas y hacen complejo ver cómo podría operar el mecanismo de la feminización sindical en ciertos países de economías más o menos coordinadas. De hecho, tal cómo se hipotetizó luego de la comparación del modelo mundial con el latinoamericano, es probable que estas variables solo sean significativas dependiendo del tipo de sistema de relaciones industriales al que se someta a análisis dichos factores. 
+
+
+**Tabla 3.** Modelo Panel Autoregresivo con Correción de Error (ECMs) para predecir la feminización de la sindicalización a nivel mundial y coeficientes máximos y mínimos para países en estudio
+```{r, echo = F, results= 'asis'}
+z <- as.data.frame(model02$coefficients)
+z <- rownames_to_column(z, "variable")
+#ecm_max and ecm_min
+vars <- c("diff. Fem. Desempleo","diff. Productividad laboral","diff. Salarios Mínimos Reales","Lag Fem.Participación Laboral ", "Lag Fem. Sector Servicios", "Lag Fem. Incidencia empleo part-time", "Lag Coordinación Salarial", "Lag FUDi")
+
+z <- data.frame(variable = vars, model02 = c("-0.01","-0.00","-0.00","0.03**", "0.07***", "-0.00", "0.001**", "-0.04***"), coefmax = c("0.07**","0.001**", "0.002***", "4.333***", "3.223***","0.09**", "0.025***", "0.031**"), c_max = c("Korea", "Alemania", "Sudáfrica", "Nueva Zelanda", "Chile", "Islandia", "Estados Unidos", "México"), coefmin = c("-0.377**","-0.005**", "-0.0001**", "-1.572**", "-0.526**","-0.111*", "-0.017***", "-0.015***"), c_max = c("Nueva Zelanda", "Estados Unidos", "Chile", "Chile", "Japón", "Sudáfrica", "Japón", "Estados Unidos"))
+knitr::kable(z, row.names = F,  booktabs = T,
+             col.names = c("Predictores","Modelo Mundial", "Coeficiente", "País", "Coeficiente", "País")) %>% add_header_above(c(" " = 1," " = 1, "Máximo" = 2, "Mínimo" = 2)) %>%
+            pack_rows("Cíclicos", 1, 3) %>%
+            pack_rows("Estructurales", 4, 6) %>%
+            pack_rows("Institucionales", 7, 8) %>%
+            kableExtra::kable_styling(latex_options = "hold_position")%>%
+            kableExtra::kable_styling(full_width = T)%>%
+            #kableExtra::column_spec(1, width = "7cm") %>%
+  kableExtra::footnote(general = "$^{***}$ p < 0.001; $^{**}$ p < 0.05; $^{*}$ p < 0.1 \n **Nota**: a. Coeficientes a corto (diff) y largo plazo (lag) \nb. Coeficientes provienen de la estimación de Modelos de Correción de Error por país (ver detalles en Apéndice C); \nc. Casos influyentes porpredictor identificados por método Jackknife; \nd. Coeficientes son estadísticamente significativos según test de Wald (test de dos colas)", general_title = "")
+```
+
+
+En primer lugar, es interesante notar que para los predictores cíclicos, los países que reportan tener coeficientes positivos son aquellos países que en la actualidad tienen una afiliación sindical aun masculinizada (Figura \@ref(fig:fig 11)) y que de hecho, no son los países que muestran una tendencia marcada hacia la feminización; mientras que los países que tienen los coeficientes negativos en los determinantes cíclicos, son precisamente aquellos que tienen una sindicalización feminizada en la actualidad. Lo que sugiere esto es que el peso de estos predictores en la variación de la feminización sindical es muy bajo, y con ello, su incidencia no solo no es percibible a nivel mundial (coeficientes no significativos), sino que ya sea positivo o negativo su efecto no son relevantes incluso para definir las tendencias a nivel nacional.
+
+De manera similar ocurre con la coordinación salarial. Los países que muestran los coeficientes con mayor y menor incidencia no solo no se diferencian en torno a si su sindicalización se feminizó, sino que también - y más importante - ambos son naciones que han sido catalogadas como economías libre de mercado. En consecuencia, la variable de coordinación salarial más que esclarecer qué ocurre en cierto grupo de países que no centralizan sus decisiones a partir del diálogo social entre sindicatos, empresarios y Estado, más bien hace difícil establecer una relación causal entre este factor y la feminización sindical. 
+
+Las variables que sí son definitorias para entender la tendencia global son las estructurales. Como se puede notar, lo que tienen en común aquellos países que indican que el $FUDi$ crecerá en la medida en que se feminice el mercado laboral, es que precisamente es en estos países donde la sindicalización ya se ha feminizado (ie. Nueva Zelanda, Chile e Islandia). Mientras que la feminización del sector servicios y del empleo parcial tienen un efecto negativo sobre Japón y Sudáfrica, dos países que tienen hasta hoy su sindicalización masculinizada. Pasaremos a comentar brevemente algunos casos de estos.
+
+### El caso de Chile y Nueva Zelanda
+
+Chile y Nueva Zelanda son dos casos interesantes de comentar, a raíz de los resultados obtenidos en la *Tabla 3*. Ambos países son ejemplo de cómo, a pesar del efecto de los cíclos económicos, la composición de la fuerza de trabajo tiene el peso más importante en la división sexual de la sindicalización, y sobre todo pues tanto Nueva Zelanda como Chile muestran ser países con una afiliación sindical que de manera consistente en el tiempo se ha feminizado. 
+
+En términos sustantivos estos países - al igual que otros que tienen un $FUDi$ mayor a 1 - comparten ser países neoliberales, que producto de la liberalización y reestructuración, desde 1980 muestran un fuerte crecimiento del sector de servicios del comercio, sociales y finanzas, sectores servicios asociados a actividades que han sido vinculadas a "ocupaciones de mujeres" [@tejani2016]. Por un lado, actualmente en América Latina, el país que sigue mostrando un crecimiento en nivel y rapidez es Chile [@tejani2016, pp.36]; por otro, Nueva Zelanda muestra una de las tasas más altas de feminización de la fuerza de trabajo, que a diferencia de los últimos 30 años, este crecimiento se debe posiblemente al aumento del sector de salud y servicios sociales [@nzstats2018]. 
+
+Como se indicó en la $H_2$, en la medida en que crezcan más estos sectores y se feminice más la fuerza de trabajo, se producirán estructuras sindicales femeninas que transforman las estructuras sindicales atrayendo a mujeres y produciendo escape de hombres. Investigaciones recientes en Nueva Zelanda y el Reino Unido apoyan esta idea, a partir del estudio que tiene el efecto de las *Women Structures* (ie. estructuras sindicales feminizadas) sobre la revitalización sindical. @nolan2003 indican que estas estructuras florecen desde 1980, a la luz de la feminización de la fuerza de trabajo, época donde emergen también las organizaciones centrales de trabajadoras de mujeres (eg, CTU en 1987 en Nueva Zelanda, aunque años antes se inagura WTUL en Estados Unidos e Inglaterra) pero que el mayor puntapié de la feminización sindical ocurre cuando estas estructuras se transforman casi en organizaciones separatistas (incluso algunas llegando a un 95% de concentración femenina) [@boyd1997].
+
+En esa línea, @parker2010 indican que las *Women Structures* (WS) crecen principalmente en sectores dominados por las mujeres, por ejemplo, el sector público y servicios. Estas estructuras provocaron un acercamiento de las mujeres debido a que trabajan los intereses de ellas en el mundo sindical. Pero, como hipotetizamos al inicio, estas no son cosas "puramente de género". En palabras de una dirigenta sindical de Nueva Zelanda "trabajar en temas importantes para las mujeres implica trabajar en problemas que son importantes para todo los miembros de la sociedad" (pp.488).
+
+Este punto podría apoyar fuertemente la idea de que la feminización sindical podría ser un vehículo para reactivar el mundo sindical, precisamente pues las mujeres son la nueva fuerza de trabajo y también son la nueva fuerza sindical. Ahora bien, no solo en Nueva Zelanda destacan estructuras como la Red de Mujeres de los Servicios (NCW), Sindicato de Trabajadores de la Alimentación (SFWU) y la Organización de Enfermeras de Nueva Zelanda (NZNO), sino que también en Chile han destacado las estructuras sindicales feminizadas y masivas: organizaciones de manipuladoras de alimentos (UNAMA, FENAMA, FEMACh), trabajadoras de call center (FETRACALL), confederaciones bancarias y del retail.  
+
+Sin embargo, a diferencia de Nueva Zelanda donde se indica que las mujeres tempranamente ganaron buena representación y avances en la igualdad, en el país chileno la feminización sindical solo se tornó una realidad en los últimos 3 años, y solo con los cambios introducidos en la Reforma Laboral de 2017, se incorporan políticas de igualdad relativas a la representación de las mujeres en las negociaciones colectivas. Ahora bien, es posible que el crecimiento de un sector servicios feminizados (sociales, comercio y financieros) haya tenido un efecto "retardado" en la feminización sindical debido a la erosión general del movimiento de los trabajadores producto de la persecusión a los trabajadores y sus organizaciones durante la dictadura militar (1973-1989). De hecho, hechos que apoyan esta hipótesis se debe a que pese a las trabas impuestas a la acción sindical, las mujeres sindicalistas organizaron una de las primeras oposiciones durante la dictadura (8 de marzo de 1978, organizada por el Sindicato de Trabajadoras de Casas Particulares y los departamentos femeninos de distintas Federaciones de Trabajadores) y se organizaron fuertemente desde sectores feminizados como el sector comercio y financiero [@frias1989;@frias2008;@diaz2004;@mauro2004]
+
+
+### La permanencia de los sectores tradicionales: el caso japonés
+
+¿Qué pasa con Japón que refutaría esta hipótesis? El país asiático muestra una relación fuerte y negativa de la feminización del sector servicios y la feminización sindical. Junto a ello, es uno de los 20 países que muestra densidades sindicales masculinizadas, aunque como comentaremos, se predice que con las últimas tendencias eso podría empezar a cambiar. 
+
+Primero, se debe puntualizar que Japón no solo es conocido por la introducción de sistemas de producción como el *toyotismo*, sino también por implementar un sistema laboral de contratación vitalicia. Esto implica que se promueve que los trabajadores se inicien y se jubilen en la misma empresa, pudiéndo cambiar de ocupación dentro de la firma pero no saliéndo de esta [@beltan1995]. Esto no solo ha implicado estructuras laborales profundamente tradicionales y basadas en la antigüedad, sino que también masculinas por los límites que ello impone a la incorporación de las mujeres en el mercado laboral (eg. por razones como la maternidad y los cuidados)[@gerteis2009]. Como hemos señalado estas formas laborales permean a las estructuras sindicales. 
+
+Ahora bien, esto no explica una razón posible de porqué la feminización del sector servicios produciría un declive en la organización sindical de mujeres y un aumento en la de los hombres. Sin el antecedente de los sistemas vitalicios tan fuertes no se podría entender dos puntos que explican este respecto: (1) recién a inicio de la decada delos 90 se empieza flexibilizar el empleo. El año 1993 se hace la legal el empleo *part-time* (Ley de Trabajo Parcial - PTWL), y si bien al año 2010 un 90% de quienes participan en este empleo son mujeres, esta fuerza de trabajo representa solo un 14,7% [@mphpt2010]; (2) desde esta introducción meramente formal y legal de la flexibilización tienen que pasar 20 años para que el sistema laboral se comience a flexibilizar realmente en Japón.
+
+Aunque a la fecha la industria del automóvil en Japón sigue siendo una de las que representa parte importante de la producción nacional, el segundo proceso indicado, el de "real" de reestructuración, implicó el crecimiento del sector servicios en Japón. Sin embargo, a diferencia de los países que nombramos anteriormente, este sector servicios se caracteriza por realizar actividades u ocupaciones masculinizadas tales como las referentes a tecnología e información. Muestra de sus implicancias en el sindicalismo son en que las organizaciones sindicales más fuertes en Japón en ese momento son organizaciónes tales como el Sindicato de trabajadores del sector electrónico y de la información, que a su vez son dominadas por hombres.
+
+Si bien la legislación japonesa expresa que existe libertad sindical a nivel empresa (sindicatos *Uchino Kumiai*) [@beltan1995], en la actualidad, el movimiento de trabajadores es dominado por grandes sindicatos (Confederación *RENGO*) y principalmente provenientes de estos sectores (tecnologías, automóviles y telecomunicaciones). Como indica la literatura especializada en Japón, pese a esta "flexibilización" estas organizaciones sindicales siguen salvaguardando los intereses de los trabajadores vitalicios y a tiempo completo, aportando una escasa ayuda a las trabajadoras temporales y parciales.
+
+Dicho esto, si bien las mujeres comienzan a tener una participación importante en el empleo flexible a raíz del empleo parcial, en Japón el sector servicios está aun fuertemente masculinizado. Siguiendo la hipótesis de @haile2017 son las estructuras masculinas o femeninas ("más separatistas" como hemos planteado en el caso chileno y neozelandés más arriba) las que promueven una masculinización o feminización de la sindicalización. En consecuencia, en el periodo actual en Japón, donde recién y lentamente se está empezando a diversificar en género la fuerza de trabajo (y gracias al empleo parcial y no al sector servicios), es probable esperar más bien un escape de las mujeres a las estructuras sindicales aún dominadas por hombres. La vericidad de esta hipótesis podría ser probada a partir de estudios recientes que muestran que las estructuras sindicales "*womens-only*" en Japón han tenido un efecto positivo en la afiliación de mujeres no sindicalizadas [@broadbent2005; @broadbent2007]. 
