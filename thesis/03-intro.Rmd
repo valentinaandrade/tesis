@@ -1,4 +1,4 @@
-# ¿Más mujeres en los sindicatos? {#intro}
+# Introducción. ¿Más mujeres en los sindicatos? {-#intro}
 
 ```{r set up, include = F}
 #1.1 Manipulacion general
@@ -19,7 +19,7 @@ load(file = "../output/data/db-proc.RData")
 ```
 
 
-## El problema sobre la sindicalización de mujeres
+## El problema sobre la sindicalización de mujeres {-}
 
   Trabajadoras del aseo, teleoperadoras de centros de llamado, trabajadoras de hospitales,  maestras, empleadas bancarias, vendedoras, cajeras, cocineras, trabajadoras domésticas. Hoy, todas ellas son fuerza de trabajo de los servicios. Antes, probablemente hijas y nietas de lavanderas, obreras textiles o dueñas de casa. El evidente desplazamiento hacia la tercerización y feminización de la fuerza de trabajo deja abierta la pregunta a si estos cambios tuvieron un correlato en el conflicto laboral y en la formación de la clase trabajadora. ¿Es posible pensar que hoy hay más mujeres en los sindicatos que en décadas anteriores? 
 
@@ -136,28 +136,33 @@ leaflet(map) %>%
 
   El modo por el cual se aborda la tesis de la feminización de la sindicalización implica una perspectiva temporal y comparada, esto es, un análisis de series de tiempo entre países. Sobre el primer término, la densidad sindical por sexo no siempre ha sido igual, y tal como apunta @milkman1990, la única forma de capturar la transformación de los intereses de las asalariadas y su consiguiente sindicalización, es analizando largos procesos históricos que develen los cambios en las condiciones de explotación de las mujeres trabajadoras. Igualmente, la feminización sindical es un fenómeno reciente, por lo que también se debe puntualizar cómo determinados procesos económicos han incidido en el corto plazo en este cambio. Sobre el segundo término, la feminización de la sindicalización es un fenómeno que ha ocurrido en ciertos países y en otros no, por lo que ha sido necesario comparar las condiciones institucionales y económicas de las naciones y ver cómo estas inciden en las mujeres [@oreilly1998]. En consecuencia, la pregunta y objetivos que esta investigación busca responder es:
 
-## Pregunta de investigación 
+## Pregunta de investigación {-}
 
 *¿Cuál es la relación entre los cambios en la densidad sindical por sexo y determinantes económicos-laborales a nivel mundial entre 1980-2018?*
 
-## Objetivo
+## Objetivo {-}
 
 Analizar la relación entre los cambios en la densidad sindical por sexo y determinantes económicos-laborales a nivel mundial entre 1980-2018
 
-## Objetivos específicos
+## Objetivos específicos {-}
+
 *O.E.1* – Relacionar los cambios en la densidad sindical por sexo y la estructura de empleo a nivel mundial entre 1980-2018 
 
 *O.E.2* - Relacionar los cambios en la densidad sindical por sexo y los ciclos económicos a nivel mundial entre 1980-2018 
 
 *O.E.3* - Relacionar los cambios en la densidad sindical por sexo y las instituciones laborales a nivel mundial entre 1980-2018 
 
-## Estructura de la investigación
+## Estructura de la investigación {-}
 
-La presente investigación se organiza en los siguientes capítulos temáticos. El [capítulo 1 ¿Más mujeres en los sindicatos?](#intro) que recién presentado, considera el resumen, el desarrollo del problema de investigación, presenta la tesis principal, la pregunta y los objetivos generales y específicos de la investigación.
+El [capítulo 1 ¿Por qué ellas hoy son más y ellos menos?](#literature) construye un marco analítico para la densidad sindical por sexo a partir de una síntesis de los antecedentes empíricos y teóricos del problema de la sindicalización en general y en particular para las mujeres. La exposición de este capítulo se basa en una reconstrucción de los cambios económicos e institucionales del capitalismo desde 1960 a la fecha. Se vincularon esos cambios a las transformaciones en densidad sindical y a qué explicaciones se dieron tanto a los auges como declives sindicales. Se formalizaron tres grandes determinantes: los ciclos económicos, estructurales e institucionales, y a partir de ellos, se revisó cómo estos cambios podrían haber afectado la relación entre las mujeres y sindicatos. En consecuencia, este capítulo cierra con las hipótesis sustantivas sobre la feminización de la densidad sindical femenina 
 
-El [capítulo 2 ¿Por qué ellas hoy son más y ellos menos?](#literature) construye un marco analítico para la densidad sindical por sexo a partir de una síntesis de los antecedentes empíricos y teóricos del problema de la sindicalización en general y en particular para las mujeres. La exposición de este capítulo se basa en una reconstrucción de los cambios económicos e institucionales del capitalismo desde 1960 a la fecha. Se vincularon esos cambios a las transformaciones en densidad sindical y a qué explicaciones se dieron tanto a los auges como declives sindicales. Se formalizaron tres grandes determinantes: los ciclos económicos, estructurales e institucionales, y a partir de ellos, se revisó cómo estos cambios podrían haber afectado la relación entre las mujeres y sindicatos. En consecuencia, este capítulo cierra con las hipótesis sustantivas sobre la feminización de la densidad sindical femenina 
+El [capítulo 2 Métodología](#method) presenta los datos y variables utilizados. Asimismo, se formaliza el análisis de series temporales entre países a utilizar, esto es, un modelo de correción de error (*ECM*) que permite estimar efectos a largo y corto plazo de las determinantes sobre cada uno de los países.
 
-El [capítulo 3 Métodología](#method) presenta los datos y variables utilizados. Asimismo, se formaliza el análisis de series temporales entre países a utilizar, esto es, un modelo de correción de error (*ECM*) que permite estimar efectos a largo y corto plazo de las determinantes sobre cada uno de los países. 
+El [capítulo 3 Resultados](#application) expone un análisis descriptivo y los modelos mundiales que fueron escogidos para explicar la feminización de la dendisdad sindical. En base a los resultados, en este apartado se discuten cada una de las hipótesis sustantivas propuestas junto con los controles y ajuste del modelo. 
+
+En el [capítulo 4 Discusión](#discusion) se puede encontrar el capítulo que retoma los hallazgos encontrados en el capítulo 3 y los pone en tensión con la tesis central de esta investigación. A su vez, se intenta reforzar los argumentos expuestos a partir de una revisión de dos grupos de casos de países: en general, (1) Chile y Nueva Zelanda y (2) Japón y Corea del Norte. 
+
+La investigación cierra en el [capítulo 5 con la Conclusión](#conclusion) donde se retoma la tesis central, se resumen los principales hallazgos que muestran soporte para afirmar esta, pero también se indican aquellos puntos que deben ser puestos en duda. Para cerrar se indican las líneas futuras de estudio en base a toda la investigación ejecutada. 
 
 [^1]: @blanchflower2006 expone que países como Estados Unidos, Inglaterra, Australia, Alemania, Japón, Países Bajos, Nueva Zelanda, Argentina, Brasil, Bolivia, Perú, México, Taiwán, Hungría, Polonia. República Checa y Eslovenia son países donde disminuye la sindicalización (p.14). Mientras que hay aumento en Finlandia, Islandia, Dinamarca, Bélgica, Suecia, Chile, India, Turquía, Sudáfrica, Costa Rica, El Salvador y República Dominicana. Se mantienen estables Canadá, Noruega, España, Italia, Panamá y Filipinas.
 
