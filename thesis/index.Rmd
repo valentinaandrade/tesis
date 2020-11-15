@@ -24,7 +24,7 @@ La tesis  ha sido desarrollado bajo el proyecto FONDECYT N°11190229 *"Determina
 
 [Estado]
 
-- En evaluación. Hasta ahora se ha evaluado hasta el capítulo 3 y enviado borrador del capítulo 4 y 5. 
+- En evaluación por comité. 
 
 - *Última actualización de datos: `r format(Sys.Date(), '%d %B %Y')`*
 </center>
