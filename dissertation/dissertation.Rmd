@@ -26,8 +26,7 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE,
 ```
 
 ```{r packages-data, include=FALSE}
-pacman::p_load(icons, tidyverse, ggthemes, flair, texreg, 
-               ecm,# Error correction model
+pacman::p_load(ecm,# Error correction model
                tseries,
                vars, # augmented Dickey-Fuller test
                urca, # Philips y Ouliaris test cointegration
@@ -37,18 +36,16 @@ pacman::p_load(icons, tidyverse, ggthemes, flair, texreg,
                texreg,
                ggplot2,
                GGally,
-               pcse,
-               sf,
-               raster) 
+               pcse) 
 #1.1 Manipulacion general
-pacman::p_load("tidyverse","dplyr","ggplot2",
+pacman::p_load(icons, tidyverse, ggthemes, flair, texreg,ggplot2,
                "haven","forcats","ggsci",
                "hrbrthemes",
                "gganimate", "broom", "plotly", "magick",
                "png","gifski", "dygraphs") #interactive 
 
 #1.2 Manipulacion de mapas
-pacman::p_load("sf","raster","spData",
+pacman::p_load(sf,raster,spData,
                "rgdal","leaflet", "htmlwidgets", "tmap", "mapview", "shiny", "maps")
 
 load(file = "../output/data/models.RData")
@@ -135,62 +132,10 @@ class: title title-2
 
 # 2. Feminización de la densidad sindical
 
-```{r mapa, echo = T, include = F, message=FALSE, warning=FALSE}
-# 4. Manipular base de datos
-db <- db %>% dplyr::select(country, year,UD, ud_fem2, ud_male2)
-db1 <- db %>% fill(UD) %>% filter(!is.na(ud_fem2))%>% 
-  group_by(country) %>%
-  filter(year == max(year)) %>% mutate(fudi = ud_fem2 / ud_male2) %>% mutate_if(is.numeric, ~round(., 2))
-#2. Cargar mapa
-#Make a Spdb object (spatial polygon data frame).
-download.file("http://thematicmapping.org/downloads/TM_WORLD_BORDERS_SIMPL-0.3.zip" , destfile="../input/data/world_shape_file.zip")
-unzip(zipfile = "../input/data/world_shape_file.zip",  exdir="../input/data")
-my_map <- shapefile("../input/data/TM_WORLD_BORDERS_SIMPL-0.3.shp")
-
-#Rename Korea, Republic of
-my_map$NAME <- gsub("Korea, Republic of", "South Korea", my_map$NAME)
-my_map$NAME <- gsub("United States Minor Outlying Islands", "United States", my_map$NAME)
-my_map$NAME <- gsub("United States Virgin Islands", "United States", my_map$NAME)
-
-db1$country <- gsub("Russian Federation", "Russia", db1$country)
-
-#Join map and data
-map <- merge(my_map, db1, by.x = "NAME", by.y = "country")
-
-# 3. Create a color palette with handmade bins (RColorBrewer)
-
-mybins <- c(0,0.5,0.7,0.9, 1, 1.3,1.4, Inf)
-mypalette <- colorBin( palette=c("#0099CC", "white","magenta4"), domain=map@data$fudi, na.color="transparent", bins=mybins)
-
-# Prepare the text for tooltips:
-mytext <- paste(
-  "<b>", map@data$NAME,"</b>","<br/>", 
-  "Union Density: ", round(map@data$UD,2),"%", "<br/>", 
-  "Female union density: ", map@data$ud_fem2,"%", "<br/>",
-  "Male union density: ", map@data$ud_male2,"%", "<br/>",
-  "FUDi: ", round(map@data$fudi, 2), 
-  sep="") %>%
-  lapply(htmltools::HTML)
-```
 .center[
 ```{r map1, results='asis', echo= F}
 # Final Map
-map2 <- leaflet(map) %>% 
-  addTiles(providers$Stamen.TonerLite)  %>% 
-  setView( lat=10, lng=0 , zoom=2) %>%
-  addPolygons( 
-    fillColor = ~mypalette(fudi), 
-    stroke=TRUE, 
-    fillOpacity = 0.9, 
-    color="black", 
-    weight=0.3,
-    label = mytext,
-    labelOptions = labelOptions( 
-      style = list("font-weight" = "normal", padding = "3px 8px"), 
-      textsize = "13px", 
-      direction = "auto")) %>%
-  addLegend( pal=mypalette, values=~fudi, opacity=0.9, title = "FUDi", position = "bottomleft" )
-save(map2, file = "../output/graphs/map.RData")
+load(file = "../output/graphs/map.RData")
 map2
 ```
 ]
