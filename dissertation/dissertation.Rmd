@@ -55,7 +55,9 @@ load(file = "../output/data/models.RData")
 load(file = "../output/data/ajust-model.RData")
 load(file = "../output/data/db-proc.RData")
 ```
-
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "share_again", "scribble"))
+```
 class: center middle main-title section-title-2
 
 # La feminización del conflicto laboral
