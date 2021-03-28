@@ -53,38 +53,49 @@ Las hipótesis que trabajé se basan en estas tres dimensiones que segpun la lit
 
 Para esta presentacion me centraré solo en presentar los argumentos y hallazgos de la primera hipótesis. Principalmente en honor a los comentarios de revisores y que a mi parecer son base del argumento central de esta tesis.
 
-##  Las mujeres trabajadoras necesitan a los sindicatos y, a su vez, los sindicatos necesitan a las mujeres trabajadoras.
+H2: Con el crecimiento de los sectores económicos feminizados, como el sector servicios, a largo plazo se producirá un cambio en la estructura sindical que, por un lado, va a producir un aumento de la densidad sindical femenina y por otro una salida o ‘escape’ de la membresía masculina. En conclusión, la sindicalización se feminizará.
+
+
+## Hoy, la **fuerza laboral del sindicalismo es la mujer**, y lo que ha llevado a las mujeres hacia la organización sindical tiene que ver más con la **ubicación** que las mujeres han comenzado a ocupar en el **mercado laboral**
+
+(Las mujeres trabajadoras necesitan a los sindicatos y, a su vez, los sindicatos necesitan a las mujeres trabajadoras.)
 
 A partir de los años 1980, la estructura económica y la composición de la fuerza de trabajo transitó desde una estructura productiva industrial, principalmente dominada por hombres, hacia una de **servicios, en donde las mujeres comienzan a tener un mayor protagonismo en la fuerza de trabajo** (Figura 1.8) De hecho, ya para el año 2000, un 85,1% de las mujeres ocupadas estaban concentradas en el sector servicios (ILO 2004).
 
-*Figura 3* (en tesis figura 1.8)
+*Figura 2.7*
 
 Las ocupaciones desarrolladas en el sector financiero, comunicaciones, salud, servicios sociales y comunitarios y administración pública se fueron feminizado , mientras que las mujeres se fueron sub-representando en el sector industrial (Gálvez 2001, 66). Con esto, se quiere apuntar que las mujeres tienen un patrón diferenciado de ingreso al mercado laboral, donde, si bien, la participación laboral femenina ha aumentado, el acceso -en general- ha sido limitado tipo de trabajos que se concentran en el **sector servicios**, en empleos de **bajos salarios y con jornadas flexibles** sin seguridad social con malas condiciones de trabajo y en ausencia de protección social (Figura 1.9) el trabajo part time sigue siendo más prevalente en mujeres que en hombres a nivel mundial (Fagan et al., 2015).
 
-**Idea**
-1.    Hoy en día, la fuerza laboral del sindicalismo es la mujer, y lo que ha llevado a las mujeres hacia la organización sindical tiene que ver más con la ubicación que las mujeres han comenzado a ocupar en el mercado laboral (i.e su predominancia en el sector servicios y en empleos flexibles) y en cómo el sindicalismo les sirve como motor para canalizar sus demandas
-2.    También ocurre que los sindicatos han necesitado de esta nueva fuerza de trabajo para mantenerse vivos.
+*Figura 2.8*
+
+**IEntonces**
+1.    Hoy en día, la fuerza laboral del sindicalismo es la mujer, y lo que ha llevado a las mujeres hacia la organización sindical tiene que ver más con la ubicación que las mujeres han comenzado a ocupar en el mercado laboral (i.e su predominancia en el sector servicios y en empleos flexibles
+2.     Luego en en cómo el sindicalismo les sirve como motor para canalizar sus demandas (también ocurre que los sindicatos han necesitado de esta nueva fuerza de trabajo para mantenerse vivos)
+
+---
+Sin slide
 
 Ahora bien, es poca la literatura que orienta en mostrar cómo podrían incidir estos proceso en la feminización sindical. La evidencia más bien indica un **efecto negativo del crecimiento del sector servicios sobre la sindicalización**, y como el crecimiento de grupos menos militantes (eg mujeres e inmigrantes) erosionarían sindicalismo.
 
 Solo marginalmente Kocsis, Sterkel y Wiedemuth (2013) hablaron de una tercerización del conflicto laboral, pero sin poner atención a qué actores se movilizaban ni a que nivel de acción sindical se refiere (eg. sindicalización, paros, acción huelgística).
 
+---
+
+## Tensión entre la estructura tradicional sindical dominada por hombres y la *progresiva incorporación femenina al mundo sindical*
+
+(gif)
+
 En base a evidencia de estudios a nivel de las empresas del Reino Unido y Nueva Zelanda, **que con la mayor incorporación de mujeres a la fuerza de trabajo**, poco a poco ellas entrarán a los sindicatos, generándose una tensión entre este nuevo escenario con la estructura tradicional sindical dominada por los hombres, y por ello podría producirse un ‘escape’ (o exit como dice la literatura) de los miembros sindicales masculinos ante el antagonismo producido(Haile 2017).
 
 Con la salida de los hombres a sindicatos y el ingreso estable o mayor de mujeres a estos, se produciría **la feminización de la densidad sindical** pues si más mujeres entraran a la estructura sindical robustecida por mujeres, más hombres se irán de la organización al verse menos representado en estas organizaciones.
 
-(en slide)
-----
-H2:  Con el crecimiento de los sectores económicos feminizados, como el sector servicios, a largo plazo se producirá un cambio en la estructura sindical que, por un lado, va a producir un aumento de la densidad sindical femenina y por otro una salida o ‘escape’ de la membresía masculina. En conclusión, la sindicalización se feminizará.
 ----
 En consecuencia, se exploró si el crecimiento de variables asociadas a este tipo de empleo que ha sido llamado *pink collar *(i.e mujeres trabajadoras de los sectores servicios, de empleos flexibles y con bajos salarios) producen una mayor feminización de la densidad sindical.
-
 
 Esta hipótesis exploratoria se pensó como es plausible, sobre todo, a la luz de la convergencia entre
 (1) la tendencia hacia la feminización del empleo remunerado ha ido al alza
 (2) el sector servicios y empleo par time ha ido en expansión -siendo este la principal inserción de las mujeres
-(3) la ‘tercerización de los conflictos laborales’ (Kocsis et al., 2013)
-(4) feminización densidad sindical, lo que para Artus y Pflüger (2015) es como sumar uno más uno plantear alguna hipótesis sobre la relación entre la feminización de los conflictos laborales y estas tres tendencias (p.93)
+(3) feminización densidad sindical, lo que para Artus y Pflüger (2015) es como sumar uno más uno plantear alguna hipótesis sobre la relación entre la feminización de los conflictos laborales y estas tres tendencias (p.93)
 
 ## Método
 
@@ -177,4 +188,4 @@ Cuando inicié esta presentación y mi tesis una de las cosas que me orientó fu
 
 La apuesta era ponerse a explorar como la fuerza de trabajo ha ido transitando en la era neoliberal hacia estructuras menos tradicionales pero no por eso menos organizadas. Hay quienes plantean que estos nuevos actores que se están constituyendo expresan o canalizan su descontento en otras formas de organización (eg. movimientos sociales, etc). Lo que yo muestro aquí es que también tiene que ver con una cosa de tiempo y condiciones. La clase trabajadora sea en el s. XX o ahora nunca la ha tenido "fácil" para organizarse. Más bien, es un fenómeno de la lucha de clases que estructuralmente emerge, ya sea la acción de clases expresada en conflicto o compromiso de clases (sindicalización, huelgas, paros, etc). Ahora el punto es preguntarse quién es esa quizás "fracción de clase" que se organiza (¿la del sector servicios?), que condiciones han posibilitado esta organización y aquí el tercer punto y es el que me motiva a seguir mis estudios de posgrado **que consecuencias relevantes tienen estas para las mujeres trabajadoras**.
 
-Y con esta idea quiero cerrar esta defensa. Este proyecto de tesis tuvo el objetivo de ser inicio de una investigación que intenta poner en relieve causas y condiciones de un cambio en la feminización sindical, ahora creo que resta preguntarse que consecuencias tiene esto para las condiciones laborales de las mujeres trabajadoras y el sistema de relaciones laborales. 
+Y con esta idea quiero cerrar esta defensa. Este proyecto de tesis tuvo el objetivo de ser inicio de una investigación que intenta poner en relieve causas y condiciones de un cambio en la feminización sindical, ahora creo que resta preguntarse que consecuencias tiene esto para las condiciones laborales de las mujeres trabajadoras y el sistema de relaciones laborales.
