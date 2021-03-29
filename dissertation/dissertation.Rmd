@@ -73,8 +73,10 @@ class: center middle main-title section-title-2
 Marzo 2021]
 ]
 ]
-.right.tiny[Profesor Guía: Omar Aguilar Novoa </br>
-Co-tutor: Pablo Pérez Ahumada]
+</br>
+.right.tiny[Profesor Guía: Dr. Omar Aguilar Novoa </br>
+Co-tutor: Dr. Pablo Pérez Ahumada </br>
+Comisión: Dra. Catalina Arteaga y Dr. (c) Giorgio Boccardo]
 
 ---
 class: center middle section-title section-title-2 animated fadeInUp
@@ -182,7 +184,8 @@ class: center middle section-title section-title-2 animated fadeInDown
 
 .middle-code[.box-inv-2.huge[**Institucionales**]]
 </br>
-
+</br>
+.box-inv-3[.small[En cómo podrían afectar a **mujeres** y su relación con los **sindicatos**]]
 ---
 class: center middle section-title section-title-2 
 .small[
@@ -221,21 +224,18 @@ class: title title-5
 ]
 .small[
 .box-inv-5[Industrial masculinizada `r icons::fontawesome("arrow-right", style = "solid")` Servicios feminizada]
-
 .center[
-![:scale 75%](img/figura2.7-2.png)]
+![:scale 70%](img/figura2.7-2.png)]]
+.very-tiny[Figura 5. Evolución del empleo según sector económico (1990-2019).] 
 
-
-
-]
 ---
 class: title title-5
 .tiny[
 # 2. El sector servicios y empleo part time ha ido en expansión, sectores que son la principal inserción de las mujeres
 ]
-
 .center[
-![:scale 75%](img/figura2.8.png)]
+![:scale 70%](img/figura2.8.png)]
+.very-tiny[Figura 6.Participación en el trabajo asalariado y empleo parcial según sexo a nivel mundial (1960-2020)] 
 
 ---
 class: title title-5
@@ -384,7 +384,8 @@ class: title title-1
 # Modelo de Feminización de la Densidad Sindical
 
 ![](img/figura2.11.jpg)
-.tiny[Tamaño efecto y significancia de coeficientes del modelo mundial para estimar la feminización de la sindicalización. Se indica el $R^2_{ajustado}$ a un costado derecho.] 
+
+.tiny[Figura 7. Tamaño efecto y significancia de coeficientes del modelo mundial para estimar la feminización de la sindicalización.] 
 ]
 
 ---
@@ -437,7 +438,7 @@ class: center middle section-title section-title-2
 ---
 class: center middle section-title section-title-2 animated fadeIn
 
-# ¿Son las mujeres la nueva fuerza laboral?
+# ¿Son las **pink collars** la nueva clase trabajadora?
 
 ---
 class: center middle main-title section-title-2
@@ -458,6 +459,10 @@ class: center middle main-title section-title-2
 Marzo 2021]
 ]
 ]
+</br>
+.right.tiny[Profesor Guía: Dr. Omar Aguilar Novoa </br>
+Co-tutor: Dr. Pablo Pérez Ahumada </br>
+Comisión: Dra. Catalina Arteaga y Dr. (c) Giorgio Boccardo]
 
 ---
 class: bg-full bg-y-75
