@@ -66,6 +66,6 @@ Con esto se compilará análisis y escritura y aparecerá en el visor de RStudio
 
 - Cualquier comentario de la base puede ser indicado en Issues
 
-- Comentarios de contenidos, quejas o agradecimiento también son muy bien recibidos a valentina.vasquez.a@uchile.cl
+- Comentarios de contenidos, quejas o agradecimiento también son muy bien recibidos a valentinaandrade@uchile.cl
 
 - Evite plagiar los análisis y escritura. La tesis está siendo evaluada para su publicación, y en consecuencia, cualquier uso indebido será penalizado para quién haga uso indebido de esta.
