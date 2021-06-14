@@ -3,7 +3,7 @@ Esquema defensa de tesis
 # 1. Presentación
 
 - Título: La feminización del conflicto laboral. Un análisis temporal y comparado de la densidad sindical mundial
-- Esta presentación y tesis constituye una expresión de un largo proceso de investigación y formación que he compartido con mujeres trabajadoras y organizaciones sindicales constituidas principalmente por mujeres. Si bien mi experiencia junto a ellas no consituye fuente de análisis para este proyecto, este si fue central como motivación para querer construir evidencia científica y un programa de investigación que ponga en el centro a las mujeres trabajadoras en el conflicto laboral.
+- Esta presentación y tesis constituye una expresión de un largo proceso de investigación y formación que he compartido con mujeres trabajadoras y organizaciones sindicales constituidas principalmente por mujeres. Si bien mi experiencia junto a ellas no es fuente de análisis para este proyecto, este si fue central como motivación para querer construir evidencia científica y un programa de investigación que ponga en el centro a las mujeres trabajadoras en el conflicto laboral.
 
 -------------------------------------
 # 2. Problema de investigación
@@ -22,7 +22,7 @@ Pero, para los expertos en relaciones laborales, en ningún caso este desplazami
 
 Pero así como el fin de la clase trabajadora fue un precipitado augurio, **planteo que el declive del sindicalismo puede ser puesto en tela de juicio**, ya que, a partir de la década del 2000, comenzaron a surgir nuevas tendencias y oportunidades en la organización sindical (Artus y Pflüger 2015). Una de ellas refiere a la **organización sindical de mujeres**. Existen dos datos a destacar de ahí
     1.    Si se mira a nivel **temporal**, la densidad sindical femenina supera a la masculina en una no menor cantidad de países (25 de 45 en estudio). Y varios de aquellos en que no, esas brechas se acortan (como Estados Unidos) *Gráfico 1*
-    2.    Ahora ese fenómeno, que para sintetizarlo se ha operacionalizado como feminización de la densidad sindical (FUDI), al ultimo año se sigue manteniendo en muchos países. *Gráfico 2*
+    2.    Ahora ese fenómeno, que para sintetizarlo se ha operacionalizado como feminización de la densidad sindical, al ultimo año se sigue manteniendo en muchos países. *Gráfico 2*
 
 -----------------------------------------------
 ### Literatura anterior
@@ -45,7 +45,7 @@ Objetivo específico 0.
 De todas formas, la evidencia hasta ahora existente se puede defender de no haberle puesto el foco a este fenómeno por el echo de que el dato de la densidad sindical por sexo tiene poca cobertura temporal y en los países. Por ello partí el año 2018 construyendo este dato para un numero mayor de países (ver metodología).
 
 (Mostrar objetivo)
-Luego, al ver lo robusto del dato, me propuse **explicar los cambios en la densidad sindical por sexo a nivel mundial desde 1980 a 2018**.  Y esto lo hice en base la relación que podría haber tenido dicho cambio con ciertos determinantes como la reestructuración productiva, los ciclos económicos y los cambios institucionales en las relaciones industriales, sobre el mercado laboral y los sindicatos, pero poniendo **especial énfasis en cómo esto podría haber afectado a las mujeres trabajadoras y su relación con los sindicatos.**
+Luego, al ver lo robusto del dato, me propuse **explicar los cambios en la densidad sindical por sexo a nivel mundial desde 1980 a 2018**.  Y esto lo hice en base la relación que podría haber tenido dicho cambio con ciertos determinantes como la reestructuración productiva, los ciclos económicos y los cambios institucionales en las relaciones industriales, pero poniendo **especial énfasis en cómo esto podría haber afectado a las mujeres trabajadoras y su relación con los sindicatos.**
 
 ---------------------------------------------
 ## Hipotesis
@@ -61,12 +61,12 @@ Las hipótesis trabajadas
 
 Para esta presentacion me centraré solo en presentar los argumentos y hallazgos de la segunda hipótesis. Principalmente en honor a los comentarios de revisores y que a mi parecer son base del argumento central de esta tesis.
 
-H2: La feminización de la fuerza de trabajo, a largo plazo producirá un cambio en la estructura sindical que, por un lado, va a producir un aumento de la densidad sindical femenina y por otro una salida o ‘escape’ de la membresía masculina. En conclusión, la sindicalización se feminizará.
+H2: La feminización de la fuerza de trabajo, a largo plazo producirá un cambio en la estructura sindical que, por un lado, va a producir un aumento de la densidad sindical femenina y por otro una salida o ‘exit’ de la membresía masculina. En conclusión, la sindicalización se feminizará.
 
 ------------------------------------------------
 ## Hoy, la **fuerza laboral del sindicalismo es la mujer**, y lo que ha llevado a las mujeres hacia la organización sindical tiene que ver más con la **ubicación** que las mujeres han comenzado a ocupar en el **mercado laboral**
 
-Y una primera parte tiene que ver con abordar esto: el cambio de la fuerza de trabajo.
+Y una primera parte tiene que ver con abordar esto: el cambio de la fuerza de trabajo. Para en el fondo justificar que la nueva fuerza laboral del sindicalismo es la mujer
 -----------
 
 A partir de los años 1980, la estructura económica y la composición de la fuerza de trabajo transitó desde una estructura productiva industrial, principalmente dominada por hombres, hacia una de **servicios, en donde las mujeres comienzan a tener un mayor protagonismo en la fuerza de trabajo**.
@@ -81,6 +81,7 @@ A partir de los años 1980, la estructura económica y la composición de la fue
 
 Las ocupaciones desarrolladas en este gran sector que incluyen al sector financiero, comunicaciones, salud, servicios sociales y comunitarios y administración pública se fueron feminizado, mientras que las mujeres se fueron sub-representando en el sector industrial (Gálvez 2001, 66).
 
+-------------------
 Con esto, se quiere apuntar a que **las mujeres tienen un patrón diferenciado de ingreso al mercado laboral**, donde, si bien, la participación laboral femenina ha aumentado, el acceso -en general- ha sido limitado a trabajos que se concentran en el **sector servicios**, en empleos de **bajos salarios y con jornadas flexibles**, con malas condiciones de trabajo y en ausencia de protección social. Incluso a la fecha, el trabajo part time sigue siendo más prevalente en mujeres que en hombres a nivel mundial (Fagan et al., 2015).
 
 A este grupo de ocupaciones que comparten estas características del empleo se les ha tipificado como empleo pink collar
@@ -107,7 +108,7 @@ Lo que si se encontró es evidencia en estudios a nivel de empresas en el Reino 
 
 Con la salida de los hombres a sindicatos y el ingreso estable o mayor de mujeres a estos, se produciría **la feminización de la densidad sindical** pues si más mujeres entraran a la estructura sindical robustecida por mujeres, más hombres se irán de la organización al verse menos representado en estas organizaciones.
 
-----
+---- (seguir)
 En consecuencia, se exploró si el crecimiento de variables asociadas a este tipo de empleo que ha sido llamado **pink collar** (i.e mujeres trabajadoras de los sectores servicios, en empleos flexibles y con bajos salarios) producen una mayor feminización de la densidad sindical.
 
 Esta hipótesis exploratoria se pensó como es plausible, sobre todo, a la luz de la convergencia entre los tres fenómenos mostrados:
@@ -120,7 +121,7 @@ Esta hipótesis exploratoria se pensó como es plausible, sobre todo, a la luz d
 
 *¿Cómo se implemento?*
 
-El trabajo con las variables y datos se realizó salvaguardando la comparabilidad temporal y geográfica de estos (y en el anexo metodologico de la tesis lo pueden revisar)
+El trabajo con las variables y datos se realizó salvaguardando la comparabilidad temporal y geográfica de estos (y en el anexo metodologico de la tesis lo pueden revisar). FAIR
 
 (Tabla variables)
 
@@ -146,7 +147,7 @@ En la actualidad, la mayor parte de los países estudiados presentan una sindica
 
 Los países nórdicos inaguraron en los 80 índices que indican que la densidad sindical de mujeres supera a la de hombres, Y ya desde 1990 el **Reino Unido**, Canadá y Australia se sumarán a esta tendencia. Ahora bien, a diferencia de los países escandinavos que muestran una serie más bien estable (a excepción de Noruega), estos últimos países demuestran una evidente tendencia hacia la feminización de la sindicalización.
 
-También es posible notificar una **posible convergencia entre la feminización sindical y la instalación del neoliberalismo en esas naciones** (siendo un caso emblemático Inglaterra). De hecho, países con tendencias similares son Brasil y Chile, pero que evidencian la feminización sindical tiempo más tarde de la instalación del neoliberalismo, específicamente desde la segunda década del siglo XXI.
+También es posible notificar una **posible convergencia entre la feminización sindical y la instalación del neoliberalismo en esas naciones** (siendo un caso emblemático Inglaterra). De hecho, países con tendencias similares son Brasil y Chile, pero que evidencian la feminización sindical tiempo más tarde de la instalación del neoliberalismo.
 
 Otra tendencia a destacar es en aquellos países con tendencia estable pero que siempre han tenido una sindicalización "igualitaria" o incluso feminizada: estos son  los ex-soviéticos (Rusia y los bálticos como Estonia, Letonia y Lituania), los ex-países yugoslavos (Eslovenia y Croacia) y latinoamericanos (México y Uruguay).
 
@@ -179,7 +180,8 @@ En consecuencia, si se mira en general los resultados para los determinanes estr
 
 - A partir de 1980, la fuerza de trabajo femenina ha aumentado notablemente de la mano con la expansión del sector servicios, cambiando significativamente la composición de género de sectores económicos.
 - La literatura planteó que con la incorporación de mujeres en la fuerza de trabajo y sindicatos, se produce un cambio en la estructura sindical que se pone en tensión con la estructura tradicional sindical dominada por los hombres, y por ello podría ocurrir también una ‘salida’ de los miembros masculinos (Haile 2017).
-- En suma y resta, la sindicalización se feminizaría. El corolario se cumple si y solo se feminiza lo suficiente la fuerza de trabajo, de modo de que entre en tensión la estructura sindical. De hecho, es probable que la hipótesis relacionada a la feminización del sector servicios tenga un mayor efecto que la de la participación laboral por el "efecto" concentración de las mujeres que podría tener dentro de los sectores económicos y empresas.
+- En suma y resta, la sindicalización se feminizaría.
+- El corolario se cumple si y solo se feminiza lo suficiente la fuerza de trabajo, de modo de que entre en tensión la estructura sindical. De hecho, es probable que la hipótesis relacionada a la feminización del sector servicios tenga un mayor efecto que la de la participación laboral por el "efecto" concentración de las mujeres que podría tener dentro de los sectores económicos y empresas.
 
 - Y Tal como se vio en los primeros gráficos 3 y 4, los sectores con mayor potencial se feminización son el sector servicios y el empleo part-time, dos sectores que con su feminización solo mostraron evidencia a favor de nuestras hipótesis en el caso del sector servicios (tal como indicó Artus y Pflüger (2015)) y solo para América Latina en el empleo parcial.
 
@@ -195,13 +197,15 @@ Esta hipótesis que implicitamente habla de una **convergencia** entre
 (2) la expansión del sector servicios y empleo part time, siendo este la principal inserción de las mujeres
 (3) y la feminización densidad sindical
 
-Esta tesis ha sido defendida en términos descriptivos o incluso mostrando que uno de los coeficientes de mayor tamaño efecto en los modelos de feminización sindical. Ahora bien estos modelos tienen un gran potencial predictivo, entonces en las siguientes figuras podremos ver **como se da el movimiento temporal de la feminización sindical según si el país tiene la fuerza de trabajo está feminizada** o si la **fuerza de trabajo del sector servicios está feminizada.**
+Esta tesis ha sido defendida en términos descriptivos o incluso mostrando que uno de los coeficientes de mayor tamaño efecto en los modelos de feminización sindical.
+
+Ahora bien estos modelos tienen un gran potencial predictivo, entonces en las siguientes figuras podremos ver **como se da el movimiento temporal de la feminización sindical según si el país tiene la fuerza de trabajo está feminizada** o si la **fuerza de trabajo del sector servicios está feminizada.**
 
 Una primera imagen de ambas, permite notar claramente que entre 1980 a 2000 es cuando se produce el mayor movimiento de los países hacia la feminización de la fuerza de trabajo (ie. movimiento positivo en el eje de las abscisas). En el mismo examen, es notable que, a partir de 2000 no solo se da un movimiento favorable en la variación de la feminización (ie. en el eje y), sino que esta variación se vuelve cada vez más homogénea en los últimos años. Si bien desde el 2010 en adelante gran parte de los países con su sindicalización feminizada no tienen grandes variaciones año a año, los países que aun no alcanzan la feminización siguen avanzando en ella.
 
 La fuerza de estos movimientos nos permiten indicar que existe evidencia contundente sobre el efecto que tiene en el tiempo la feminización del mercado laboral sobre la feminización de la sindicalización. Esto entrega soporte para decir que,
 
-Si 1980 fue nombrada la década de la emergencia de la deregulación, la tercerización y feminización del mercado laboral (Standing, 1989), nuestros resultados nos permiten decir que, producto de estos cambios, **en los 2000 se inaugura la época de la tercerización y feminización sindical.**
+Si 1980 fue nombrada la década de la emergencia de la deregulación, la tercerización y feminización del mercado laboral (Standing, 1989), nuestros resultados nos permiten decir que, producto de estos cambios, **en los 2000 se inaugura la época de feminización sindical y tercerización.**
 
 
 # Proyecciones para el debate
@@ -216,7 +220,7 @@ Entonces si bien no es evidencia precisa sobre ello, cuando se comentó los mode
 
 Cuando inicié esta presentación y mi tesis una de las cosas que me orientó fue pensar que si estaba ocurriendo un cambio en la composición de la estructura productiva (y familiar también) era posible pensar que la estructura de clases también estaba cambiando. Y si eso era así, la acción de clases también podía hacerlo.
 
-La apuesta era ponerse a explorar como la fuerza de trabajo ha ido transitando en la era neoliberal hacia estructuras menos tradicionales pero no por eso menos organizadas.
+La apuesta era ponerse a explorar como la fuerza de trabajo ha ido transitando en la **era neoliberal** hacia estructuras menos tradicionales pero no por eso menos organizadas.
 
 Hay quienes plantean que estos nuevos actores que se están constituyendo expresan o canalizan su descontento en otras formas de organización (eg. movimientos sociales, etc), debido a la dificultad que tienen para organizarse laboralmente en sindicatos.
 
